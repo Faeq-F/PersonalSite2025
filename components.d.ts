@@ -7,22 +7,27 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    BottomBar: typeof import('./src/components/BottomBar.vue')['default']
-    Button: typeof import('primevue/button')['default']
+    AboutButton: typeof import('./src/components/BottomBar/AboutButton.vue')['default']
+    BottomBar: typeof import('./src/components/BottomBar/BottomBar.vue')['default']
     ButtonC: typeof import('./src/components/ButtonC.vue')['default']
-    ButtonGroup: typeof import('primevue/buttongroup')['default']
-    ColorPicker: typeof import('primevue/colorpicker')['default']
+    Card: typeof import('primevue/card')['default']
+    copy: typeof import('./src/components/BottomBar/HomeButton copy.vue')['default']
+    ExperienceButton: typeof import('./src/components/BottomBar/ExperienceButton.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    HomeButton: typeof import('./src/components/BottomBar/HomeButton.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
     IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']
     IconEcosystem: typeof import('./src/components/icons/IconEcosystem.vue')['default']
     IconSupport: typeof import('./src/components/icons/IconSupport.vue')['default']
     IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']
-    Image: typeof import('primevue/image')['default']
     Panel: typeof import('primevue/panel')['default']
+    PortfolioButton: typeof import('./src/components/BottomBar/PortfolioButton.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    AnimateOnScroll: typeof import('primevue/animateonscroll')['default']
   }
 }
