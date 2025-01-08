@@ -1,10 +1,10 @@
-<script lang="ts">
+<script lang="js">
 export default {
   mounted() {
-    this.width = this.$el.offsetWidth
-    this.height = this.$el.offsetHeight
+    this.width = this.$refs.card.offsetWidth
+    this.height = this.$refs.card.offsetHeight
   },
-  props: ['dataImage'],
+  props: ['dataImage', 'header', 'content'],
   data: () => ({
     width: 0,
     height: 0,
@@ -20,8 +20,8 @@ export default {
       return this.mouseY / this.height
     },
     cardStyle() {
-      const rX = this.mousePX * 30
-      const rY = this.mousePY * -30
+      const rX = this.mousePX * 10
+      const rY = this.mousePY * -10
       return {
         transform: `rotateY(${rX}deg) rotateX(${rY}deg)`,
       }
@@ -35,14 +35,14 @@ export default {
     },
     cardBgImage() {
       return {
-        backgroundImage: `url(${this.dataImage})`,
+        backgroundImage: `url(${this.dataImage}Light.png)`,
       }
     },
   },
   methods: {
-    handleMouseMove(e: any) {
-      this.mouseX = e.pageX - this.$el.card.offsetLeft - this.width / 2
-      this.mouseY = e.pageY - this.$el.card.offsetTop - this.height / 2
+    handleMouseMove(e) {
+      this.mouseX = e.pageX - this.$refs.card.offsetLeft - this.width / 2
+      this.mouseY = e.pageY - this.$refs.card.offsetTop - this.height / 2
     },
     handleMouseEnter() {
       clearTimeout(this.mouseLeaveDelay)
@@ -68,9 +68,11 @@ export default {
     <div class="card" :style="cardStyle">
       <div class="card-bg" :style="[cardBgTransform, cardBgImage]"></div>
       <div class="card-info">
-        <slot name="header"></slot>
-        <slot name="content"></slot>
+        <h1 class="font-header">{{ this.header }}</h1>
+        <p class="font-text">{{ this.content }}</p>
       </div>
     </div>
   </div>
 </template>
+
+<style lang="scss"></style>

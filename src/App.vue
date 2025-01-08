@@ -1,6 +1,21 @@
-<script setup lang="ts">
+<script lang="ts">
 import { RouterView } from 'vue-router'
 import type BottomBar from './components/BottomBar/BottomBar.vue'
+
+export default {
+  data() {
+    return {
+      bgAnimation: 100,
+    }
+  },
+  computed: {
+    cssVars() {
+      return {
+        '--bgAnimation': this.bgAnimation,
+      }
+    },
+  },
+}
 </script>
 
 <template>
@@ -14,15 +29,17 @@ import type BottomBar from './components/BottomBar/BottomBar.vue'
         <component :is="Component" class="z-[999]" />
       </transition>
     </router-view>
-    <BottomBar />
+    <BottomBar @bgAnimation="(val: number) => (bgAnimation = val)" />
 
-    <div class="fogWrap">
-      <img src="/cloud.png" v-for="i in Array.from(Array(100).keys())" />
+    <div class="fogWrap" :style="cssVars">
+      <img src="/cloud.png" v-for="i in Array.from(Array(bgAnimation).keys())" />
     </div>
   </Panel>
 </template>
 
 <style lang="scss">
+@use 'sass:math';
+
 @layer tailwind-base, primevue, tailwind-utilities;
 
 @layer tailwind-base {
@@ -64,22 +81,27 @@ import type BottomBar from './components/BottomBar/BottomBar.vue'
   max-width: 20px;
 }
 
-$total: 100;
-@for $i from 1 through $total {
-  $scale: random(2) - 0.4;
+$bgAnimation: 100;
+
+:export {
+  bgAnimation: $bgAnimation;
+}
+
+@for $i from 1 through $bgAnimation {
+  $scale: math.random(2) - 0.4;
 
   .fogWrap img:nth-child(#{$i}) {
-    left: random(120) * 1% - 20;
-    animation: raise#{$i} 7 + random(15) + s linear infinite;
-    animation-delay: random(5) - 5 + s;
-    transform: scale(0.3 * $i - 0.6) rotate(random(360) + deg);
+    left: math.random(120) * 1% - 20;
+    animation: raise#{$i} 7 + math.random(15) + s linear infinite;
+    animation-delay: math.random(5) - 5 + s;
+    transform: scale(0.3 * $i - 0.6) rotate(math.random(360) + deg);
     z-index: $i + 99;
     // filter: blur($i - 6 + px);
 
     @keyframes raise#{$i} {
       to {
         bottom: 150vh;
-        transform: scale(0.3 * $i - 0.6) rotate(random(360) + deg);
+        transform: scale(0.3 * $i - 0.6) rotate(math.random(360) + deg);
       }
     }
   }

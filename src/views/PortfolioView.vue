@@ -1,5 +1,28 @@
 <script lang="ts">
 import Card from '../components/Card.vue'
+import '@splidejs/vue-splide/css'
+import { Splide as Core } from '@splidejs/splide'
+import { Splide, SplideSlide } from '@splidejs/vue-splide'
+
+export default {
+  name: 'BasicExample',
+
+  components: {
+    Splide,
+    SplideSlide,
+  },
+
+  data() {
+    return {
+      options: {
+        rewind: true,
+        gap: '2rem',
+        perPage: 2,
+      },
+      enabled: true,
+    }
+  },
+}
 </script>
 
 <template>
@@ -9,47 +32,105 @@ import Card from '../components/Card.vue'
     <p class="font-subheader text-5xl right-0 absolute top-28">What I have done</p>
   </div>
   <div
-    class="z-[999] !pl-2 mb-20 transition-all duration-500 min-h-[50vh] absolute bottom-8 lg:bottom-10 inset-x-8 lg:inset-x-10 flex items-center justify-between pl-5 pr-5 lg:pr-2 py-2 rounded-3xl dark:bg-white/15 bg-black/10 backdrop-blur-[6px] border dark:border-white/15 border-black/15 dark:shadow-[0px_10px_10px_-8px_rgba(18,18,23,0.02),0px_2px_2px_-1.5px_rgba(18,18,23,0.02),0px_1px_1px_-0.5px_rgba(18,18,23,0.02)] shadow-[0px_10px_10px_-8px_rgba(237,237,232,0.02),0px_2px_2px_-1.5px_rgba(237,237,232,0.02),0px_1px_1px_-0.5px_rgba(237,237,232,0.02)] container"
+    class="z-[999] !pl-2 mb-20 transition-all duration-500 min-h-[50vh] absolute bottom-8 lg:bottom-10 inset-x-8 lg:inset-x-10 flex items-center justify-between pl-5 pr-5 lg:pr-2 py-2 rounded-3xl dark:bg-white/15 bg-black/10 backdrop-blur-[6px] border dark:border-white/15 border-black/15 dark:shadow-[0px_10px_10px_-8px_rgba(18,18,23,0.02),0px_2px_2px_-1.5px_rgba(18,18,23,0.02),0px_1px_1px_-0.5px_rgba(18,18,23,0.02)] shadow-[0px_10px_10px_-8px_rgba(237,237,232,0.02),0px_2px_2px_-1.5px_rgba(237,237,232,0.02),0px_1px_1px_-0.5px_rgba(237,237,232,0.02)]"
   >
-    <Card
-      data-image="https://images.unsplash.com/photo-1479660656269-197ebb83b540?dpr=2&auto=compress,format&fit=crop&w=1199&h=798&q=80&cs=tinysrgb&crop="
-    >
-      <h1 slot="header">Canyons</h1>
-      <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-    </Card>
-    <Card
-      data-image="https://images.unsplash.com/photo-1479659929431-4342107adfc1?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop="
-    >
-      <h1 slot="header">Beaches</h1>
-      <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-    </Card>
-    <Card
-      data-image="https://images.unsplash.com/photo-1479644025832-60dabb8be2a1?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop="
-    >
-      <h1 slot="header">Trees</h1>
-      <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-    </Card>
-    <Card
-      data-image="https://images.unsplash.com/photo-1479621051492-5a6f9bd9e51a?dpr=2&auto=compress,format&fit=crop&w=1199&h=811&q=80&cs=tinysrgb&crop="
-    >
-      <h1 slot="header">Lakes</h1>
-      <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-    </Card>
+    <Splide aria-labelledby="My Projects" v-if="enabled" :options="options" class="min-h-[40vh]">
+      <SplideSlide>
+        <div class="CardContainer">
+          <Card
+            data-image="Quokka"
+            header="Quokka"
+            content="An extremely customizable keystroke launcher for Windows"
+          />
+        </div>
+      </SplideSlide>
+      <SplideSlide>
+        <div class="CardContainer">
+          <Card
+            data-image="https://images.unsplash.com/photo-1479644025832-60dabb8be2a1?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop="
+            header="Beaches"
+            content="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+          />
+        </div>
+      </SplideSlide>
+      <SplideSlide>
+        <div class="CardContainer">
+          <Card
+            data-image="Quokka"
+            header="Quokka"
+            content="An extremely customizable keystroke launcher for Windows"
+          />
+        </div>
+      </SplideSlide>
+      <SplideSlide>
+        <div class="CardContainer">
+          <Card
+            data-image="https://images.unsplash.com/photo-1479644025832-60dabb8be2a1?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop="
+            header="Beaches"
+            content="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+          />
+        </div>
+      </SplideSlide>
+      <SplideSlide>
+        <div class="CardContainer">
+          <Card
+            data-image="Quokka"
+            header="Quokka"
+            content="An extremely customizable keystroke launcher for Windows"
+          />
+        </div>
+      </SplideSlide>
+      <SplideSlide>
+        <div class="CardContainer">
+          <Card
+            data-image="https://images.unsplash.com/photo-1479644025832-60dabb8be2a1?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop="
+            header="Beaches"
+            content="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+          />
+        </div>
+      </SplideSlide>
+    </Splide>
   </div>
 </template>
 
-<style scoped lang="scss">
-$hoverEasing: cubic-bezier(0.23, 1, 0.32, 1);
-$returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-
-.container {
-  padding: 40px 80px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+<style lang="scss">
+.splide {
+  width: 100%;
 }
 
-.card-wrap {
+.splide__slide {
+  width: fit-content !important;
+}
+
+.splide__slide:nth-of-type(1) {
+  margin-left: 2rem;
+}
+
+.splide__list {
+  height: 45vh;
+}
+
+.CardContainer {
+  // padding: 0;
+  // display: flex;
+  // flex-wrap: nowrap;
+  // justify-content: center;
+  // flex-direction: row;
+  // place-items: center;
+  // place-self: flex-start;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+$hoverEasing: cubic-bezier(0.23, 1, 0.32, 1);
+$returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+.CardContainer .card-wrap {
   margin: 10px;
   transform: perspective(800px);
   transform-style: preserve-3d;
@@ -92,11 +173,11 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   }
 }
 
-.card {
+.CardContainer .card {
   position: relative;
   flex: 0 0 240px;
-  width: 240px;
-  height: 320px;
+  width: 40vw;
+  height: 35vh;
   background-color: #333;
   overflow: hidden;
   border-radius: 10px;
@@ -107,13 +188,13 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   transition: 1s $returnEasing;
 }
 
-.card-bg {
+.CardContainer .card-bg {
   opacity: 0.5;
   position: absolute;
-  top: -20px;
-  left: -20px;
-  width: 100%;
-  height: 100%;
+  top: 0px;
+  left: -20%;
+  width: 140%;
+  height: 120%;
   padding: 20px;
   background-repeat: no-repeat;
   background-position: center;
@@ -124,12 +205,12 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   pointer-events: none;
 }
 
-.card-info {
+.CardContainer .card-info {
   padding: 20px;
   position: absolute;
   bottom: 0;
   color: #fff;
-  transform: translateY(40%);
+  transform: translateY(20%);
   transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
 
   p {
@@ -149,7 +230,7 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
     top: 0;
     left: 0;
     z-index: 0;
-    width: 100%;
+    width: 200%;
     height: 100%;
     background-image: linear-gradient(to bottom, transparent 0%, rgba(#000, 0.6) 100%);
     background-blend-mode: overlay;
@@ -159,8 +240,7 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   }
 }
 
-.card-info h1 {
-  font-family: 'Playfair Display';
+.CardContainer .card-info h1 {
   font-size: 36px;
   font-weight: 700;
   text-shadow: rgba(black, 0.5) 0 10px 10px;
