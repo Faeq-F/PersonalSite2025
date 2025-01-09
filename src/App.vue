@@ -1,21 +1,6 @@
 <script lang="ts">
 import { RouterView } from 'vue-router'
 import type BottomBar from './components/BottomBar/BottomBar.vue'
-
-export default {
-  data() {
-    return {
-      bgAnimation: 100,
-    }
-  },
-  computed: {
-    cssVars() {
-      return {
-        '--bgAnimation': this.bgAnimation,
-      }
-    },
-  },
-}
 </script>
 
 <template>
@@ -29,10 +14,10 @@ export default {
         <component :is="Component" class="z-[999]" />
       </transition>
     </router-view>
-    <BottomBar @bgAnimation="(val: number) => (bgAnimation = val)" />
+    <BottomBar />
 
-    <div class="fogWrap" :style="cssVars">
-      <img src="/cloud.png" v-for="i in Array.from(Array(bgAnimation).keys())" />
+    <div class="fogWrap">
+      <img src="/cloud.png" v-for="i in Array.from(Array(100).keys())" />
     </div>
   </Panel>
 </template>
@@ -83,10 +68,6 @@ export default {
 
 $bgAnimation: 100;
 
-:export {
-  bgAnimation: $bgAnimation;
-}
-
 @for $i from 1 through $bgAnimation {
   $scale: math.random(2) - 0.4;
 
@@ -96,7 +77,6 @@ $bgAnimation: 100;
     animation-delay: math.random(5) - 5 + s;
     transform: scale(0.3 * $i - 0.6) rotate(math.random(360) + deg);
     z-index: $i + 99;
-    // filter: blur($i - 6 + px);
 
     @keyframes raise#{$i} {
       to {

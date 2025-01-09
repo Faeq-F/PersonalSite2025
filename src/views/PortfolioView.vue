@@ -26,70 +26,72 @@ export default {
 </script>
 
 <template>
-  <div class="absolute top-[20vh] left-[5vw]">
-    <p id="Faeq" class="font-header text-current text-9xl">Portfolio</p>
-    <p class="font-subheader text-5xl text-transparent">What I've done</p>
-    <p class="font-subheader text-5xl right-0 absolute top-28">What I have done</p>
-  </div>
-  <div
-    class="z-[999] !pl-2 mb-20 transition-all duration-500 min-h-[50vh] absolute bottom-8 lg:bottom-10 inset-x-8 lg:inset-x-10 flex items-center justify-between pl-5 pr-5 lg:pr-2 py-2 rounded-3xl dark:bg-white/15 bg-black/10 backdrop-blur-[6px] border dark:border-white/15 border-black/15 dark:shadow-[0px_10px_10px_-8px_rgba(18,18,23,0.02),0px_2px_2px_-1.5px_rgba(18,18,23,0.02),0px_1px_1px_-0.5px_rgba(18,18,23,0.02)] shadow-[0px_10px_10px_-8px_rgba(237,237,232,0.02),0px_2px_2px_-1.5px_rgba(237,237,232,0.02),0px_1px_1px_-0.5px_rgba(237,237,232,0.02)]"
-  >
-    <Splide aria-labelledby="My Projects" v-if="enabled" :options="options" class="min-h-[40vh]">
-      <SplideSlide>
-        <div class="CardContainer">
-          <Card
-            data-image="Quokka"
-            header="Quokka"
-            content="An extremely customizable keystroke launcher for Windows"
-          />
-        </div>
-      </SplideSlide>
-      <SplideSlide>
-        <div class="CardContainer">
-          <Card
-            data-image="https://images.unsplash.com/photo-1479644025832-60dabb8be2a1?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop="
-            header="Beaches"
-            content="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-          />
-        </div>
-      </SplideSlide>
-      <SplideSlide>
-        <div class="CardContainer">
-          <Card
-            data-image="Quokka"
-            header="Quokka"
-            content="An extremely customizable keystroke launcher for Windows"
-          />
-        </div>
-      </SplideSlide>
-      <SplideSlide>
-        <div class="CardContainer">
-          <Card
-            data-image="https://images.unsplash.com/photo-1479644025832-60dabb8be2a1?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop="
-            header="Beaches"
-            content="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-          />
-        </div>
-      </SplideSlide>
-      <SplideSlide>
-        <div class="CardContainer">
-          <Card
-            data-image="Quokka"
-            header="Quokka"
-            content="An extremely customizable keystroke launcher for Windows"
-          />
-        </div>
-      </SplideSlide>
-      <SplideSlide>
-        <div class="CardContainer">
-          <Card
-            data-image="https://images.unsplash.com/photo-1479644025832-60dabb8be2a1?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop="
-            header="Beaches"
-            content="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-          />
-        </div>
-      </SplideSlide>
-    </Splide>
+  <div class="">
+    <div class="absolute top-[20vh] left-[5vw]">
+      <p id="Faeq" class="font-header text-current text-9xl">Portfolio</p>
+      <p class="font-subheader text-5xl text-transparent">What I've done</p>
+      <p class="font-subheader text-5xl right-0 absolute top-28">What I have done</p>
+    </div>
+    <div
+      class="z-[999] !pl-2 mb-20 transition-all duration-500 min-h-[50vh] absolute bottom-8 lg:bottom-10 inset-x-8 lg:inset-x-10 flex items-center justify-between pl-5 pr-5 lg:pr-2 py-2 rounded-3xl dark:bg-white/15 bg-black/10 backdrop-blur-[6px] border dark:border-white/15 border-black/15 dark:shadow-[0px_10px_10px_-8px_rgba(18,18,23,0.02),0px_2px_2px_-1.5px_rgba(18,18,23,0.02),0px_1px_1px_-0.5px_rgba(18,18,23,0.02)] shadow-[0px_10px_10px_-8px_rgba(237,237,232,0.02),0px_2px_2px_-1.5px_rgba(237,237,232,0.02),0px_1px_1px_-0.5px_rgba(237,237,232,0.02)]"
+    >
+      <Splide aria-labelledby="My Projects" v-if="enabled" :options="options" class="min-h-[40vh]">
+        <SplideSlide>
+          <div class="CardContainer">
+            <Card
+              data-image="Quokka"
+              header="Quokka"
+              content="An extremely customizable keystroke launcher for Windows"
+            />
+          </div>
+        </SplideSlide>
+        <SplideSlide>
+          <div class="CardContainer">
+            <Card
+              data-image="https://images.unsplash.com/photo-1479644025832-60dabb8be2a1?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop="
+              header="Beaches"
+              content="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+            />
+          </div>
+        </SplideSlide>
+        <SplideSlide>
+          <div class="CardContainer">
+            <Card
+              data-image="Quokka"
+              header="Quokka"
+              content="An extremely customizable keystroke launcher for Windows"
+            />
+          </div>
+        </SplideSlide>
+        <SplideSlide>
+          <div class="CardContainer">
+            <Card
+              data-image="https://images.unsplash.com/photo-1479644025832-60dabb8be2a1?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop="
+              header="Beaches"
+              content="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+            />
+          </div>
+        </SplideSlide>
+        <SplideSlide>
+          <div class="CardContainer">
+            <Card
+              data-image="Quokka"
+              header="Quokka"
+              content="An extremely customizable keystroke launcher for Windows"
+            />
+          </div>
+        </SplideSlide>
+        <SplideSlide>
+          <div class="CardContainer">
+            <Card
+              data-image="https://images.unsplash.com/photo-1479644025832-60dabb8be2a1?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop="
+              header="Beaches"
+              content="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+            />
+          </div>
+        </SplideSlide>
+      </Splide>
+    </div>
   </div>
 </template>
 

@@ -6,6 +6,11 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      name: 'onLoad',
+      component: () => import('../views/OnLoadView.vue'),
+    },
+    {
+      path: '/home',
       name: 'home',
       component: HomeView,
     },

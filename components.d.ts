@@ -29,6 +29,8 @@ declare module 'vue' {
     PortfolioButton: typeof import('./src/components/BottomBar/PortfolioButton.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Skeleton: typeof import('primevue/skeleton')['default']
+    SkeletonLoader: typeof import('./src/components/SkeletonLoader/SkeletonLoader.vue')['default']
     Slider: typeof import('primevue/slider')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
