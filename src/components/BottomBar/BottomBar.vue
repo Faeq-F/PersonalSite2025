@@ -25,9 +25,6 @@ export default {
         this.themeIcon = 'pi pi-sun'
       }
     },
-    toggleSettings(event: any) {
-      this.$refs.settingsPopover.toggle(event)
-    },
   },
   computed: {
     currentRouteName() {
@@ -46,15 +43,7 @@ export default {
         <ButtonC @click="toggleDarkMode()" class="w-[45px] h-[40px] rounded-r-none">
           <i :class="themeIcon" class="text-[20px]"></i>
         </ButtonC>
-        <ButtonC class="w-[45px] h-[40px] rounded-l-none" @click="toggleSettings">
-          <i class="pi pi-spin pi-cog text-[20px]"></i>
-        </ButtonC>
-        <Popover
-          ref="settingsPopover"
-          class="dark:bg-white/15 bg-black/10 backdrop-blur-[6px] border dark:border-white/15 border-black/15 dark:shadow-[0px_10px_10px_-8px_rgba(18,18,23,0.02),0px_2px_2px_-1.5px_rgba(18,18,23,0.02),0px_1px_1px_-0.5px_rgba(18,18,23,0.02)] shadow-[0px_10px_10px_-8px_rgba(237,237,232,0.02),0px_2px_2px_-1.5px_rgba(237,237,232,0.02),0px_1px_1px_-0.5px_rgba(237,237,232,0.02)]"
-        >
-          <SettingsPopover />
-        </Popover>
+        <SettingsPopover />
       </div>
       <nav>
         <transition name="fade" mode="out-in">
