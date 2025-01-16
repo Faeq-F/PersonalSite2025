@@ -1,4 +1,4 @@
-<script lang="ts">
+<script setup lang="ts">
 import { RouterView } from 'vue-router'
 import type BottomBar from './components/BottomBar/BottomBar.vue'
 </script>
