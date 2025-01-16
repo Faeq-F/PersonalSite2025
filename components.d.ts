@@ -12,6 +12,7 @@ declare module 'vue' {
     Button: typeof import('primevue/button')['default']
     ButtonC: typeof import('./src/components/ButtonC.vue')['default']
     Card: typeof import('./src/components/Card.vue')['default']
+    Checkbox: typeof import('primevue/checkbox')['default']
     copy: typeof import('./src/components/BottomBar/HomeButton copy.vue')['default']
     ExperienceButton: typeof import('./src/components/BottomBar/ExperienceButton.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
@@ -29,10 +30,12 @@ declare module 'vue' {
     PortfolioButton: typeof import('./src/components/BottomBar/PortfolioButton.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SettingsPopover: typeof import('./src/components/BottomBar/SettingsPopover.vue')['default']
     Skeleton: typeof import('primevue/skeleton')['default']
     SkeletonLoader: typeof import('./src/components/SkeletonLoader/SkeletonLoader.vue')['default']
     Slider: typeof import('primevue/slider')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
+    ToggleSwitch: typeof import('primevue/toggleswitch')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }
   export interface ComponentCustomProperties {

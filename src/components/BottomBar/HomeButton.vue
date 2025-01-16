@@ -6,7 +6,7 @@ export default {
 }
 </script>
 <template>
-  <RouterLink to="/home">
+  <RouterLink to="/">
     <button :class="classes">
       <i
         class="pi pi-home text-[20px] animate-duration-1000"

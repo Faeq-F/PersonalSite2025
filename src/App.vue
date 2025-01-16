@@ -16,7 +16,7 @@ import type BottomBar from './components/BottomBar/BottomBar.vue'
     </router-view>
     <BottomBar />
 
-    <div class="fogWrap">
+    <div class="fogWrap" id="fogWrap">
       <img src="/cloud.png" v-for="i in Array.from(Array(100).keys())" />
     </div>
   </Panel>
