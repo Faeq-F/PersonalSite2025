@@ -1,6 +1,6 @@
-<script setup lang="ts">
+<script setup>
 import { RouterView } from 'vue-router'
-import type BottomBar from './components/BottomBar/BottomBar.vue'
+import BottomBar from './components/BottomBar/BottomBar.vue'
 </script>
 
 <template>
@@ -18,6 +18,9 @@ import type BottomBar from './components/BottomBar/BottomBar.vue'
 
     <div class="fogWrap" id="fogWrap">
       <img src="/cloud.png" v-for="i in Array.from(Array(100).keys())" />
+    </div>
+    <div class="shapeWrap" id="shapeWrap">
+      <img src="/shape.svg" v-for="i in Array.from(Array(10).keys())" />
     </div>
   </Panel>
 </template>
@@ -54,10 +57,12 @@ import type BottomBar from './components/BottomBar/BottomBar.vue'
   transform: translateX(-30%);
 }
 
+.shapeWrap,
 .fogWrap {
   perspective-origin: 50% 50%;
 }
 
+.shapeWrap img,
 .fogWrap img {
   position: absolute;
   bottom: -100vh;
@@ -66,10 +71,44 @@ import type BottomBar from './components/BottomBar/BottomBar.vue'
   max-width: 20px;
 }
 
+.shapeWrap img {
+  max-width: unset;
+}
+
+html.dark {
+  .shapeWrap img,
+  .fogWrap img {
+    filter: invert(1);
+  }
+}
+
+html.zTheme .shapeWrap {
+  display: none !important;
+}
+
+html:not(.zTheme) .fogWrap {
+  display: none !important;
+}
+
 $bgAnimation: 100;
 
 @for $i from 1 through $bgAnimation {
   $scale: math.random(2) - 0.4;
+
+  .shapeWrap img:nth-child(#{$i}) {
+    left: math.random(120) * 1% - 20;
+    animation: raise#{$i} 7 + math.random(15) + s linear infinite;
+    animation-delay: math.random(5) - 5 + s;
+    transform: scale(0.3 * $i - 0.6) rotate(math.random(360) + deg);
+    z-index: $i + 99;
+
+    @keyframes raise#{$i} {
+      to {
+        bottom: 150vh;
+        transform: scale(0.3 * $i - 0.6) rotate(math.random(360) + deg);
+      }
+    }
+  }
 
   .fogWrap img:nth-child(#{$i}) {
     left: math.random(120) * 1% - 20;

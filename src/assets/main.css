@@ -13,10 +13,15 @@ html.dark #app {
 
 /* The site container */
 
-#bodyPanel {
+html.zTheme #bodyPanel {
   background-image: url('/bg.png');
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+#bodyPanel {
+  background-image: unset;
+  background-color: #eee;
 }
 
 #bodyPanel {

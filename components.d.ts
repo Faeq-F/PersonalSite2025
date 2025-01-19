@@ -36,6 +36,7 @@ declare module 'vue' {
     Slider: typeof import('primevue/slider')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     ToggleSwitch: typeof import('primevue/toggleswitch')['default']
+    ToggleSwitchC: typeof import('./src/components/ToggleSwitchC.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }
   export interface ComponentCustomProperties {
