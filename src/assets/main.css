@@ -13,15 +13,14 @@ html.dark #app {
 
 /* The site container */
 
-html.zTheme #bodyPanel {
-  background-image: url('/bg.png');
-  background-size: cover;
-  background-repeat: no-repeat;
+.noAnim .aurora-gradient-animation::after {
+  animation: none !important;
 }
 
-#bodyPanel {
-  background-image: unset;
-  background-color: #eee;
+html.zTheme #bodyPanel {
+  background-image: url('/bgZtheme.png');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #bodyPanel {

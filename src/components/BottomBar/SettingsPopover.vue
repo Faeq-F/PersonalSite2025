@@ -12,10 +12,12 @@ export default {
   watch: {
     zTheme(newZtheme) {
       document.getElementsByTagName('html')[0].classList.toggle('zTheme')
+      document.getElementById('AuroraBackground').classList.toggle('hidden')
     },
     bgAnim(newBgAnim) {
       document.getElementById('fogWrap').classList.toggle('hidden')
-      document.getElementById('shapeWrap').classList.toggle('hidden')
+      document.getElementById('star-layers').classList.toggle('hidden')
+      document.getElementsByTagName('html')[0].classList.toggle('noAnim')
     },
   },
   methods: {
@@ -67,7 +69,7 @@ export default {
             </template>
           </ToggleSwitch>
           <label for="zTheme" class="font-text"
-            ><span class="font-header">Zarlasht</span> theme</label
+            ><span class="zTheme font-header">Zarlasht</span> theme</label
           >
         </div>
       </div>

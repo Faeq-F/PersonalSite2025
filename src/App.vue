@@ -1,6 +1,7 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import BottomBar from './components/BottomBar/BottomBar.vue'
+import AuroraBackground from './lib/AuroraBackground.vue'
 </script>
 
 <template>
@@ -9,6 +10,23 @@ import BottomBar from './components/BottomBar/BottomBar.vue'
     id="bodyPanel"
     style="clip-path: xywh(0 0 100% 100% round 1.5rem 1.5rem)"
   >
+    <AuroraBackground class="absolute bottom-0 left-0 h-screen w-screen" id="AuroraBackground">
+      <div
+        v-motion
+        :initial="{ opacity: 0, y: 40 }"
+        :visible="{
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay: 0.3,
+            duration: 0.8,
+            ease: 'easeInOut',
+          },
+        }"
+        class="relative flex flex-col items-center justify-center gap-4 px-4"
+      ></div>
+    </AuroraBackground>
+
     <router-view v-slot="{ Component }">
       <transition name="slide" mode="out-in">
         <component :is="Component" class="z-[999]" />
@@ -19,8 +37,10 @@ import BottomBar from './components/BottomBar/BottomBar.vue'
     <div class="fogWrap" id="fogWrap">
       <img src="/cloud.png" v-for="i in Array.from(Array(100).keys())" />
     </div>
-    <div class="shapeWrap" id="shapeWrap">
-      <img src="/shape.svg" v-for="i in Array.from(Array(10).keys())" />
+    <div class="star-layers" id="star-layers">
+      <div class="star-layer" id="stars"></div>
+      <div class="star-layer" id="stars2"></div>
+      <div class="star-layer" id="stars3"></div>
     </div>
   </Panel>
 </template>
@@ -44,6 +64,71 @@ import BottomBar from './components/BottomBar/BottomBar.vue'
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+//=-------------------------------------------------------------------
+
 .slide-enter-active,
 .slide-leave-active {
   transition:
@@ -57,22 +142,16 @@ import BottomBar from './components/BottomBar/BottomBar.vue'
   transform: translateX(-30%);
 }
 
-.shapeWrap,
 .fogWrap {
   perspective-origin: 50% 50%;
 }
 
-.shapeWrap img,
 .fogWrap img {
   position: absolute;
   bottom: -100vh;
   transform-style: preserve-3d;
   z-index: -1;
   max-width: 20px;
-}
-
-.shapeWrap img {
-  max-width: unset;
 }
 
 html.dark {
@@ -82,7 +161,7 @@ html.dark {
   }
 }
 
-html.zTheme .shapeWrap {
+html.zTheme .star-layers {
   display: none !important;
 }
 
@@ -94,21 +173,6 @@ $bgAnimation: 100;
 
 @for $i from 1 through $bgAnimation {
   $scale: math.random(2) - 0.4;
-
-  .shapeWrap img:nth-child(#{$i}) {
-    left: math.random(120) * 1% - 20;
-    animation: raise#{$i} 7 + math.random(15) + s linear infinite;
-    animation-delay: math.random(5) - 5 + s;
-    transform: scale(0.3 * $i - 0.6) rotate(math.random(360) + deg);
-    z-index: $i + 99;
-
-    @keyframes raise#{$i} {
-      to {
-        bottom: 150vh;
-        transform: scale(0.3 * $i - 0.6) rotate(math.random(360) + deg);
-      }
-    }
-  }
 
   .fogWrap img:nth-child(#{$i}) {
     left: math.random(120) * 1% - 20;
@@ -122,6 +186,91 @@ $bgAnimation: 100;
         bottom: 150vh;
         transform: scale(0.3 * $i - 0.6) rotate(math.random(360) + deg);
       }
+    }
+  }
+}
+
+// From https://codepen.io/Ibrahim-Abdulhameed/pen/oNJMEGV
+
+// Define a keyframe animation for stars
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+// Function to generate multiple box-shadow values for stars
+@function multiple-box-shadow($number_of_stars) {
+  $value: '#{random(2000)}px #{random(2000)}px #cc99ff'; // Initial shadow
+  @for $i from 2 through $number_of_stars {
+    $value: '#{$value}, #{random(2000)}px #{random(2000)}px #cc99ff'; // Add more shadows
+  }
+  @return unquote($value); // Return the concatenated value
+}
+
+// Generate different sets of box-shadow values for stars of varying sizes
+$shadows-small: multiple-box-shadow(700); // Small stars
+$shadows-medium: multiple-box-shadow(200); // Medium stars
+$shadows-big: multiple-box-shadow(100); // Big stars
+
+// Styling for the star layers container
+.star-layers {
+  height: 100vh;
+  bottom: 2.5rem;
+  background: radial-gradient(ellipse at bottom, #00000000 0%, #00000000 100%);
+  overflow: hidden;
+  position: relative;
+
+  // Styling for each star layer
+  .star-layer {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+
+    &::after {
+      content: ' ';
+      position: absolute;
+      top: 2000px;
+      width: 1px;
+      height: 1px;
+      background: transparent;
+    }
+  }
+
+  // Apply styles to each star layer with different sizes
+  #stars {
+    box-shadow: $shadows-small; // Apply small star shadows
+    animation: animStar 50s linear infinite;
+    &::after {
+      box-shadow: $shadows-small; // Apply small star shadows to pseudo-element
+    }
+  }
+
+  #stars2 {
+    width: 2px;
+    height: 2px;
+    box-shadow: $shadows-medium; // Apply medium star shadows
+    animation: animStar 100s linear infinite;
+    &::after {
+      width: 2px;
+      height: 2px;
+      box-shadow: $shadows-medium; // Apply medium star shadows to pseudo-element
+    }
+  }
+
+  #stars3 {
+    width: 3px;
+    height: 3px;
+    box-shadow: $shadows-big; // Apply big star shadows
+    animation: animStar 150s linear infinite;
+    &::after {
+      width: 3px;
+      height: 3px;
+      box-shadow: $shadows-big; // Apply big star shadows to pseudo-element
     }
   }
 }

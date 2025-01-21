@@ -97,24 +97,56 @@ body {
 
 /* Tailwind-esque classes */
 
+.zTheme.font-header,
+.zTheme .font-header {
+  font-family: 'HeaderZtheme', sans-serif;
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'HeaderZtheme';
+  src: url('Requiem.ttf') format('truetype');
+}
+
 .font-header {
   font-family: 'Header', sans-serif;
-  font-weight: 100;
+  font-weight: 300;
 }
 
 @font-face {
   font-family: 'Header';
-  src: url('Requiem.ttf') format('truetype');
+  src: url('Nunito.ttf') format('truetype');
 }
 
-.font-subheader {
-  font-family: 'SubHeader', sans-serif;
+.zTheme .font-subheader {
+  font-family: 'SubHeaderZtheme', sans-serif;
   font-weight: 100;
 }
 
 @font-face {
-  font-family: 'SubHeader';
+  font-family: 'SubHeaderZtheme';
   src: url('IM FELL DW Pica SC.ttf') format('truetype');
+}
+
+.font-subheader {
+  font-family: 'SubHeader', sans-serif;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'SubHeader';
+  src: url('Quicksand.ttf') format('truetype');
+}
+
+.zTheme .font-text {
+  font-family: 'TextZtheme', sans-serif;
+  font-weight: 100;
+  margin-bottom: -4px;
+}
+
+@font-face {
+  font-family: 'TextZtheme';
+  src: url('IM FELL DW Pica Roman.ttf') format('truetype');
 }
 
 .font-text {
@@ -125,5 +157,5 @@ body {
 
 @font-face {
   font-family: 'Text';
-  src: url('IM FELL DW Pica Roman.ttf') format('truetype');
+  src: url('VarelaRound.ttf') format('truetype');
 }

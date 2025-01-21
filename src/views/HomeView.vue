@@ -6,7 +6,7 @@
       <p id="Faeq" class="font-header text-current text-9xl">Faeq</p>
       <p class="font-subheader text-5xl">Software Engineer</p>
     </div>
-    <div class="relative top-[15.1vh] left-[3vw]">
+    <div id="HomeSocialButtonGroup" class="relative top-[15.1vh] left-[3vw]">
       <a href="mailto:faeqfaisal@hotmail.co.uk">
         <ButtonC class="justify-center mr-3 w-16 ml-1">
           <i class="pi pi-envelope text-[20px]"></i>
@@ -46,3 +46,11 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+html:not(.zTheme) {
+  #HomeSocialButtonGroup {
+    margin-top: 5px;
+  }
+}
+</style>

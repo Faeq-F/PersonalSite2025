@@ -7,6 +7,7 @@ import PrimeVue from 'primevue/config'
 import Aura from '@primevue/themes/aura'
 import { VuePrlx } from 'vue3-prlx'
 import VueSplide from '@splidejs/vue-splide'
+import { MotionPlugin } from '@vueuse/motion'
 
 import App from './App.vue'
 import router from './router'
@@ -28,6 +29,7 @@ app.use(PrimeVue, {
 })
 app.use(VuePrlx)
 app.use(VueSplide)
+app.use(MotionPlugin)
 
 app.use(createPinia())
 app.use(router)
