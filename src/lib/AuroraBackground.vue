@@ -51,7 +51,7 @@ const props = withDefaults(defineProps<AuroraBackgroundProps>(), {
 }
 
 .dark #texture {
-  background: url(./bgDark.png) black;
+  background: url(./bg.png) black;
   background-blend-mode: hard-light;
 }
 

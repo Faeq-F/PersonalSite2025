@@ -77,10 +77,7 @@ export default {
         </transition>
       </nav>
       <div class="w-96 flex justify-end">
-        <a
-          href="https://github.com/Faeq-F/PersonalSite2023/blob/1a7c17e13fbf1a9ca40a4646c334fd49f0e62608/Resources/FaeqFaisalCV.pdf?raw=true"
-          target="_blank"
-        >
+        <a href="./cv.pdf" target="_blank">
           <ButtonC>
             <i class="pi pi-sparkles text-[20px]"></i
             ><span class="font-medium font-text text-[26px]">Curriculum Vitae</span>
