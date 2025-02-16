@@ -4,25 +4,25 @@
 // import { Splide as Core } from '@splidejs/splide'
 // import { Splide, SplideSlide } from '@splidejs/vue-splide'
 
-// export default {
-//   name: 'BasicExample',
+export default {
+  // name: 'BasicExample',
 
-//   components: {
-//     Splide,
-//     SplideSlide,
-//   },
+  // components: {
+  //   Splide,
+  //   SplideSlide,
+  // },
 
-//   data() {
-//     return {
-//       options: {
-//         rewind: true,
-//         gap: '2rem',
-//         perPage: 2,
-//       },
-//       enabled: true,
-//     }
-//   },
-// }
+  // data() {
+  //   return {
+  //     options: {
+  //       rewind: true,
+  //       gap: '2rem',
+  //       perPage: 2,
+  //     },
+  //     enabled: true,
+  //   }
+  // },
+}
 </script>
 
 <template>
