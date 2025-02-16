@@ -27,6 +27,7 @@ app.use(PrimeVue, {
     },
   },
 })
+
 app.use(VuePrlx)
 app.use(VueSplide)
 app.use(MotionPlugin)

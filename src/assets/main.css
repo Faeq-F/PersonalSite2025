@@ -13,8 +13,35 @@ html.dark #app {
 
 /* The site container */
 
-.noAnim .aurora-gradient-animation::after {
-  animation: none !important;
+/* html:not(.zTheme) #bodyPanel {
+  background: url('/bg.png');
+  background-position: center;
+}
+
+html:not(.zTheme).dark #bodyPanel {
+  background: url('/bg.png') black;
+  background-blend-mode: hard-light;
+  background-position: center;
+} */
+
+#vidBG {
+  max-width: none;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: -50%;
+  zoom: 1.15;
+  transform: translateX(37%);
+  filter: sepia(1) brightness(0.7) invert(1);
+}
+
+.dark #vidBG {
+  filter: grayscale(1);
+}
+
+.zTheme #vidBG {
+  display: none;
 }
 
 html.zTheme #bodyPanel {
@@ -52,6 +79,12 @@ html.dark #bodyPanel:before {
   width: 288px;
   height: 20px;
   bottom: 2.7rem;
+}
+
+.zTheme #Faeq:before {
+  background: url(/underlineZtheme.png) no-repeat;
+  width: 288px;
+  height: 20px;
 }
 
 /* after is in scoped styles - extends underline */

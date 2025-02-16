@@ -4,11 +4,22 @@
   <div class="absolute top-[20vh] left-[5vw]">
     <p id="Faeq" class="font-header text-current text-9xl">Experience</p>
     <p class="font-subheader text-5xl text-transparent">What I do</p>
-    <p class="font-subheader text-5xl right-0 absolute top-28">How I have got here</p>
+    <p class="font-subheader text-5xl right-0 absolute top-28">How I have got here
+    </p>
   </div>
 </template>
 
 <style scoped>
+html:not(.zTheme) #Faeq::after {
+  width: 60px;
+  left: 130px;
+  background-position: right;
+}
+
+html:not(.zTheme) #Faeq::before {
+  width: 130px;
+}
+
 #Faeq::after {
   content: '';
   background: url(/underline.png);
