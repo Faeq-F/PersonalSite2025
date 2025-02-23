@@ -1,7 +1,9 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import BottomBar from './components/BottomBar/BottomBar.vue'
-import LinkPreview from '@/lib/LinkPreview.vue'
+import LinkPreview from '@/components/LinkPreview.vue'
+import Prime from '@/components/icons/Prime.vue'
+import Inspira from '@/components/icons/Inspira.vue'
 
 import { ref } from "vue";
 const visibleTop = ref(false);
@@ -14,7 +16,13 @@ const visibleTop = ref(false);
   </div>
   <Drawer v-model:visible="visibleTop" header="Credits" position="top"
     style="height: auto">
-    <p>Content will be placed here in future.</p>
+    <a href="https://primevue.org/">
+      <Prime />
+      <Inspira />
+      PrimeVue
+    </a>
+    <a href="https://inspira-ui.com/">Components by Inspira UI</a>
+    <a href="https://youtu.be/Bj0h4VtMDQA">Background video</a>
   </Drawer>
   <Panel class="h-full w-full rounded-3xl " id="bodyPanel"
     style="clip-path: xywh(0 0 100% 100% round 1.5rem 1.5rem)">
@@ -158,14 +166,14 @@ const visibleTop = ref(false);
   pointer-events: all;
 }
 
-.slide-enter-active,
+// .slide-enter-active,
 .slide-leave-active {
   transition:
     opacity 1s,
     transform 1s;
 }
 
-.slide-enter-from,
+// .slide-enter-from,
 .slide-leave-to {
   opacity: 0;
   transform: translateX(-30%);

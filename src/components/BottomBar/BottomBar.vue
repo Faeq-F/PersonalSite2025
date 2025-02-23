@@ -3,6 +3,7 @@ import type HomeButton from './HomeButton.vue'
 import type AboutButton from './AboutButton.vue'
 import type PortfolioButton from './PortfolioButton.vue'
 import type ExperienceButton from './ExperienceButton.vue'
+import SparklesText from '@/components/SparklesText.vue'
 
 export default {
   data() {
@@ -78,8 +79,11 @@ export default {
       <div class="w-96 flex justify-end">
         <a href="./cv.pdf" target="_blank">
           <ButtonC>
-            <i class="pi pi-sparkles text-[20px]"></i><span
-              class="font-medium font-text text-[26px]">Curriculum Vitae</span>
+            <i class="pi pi-sparkles text-[20px]"></i><span class="">
+              <SparklesText text="Curriculum Vitae"
+                :colors="{ first: '#9E7AFF', second: '#FE8BBB' }"
+                :sparkles-count="7" class="font-medium font-text text-[26px] " />
+            </span>
           </ButtonC>
         </a>
       </div>

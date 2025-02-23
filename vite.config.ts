@@ -12,7 +12,13 @@ import { PrimeVueResolver } from '@primevue/auto-import-resolver'
 export default defineConfig({
   base: '/PersonalSite2025/',
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => [''].includes(tag),
+        },
+      },
+    }),
     vueJsx(),
     vueDevTools(),
     Components({

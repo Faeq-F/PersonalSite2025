@@ -1,5 +1,11 @@
 <script lang="ts">
-// import Card from '../components/Card.vue'
+import Card from '@/components/Card.vue';
+import BentoGrid from '@/lib/BentoGrid.vue'
+import BentoGridItem from '@/lib/BentoGridItem.vue'
+import BentoGridCard from '@/lib/BentoGridCard.vue'
+import Checkbox from 'primevue/checkbox';
+
+
 // import '@splidejs/vue-splide/css'
 // import { Splide as Core } from '@splidejs/splide'
 // import { Splide, SplideSlide } from '@splidejs/vue-splide'
@@ -12,16 +18,74 @@ export default {
   //   SplideSlide,
   // },
 
-  // data() {
-  //   return {
-  //     options: {
-  //       rewind: true,
-  //       gap: '2rem',
-  //       perPage: 2,
-  //     },
-  //     enabled: true,
-  //   }
-  // },
+  data() {
+    return {
+      //     options: {
+      //       rewind: true,
+      //       gap: '2rem',
+      //       perPage: 2,
+      //     },
+      //     enabled: true,
+      DisplayArchived: true,
+
+      features: [
+        {
+          name: "Quokka",
+          description: "An extremely customizable, portable keystroke launcher with plugins",
+          href: "/",
+          image:
+            "QuokkaLight.png",
+          cta: "Learn more",
+          class: "lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-3",
+        },
+        {
+          name: "Save your files",
+          description: "We automatically save your files as you type.",
+          href: "/",
+          image:
+            "https://images.pexels.com/photos/2762083/pexels-photo-2762083.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          cta: "Learn more",
+          class: "lg:col-start-2 lg:col-end-3 lg:row-start-3 lg:row-end-6",
+        },
+        {
+          name: "Full text search",
+          description: "Search through all your files in one place.",
+          href: "/",
+          image:
+            "https://images.pexels.com/photos/1309766/pexels-photo-1309766.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          cta: "Learn more",
+          class: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
+        },
+        {
+          name: "Multilingual",
+          description: "Supports 100+ languages and counting.",
+          href: "/",
+          image: "https://images.pexels.com/photos/2762083/pexels-photo-2762083.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          cta: "Learn more",
+          class: "lg:col-start-1 lg:col-end-2 lg:row-start-4 lg:row-end-5",
+        },
+        {
+          name: "Calendar",
+          description: "Use the calendar to filter your files by date.",
+          href: "/",
+          image:
+            "https://images.pexels.com/photos/1682821/pexels-photo-1682821.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          cta: "Learn more",
+          class: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-3",
+        },
+        {
+          name: "Notifications",
+          description: "Get notified when someone shares a file or mentions you in a comment.",
+          href: "/",
+          image:
+            "https://images.pexels.com/photos/1682821/pexels-photo-1682821.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          cta: "Learn more",
+          class: "lg:col-start-3 lg:col-end-3 lg:row-start-3 lg:row-end-5",
+        },
+
+      ]
+    }
+  }
 }
 </script>
 
@@ -31,8 +95,40 @@ export default {
       <p id="Faeq" class="font-header text-current text-9xl">Portfolio</p>
       <span id="extraUnderline"></span>
       <p class="font-subheader text-5xl text-transparent">What I've done</p>
-      <p class="font-subheader text-5xl right-0 absolute top-28">What I have done
+      <p class="font-subheader text-5xl left-[5vw] absolute top-28">What I have
+        done
       </p>
+    </div>
+    <div class="relative -bottom-[15vh] left-[3vw]" id="About">
+      <Card class="h-[50vh] w-[26vw] rounded-xl">
+        <p>This page displays placeholder content</p>
+        <Checkbox v-model="DisplayArchived" inputId="Archived"
+          name="DisplayArchived" variant="filled" binary />
+        <label for="Archived"> Display Archived </label>
+      </Card>
+    </div>
+    <div class="relative left-[30vw] -top-[70vh]" id="Bento">
+      <Card class="h-[85vh] w-[65vw] rounded-xl ">
+        <ScrollPanel style="width: 100%; height: 100%" :dt="{
+          bar: {
+            background: '{zinc.500}'
+          }
+        }">
+
+          <BentoGrid
+            class="grid w-full auto-rows-[22rem] grid-cols-3 gap-4 lg:grid-rows-3">
+            <BentoGridCard v-for="(feature, index) in features" :key="index"
+              v-bind="feature" :class="feature.class">
+              <template v-if="feature.image" #background>
+                <div
+                  class="absolute right-0 top-0 size-full bg-center opacity-40 transition duration-150 ease-in-out group-hover:opacity-20"
+                  :style="`background-image: url('${feature.image}')`"></div>
+              </template>
+            </BentoGridCard>
+          </BentoGrid>
+        </ScrollPanel>
+
+      </Card>
     </div>
     <!-- <div id="HomeSocialButtonGroup" class="relative top-[15.1vh] left-[3vw]">
       <a href="mailto:faeqfaisal@hotmail.co.uk">

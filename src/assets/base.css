@@ -159,3 +159,14 @@ body {
   font-family: 'Text';
   src: url('VarelaRound.ttf') format('truetype');
 }
+
+/*For Inspira Logo*/
+@import 'https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap';
+
+.p-checkbox-box {
+  border: 1px solid #ddd;
+}
+
+.dark .p-checkbox-box {
+  border: 1px solid #000;
+}

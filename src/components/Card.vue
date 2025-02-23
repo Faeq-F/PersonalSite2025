@@ -1,78 +1,31 @@
-<script lang="js">
-export default {
-  mounted() {
-    this.width = this.$refs.card.offsetWidth
-    this.height = this.$refs.card.offsetHeight
-  },
-  props: ['dataImage', 'header', 'content'],
-  data: () => ({
-    width: 0,
-    height: 0,
-    mouseX: 0,
-    mouseY: 0,
-    mouseLeaveDelay: 15,
-  }),
-  computed: {
-    mousePX() {
-      return this.mouseX / this.width
-    },
-    mousePY() {
-      return this.mouseY / this.height
-    },
-    cardStyle() {
-      const rX = this.mousePX * 10
-      const rY = this.mousePY * -10
-      return {
-        transform: `rotateY(${rX}deg) rotateX(${rY}deg)`,
-      }
-    },
-    cardBgTransform() {
-      const tX = this.mousePX * -40
-      const tY = this.mousePY * -40
-      return {
-        transform: `translateX(${tX}px) translateY(${tY}px)`,
-      }
-    },
-    cardBgImage() {
-      return {
-        backgroundImage: `url(${this.dataImage}Light.png)`,
-      }
-    },
-  },
-  methods: {
-    handleMouseMove(e) {
-      this.mouseX = e.pageX - this.$refs.card.offsetLeft - this.width / 2
-      this.mouseY = e.pageY - this.$refs.card.offsetTop - this.height / 2
-    },
-    handleMouseEnter() {
-      clearTimeout(this.mouseLeaveDelay)
-    },
-    handleMouseLeave() {
-      this.mouseLeaveDelay = setTimeout(() => {
-        this.mouseX = 0
-        this.mouseY = 0
-      }, 1000)
-    },
-  },
-}
-</script>
+<script lang="ts">
 
+
+</script>
 <template>
   <div
-    class="card-wrap"
-    @mousemove="handleMouseMove"
-    @mouseenter="handleMouseEnter"
-    @mouseleave="handleMouseLeave"
-    ref="card"
-  >
-    <div class="card" :style="cardStyle">
-      <div class="card-bg" :style="[cardBgTransform, cardBgImage]"></div>
-      <div class="card-info">
-        <h1 class="font-header">{{ this.header }}</h1>
-        <p class="font-text">{{ this.content }}</p>
-      </div>
-    </div>
+    class="barStyle z-[999] !pl-2 transition-all duration-500 min-h-10 bottom-8 lg:bottom-10 inset-x-8 lg:inset-x-10 flex items-center justify-between pl-5 pr-5 lg:pr-2 py-2 rounded-full dark:bg-white/15 bg-black/10 backdrop-blur-[6px] border dark:border-white/15 border-black/15 dark:shadow-[0px_10px_10px_-8px_rgba(18,18,23,0.02),0px_2px_2px_-1.5px_rgba(18,18,23,0.02),0px_1px_1px_-0.5px_rgba(18,18,23,0.02)] shadow-[0px_10px_10px_-8px_rgba(237,237,232,0.02),0px_2px_2px_-1.5px_rgba(237,237,232,0.02),0px_1px_1px_-0.5px_rgba(237,237,232,0.02)]">
+    <slot></slot>
+
   </div>
 </template>
 
-<style lang="scss"></style>
+<style scoped lang="scss">
+html:not(.zTheme) .barStyle {
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.07);
+  background: white;
+  color: rgb(33, 33, 38);
+  border-width: 0px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 5px 15px 0px, rgba(25, 28, 33, 0.2) 0px 15px 35px -5px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
+}
+
+html:not(.zTheme).dark .barStyle {
+  background: #2d2d2d;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.07);
+  color: rgb(255, 255, 255);
+  border-width: 0px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 5px 15px 0px, rgba(25, 28, 33, 0.2) 0px 15px 35px -5px, rgba(255, 255, 255, 0.07) 0px 0px 0px 1px;
+}
+</style>

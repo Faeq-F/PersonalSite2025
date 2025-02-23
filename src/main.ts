@@ -8,6 +8,7 @@ import Aura from '@primevue/themes/aura'
 import { VuePrlx } from 'vue3-prlx'
 import VueSplide from '@splidejs/vue-splide'
 import { MotionPlugin } from '@vueuse/motion'
+import AnimateOnScroll from 'primevue/animateonscroll'
 
 import App from './App.vue'
 import router from './router'
@@ -27,6 +28,8 @@ app.use(PrimeVue, {
     },
   },
 })
+
+app.directive('animateonscroll', AnimateOnScroll)
 
 app.use(VuePrlx)
 app.use(VueSplide)

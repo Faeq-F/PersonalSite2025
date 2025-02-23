@@ -1,7 +1,8 @@
 <template>
   <div :class="cn('relative inline-block', props.class)">
     <!-- Trigger -->
-    <a :href="url" :class="cn('text-black dark:text-white', props.linkClass)"
+    <a :href="url" target="_blank"
+      :class="cn('text-black dark:text-white', props.linkClass)"
       @mousemove="handleMouseMove" @mouseenter="showPreview"
       @mouseleave="hidePreview">
       <slot />

@@ -16,6 +16,7 @@
     "@splidejs/vue-splide": "^0.6.12",
     "@vueuse/core": "^12.4.0",
     "@vueuse/motion": "^2.2.6",
+    "motion-v": "^0.10.0",
     "pinia": "^2.3.0",
     "primeicons": "^7.0.0",
     "primevue": "^4.2.5",
