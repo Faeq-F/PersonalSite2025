@@ -3,7 +3,7 @@ import { RouterView } from 'vue-router'
 import BottomBar from './components/BottomBar/BottomBar.vue'
 import LinkPreview from '@/components/LinkPreview.vue'
 //import Prime from '@/components/icons/Prime.vue'
-import Inspira from '@/components/icons/Inspira.vue'
+//import Inspira from '@/components/icons/Inspira.vue'
 
 import { ref } from "vue";
 const visibleTop = ref(false);
@@ -18,7 +18,7 @@ const visibleTop = ref(false);
     style="height: auto">
     <a href="https://primevue.org/">
       <!-- <Prime /> -->
-      <Inspira />
+      <!-- <Inspira /> -->
       PrimeVue
     </a>
     <a href="https://inspira-ui.com/">Components by Inspira UI</a>
