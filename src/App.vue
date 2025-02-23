@@ -2,7 +2,7 @@
 import { RouterView } from 'vue-router'
 import BottomBar from './components/BottomBar/BottomBar.vue'
 import LinkPreview from '@/components/LinkPreview.vue'
-import Prime from '@/components/icons/Prime.vue'
+//import Prime from '@/components/icons/Prime.vue'
 import Inspira from '@/components/icons/Inspira.vue'
 
 import { ref } from "vue";
@@ -17,7 +17,7 @@ const visibleTop = ref(false);
   <Drawer v-model:visible="visibleTop" header="Credits" position="top"
     style="height: auto">
     <a href="https://primevue.org/">
-      <Prime />
+      <!-- <Prime /> -->
       <Inspira />
       PrimeVue
     </a>
