@@ -1,6 +1,4 @@
-<script >
-export default {}
-</script>
+
 <template>
   <svg width="165" height="40" viewBox="0 0 165 40"
     xmlns="http://www.w3.org/2000/svg">
