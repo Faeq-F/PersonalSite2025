@@ -1,5 +1,6 @@
 <script lang="ts">
 import BlurReveal from '@/components/BlurReveal.vue';
+export default {}
 </script>
 
 <template>
