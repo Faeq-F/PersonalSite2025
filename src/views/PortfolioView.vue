@@ -1,8 +1,8 @@
 <script lang="ts">
 import Card from '@/components/Card.vue';
-import BentoGrid from '@/lib/BentoGrid.vue'
-import BentoGridItem from '@/lib/BentoGridItem.vue'
-import BentoGridCard from '@/lib/BentoGridCard.vue'
+import BentoGrid from '@/components/Bento/BentoGrid.vue'
+//import BentoGridItem from '@/lib/BentoGridItem.vue'
+import BentoGridCard from '@/components/Bento/BentoGridCard.vue'
 import Checkbox from 'primevue/checkbox';
 
 
