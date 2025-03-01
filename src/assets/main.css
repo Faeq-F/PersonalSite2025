@@ -26,14 +26,22 @@ html:not(.zTheme).dark #bodyPanel {
 
 #vidBG {
   max-width: none;
-  /* height: 100vh;
-  width: 100vw; */
+  height: 100vh;
+  width: 100vw;
   position: fixed;
   top: 0;
   left: 0;
   zoom: 1.15;
-  /* transform: translateX(37%); */
   filter: sepia(1) brightness(0.7) invert(1);
+  background-image: url('/bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#vidBG img {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
 }
 
 .dark #vidBG {
@@ -91,21 +99,4 @@ html.dark #bodyPanel:before {
 html.dark #Faeq:after,
 html.dark #Faeq:before {
   filter: invert(1) brightness(1.5);
-}
-
-.p-scrollpanel-content-container {
-  /* content: ' '; */
-  background:
-    linear-gradient(#ffffff 33%, rgba(255, 255, 255, 0)),
-    linear-gradient(rgba(255, 255, 255, 0), #ffffff 66%) 0 100%,
-    radial-gradient(farthest-side at 50% 0, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0)),
-    radial-gradient(farthest-side at 50% 100%, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0)) 0 100%;
-  background-color: #ffffff;
-  background-repeat: no-repeat;
-  background-attachment: local, local, scroll, scroll;
-  background-size:
-    100% 150px,
-    100% 150px,
-    100% 50px,
-    100% 50px;
 }

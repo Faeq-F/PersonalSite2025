@@ -5,8 +5,20 @@ import LinkPreview from '@/components/LinkPreview.vue'
 //import Prime from '@/components/icons/Prime.vue'
 //import Inspira from '@/components/icons/Inspira.vue'
 
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 const visibleTop = ref(false);
+
+import { db } from '@/lib/db';
+
+onMounted(async () => {
+  const id = await db.friends.add({
+    name: "Faeq",
+    age: 20
+  });
+
+  console.log(id)
+
+})
 </script>
 
 <template>
@@ -27,10 +39,9 @@ const visibleTop = ref(false);
   <Panel class="h-full w-full rounded-3xl " id="bodyPanel"
     style="clip-path: xywh(0 0 100% 100% round 1.5rem 1.5rem)">
 
-    <video autoplay muted loop id="vidBG">
-      <source src="/bg.mp4" type="video/mp4">
-      Your browser does not support HTML5 video.
-    </video>
+    <div id="vidBG">
+      <img src="/bg.gif" />
+    </div>
 
     <router-view v-slot="{ Component }">
       <transition name="slide" mode="out-in">
@@ -147,6 +158,21 @@ const visibleTop = ref(false);
 }
 
 //=-------------------------------------------------------------------
+//== Page transitions ==//
+
+// .slide-enter-active,
+.slide-leave-active {
+  transition:
+    opacity 1s,
+}
+
+// .slide-enter-from,
+.slide-leave-to {
+  opacity: 0;
+}
+
+//=-------------------------------------------------------------------
+//== Border content ==//
 
 #credits {
   position: fixed;
@@ -166,18 +192,8 @@ const visibleTop = ref(false);
   pointer-events: all;
 }
 
-// .slide-enter-active,
-.slide-leave-active {
-  transition:
-    opacity 1s,
-    transform 1s;
-}
-
-// .slide-enter-from,
-.slide-leave-to {
-  opacity: 0;
-  transform: translateX(-30%);
-}
+//=-------------------------------------------------------------------
+//== Fog for the Zarlasht theme ==//
 
 .fogWrap {
   perspective-origin: 50% 50%;
@@ -192,15 +208,9 @@ const visibleTop = ref(false);
 }
 
 html.dark {
-
-  .shapeWrap img,
   .fogWrap img {
     filter: invert(1);
   }
-}
-
-html.zTheme .star-layers {
-  display: none !important;
 }
 
 html:not(.zTheme) .fogWrap {
@@ -224,97 +234,6 @@ $bgAnimation: 100;
         bottom: 150vh;
         transform: scale(0.3 * $i - 0.6) rotate(math.random(360) + deg);
       }
-    }
-  }
-}
-
-// From https://codepen.io/Ibrahim-Abdulhameed/pen/oNJMEGV
-
-// Define a keyframe animation for stars
-@keyframes animStar {
-  from {
-    transform: translateY(0px);
-  }
-
-  to {
-    transform: translateY(-2000px);
-  }
-}
-
-// Function to generate multiple box-shadow values for stars
-@function multiple-box-shadow($number_of_stars) {
-  $value: '#{random(2000)}px #{random(2000)}px #cc99ff'; // Initial shadow
-
-  @for $i from 2 through $number_of_stars {
-    $value: '#{$value}, #{random(2000)}px #{random(2000)}px #cc99ff'; // Add more shadows
-  }
-
-  @return unquote($value); // Return the concatenated value
-}
-
-// Generate different sets of box-shadow values for stars of varying sizes
-$shadows-small: multiple-box-shadow(700); // Small stars
-$shadows-medium: multiple-box-shadow(200); // Medium stars
-$shadows-big: multiple-box-shadow(100); // Big stars
-
-// Styling for the star layers container
-.star-layers {
-  height: 100vh;
-  bottom: 2.5rem;
-  background: radial-gradient(ellipse at bottom, #00000000 0%, #00000000 100%);
-  overflow: hidden;
-  position: relative;
-
-  // Styling for each star layer
-  .star-layer {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    background: transparent;
-
-    &::after {
-      content: ' ';
-      position: absolute;
-      top: 2000px;
-      width: 1px;
-      height: 1px;
-      background: transparent;
-    }
-  }
-
-  // Apply styles to each star layer with different sizes
-  #stars {
-    box-shadow: $shadows-small; // Apply small star shadows
-    animation: animStar 50s linear infinite;
-
-    &::after {
-      box-shadow: $shadows-small; // Apply small star shadows to pseudo-element
-    }
-  }
-
-  #stars2 {
-    width: 2px;
-    height: 2px;
-    box-shadow: $shadows-medium; // Apply medium star shadows
-    animation: animStar 100s linear infinite;
-
-    &::after {
-      width: 2px;
-      height: 2px;
-      box-shadow: $shadows-medium; // Apply medium star shadows to pseudo-element
-    }
-  }
-
-  #stars3 {
-    width: 3px;
-    height: 3px;
-    box-shadow: $shadows-big; // Apply big star shadows
-    animation: animStar 150s linear infinite;
-
-    &::after {
-      width: 3px;
-      height: 3px;
-      box-shadow: $shadows-big; // Apply big star shadows to pseudo-element
     }
   }
 }

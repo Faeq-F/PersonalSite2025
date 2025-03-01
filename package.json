@@ -14,8 +14,10 @@
   "dependencies": {
     "@primevue/themes": "^4.2.5",
     "@splidejs/vue-splide": "^0.6.12",
-    "@vueuse/core": "^12.4.0",
+    "@vueuse/components": "^12.7.0",
+    "@vueuse/core": "^12.7.0",
     "@vueuse/motion": "^2.2.6",
+    "dexie": "^4.0.11",
     "motion-v": "^0.10.0",
     "pinia": "^2.3.0",
     "primeicons": "^7.0.0",

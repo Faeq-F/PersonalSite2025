@@ -7,10 +7,10 @@ export default {}
   <div class="absolute">
     <BlurReveal :delay="0.2" :duration="0.75" class="p-8">
       <div class="relative top-[15vh] left-[3vw]">
-
         <p id="Faeq" class="font-header text-current text-9xl">Faeq</p>
-        <p class="font-subheader text-5xl">Software Engineer</p>
-
+        <p class="font-subheader text-5xl">
+          <TextGenerateEffect words="Software Engineer" :delay="1000" />
+        </p>
       </div>
       <div id="HomeSocialButtonGroup" class="relative top-[15.1vh] left-[3vw]">
         <a href="mailto:faeqfaisal@hotmail.co.uk" target="_blank">
@@ -59,5 +59,9 @@ html:not(.zTheme) {
   #HomeSocialButtonGroup {
     margin-top: 5px;
   }
+}
+
+html:not(.zTheme) #Faeq::before {
+  bottom: 3.8rem;
 }
 </style>

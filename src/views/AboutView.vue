@@ -6,7 +6,9 @@
       <div class="relative top-[15vh] left-[3vw]">
         <p id="Faeq" class="font-header text-current text-9xl">About me</p>
         <p class="font-subheader text-5xl text-transparent">What I do</p>
-        <p class="font-subheader text-5xl right-0 absolute top-28">What I do</p>
+        <p class="font-subheader text-5xl -right-[20px] absolute top-[6.5rem]">
+          <TextGenerateEffect words="What I do" :delay="1000" />
+        </p>
       </div>
     </BlurReveal>
   </div>

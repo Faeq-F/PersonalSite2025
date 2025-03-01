@@ -46,6 +46,7 @@ declare module 'vue' {
     SkeletonLoader: typeof import('./src/components/SkeletonLoader/SkeletonLoader.vue')['default']
     Slider: typeof import('primevue/slider')['default']
     SparklesText: typeof import('./src/components/SparklesText.vue')['default']
+    TextGenerateEffect: typeof import('./src/components/TextGenerateEffect.vue')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     ToggleButton: typeof import('primevue/togglebutton')['default']
     ToggleSwitch: typeof import('primevue/toggleswitch')['default']

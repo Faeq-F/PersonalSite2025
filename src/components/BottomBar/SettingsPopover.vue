@@ -16,11 +16,7 @@ export default {
     bgAnim(newBgAnim) {
       document.getElementById('fogWrap').classList.toggle('hidden')
       document.getElementsByTagName('html')[0].classList.toggle('noAnim')
-      if (document.getElementsByTagName('html')[0].classList.contains('noAnim')) {
-        document.getElementById("vidBG").pause();
-      } else {
-        document.getElementById("vidBG").play();
-      }
+      document.getElementById('vidBG').children[0].classList.toggle('hidden')
     },
   },
   methods: {
