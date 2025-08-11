@@ -1,39 +1,48 @@
-<script setup lang="ts">
+<script setup>
 import navbar from '../components/layoutSections/navbar.vue'
+const route = useRoute()
+
 
 //import { onMounted, ref } from "vue";
 // import { db } from '@/lib/db';
 
-// onMounted(async () => {
-//   const id = await db.friends.add({
-//     name: "Faeq",
-//     age: 20
-//   });
+onMounted(async () => {
+  document.getElementById("video-bg-elem").play();
 
-//   console.log(id)
+  //   const id = await db.friends.add({
+  //     name: "Faeq",
+  //     age: 20
+  //   });
 
-// })
+  //   console.log(id)
+
+})
+
 </script>
-<template>
 
-  <div class="h-full w-full rounded-3xl" id="bodyPanel"
-    style="clip-path: xywh(0 0 100% 100% round 1.5rem 1.5rem)">
+<template>
+  <div class="h-full w-full rounded-3xl" id="bodyPanel">
 
     <div id="vidBG" class="border-default border border-accent">
-      <img src="/media/bg.gif" />
+      <video autoplay loop disablePictureInPicture muted id="video-bg-elem">
+        <source src="/media/bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <div class="fogWrap" id="fogWrap">
+      <img src="/media/cloud.png" v-for="i in Array.from(Array(100).keys())" />
     </div>
 
     <div id="pageContent" class="overflow-hidden">
       <div style="height: calc(100% - 4.5rem)" class="w-full">
         <transition name="slide" mode="out-in">
-          <slot />
+          <div :key="route.name" class="h-full w-full">
+            <slot />
+          </div>
         </transition>
       </div>
       <navbar />
-    </div>
-
-    <div class="fogWrap" id="fogWrap">
-      <img src="/media/cloud.png" v-for="i in Array.from(Array(100).keys())" />
     </div>
 
   </div>

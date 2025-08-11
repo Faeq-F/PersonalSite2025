@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
-import { ref } from 'vue';
-import { useFetch } from 'nuxt/app';
+import { onMounted, ref, watch } from 'vue';
 import { useMiddleNavbarItems } from '~/stores/navbar'
 const middleItems = useMiddleNavbarItems()
 
@@ -26,6 +25,9 @@ function toggleTheme(theme) {
   }
 }
 
+const zarlashtTheme = ref(false);
+const bgAnimation = ref(true);
+
 const themeItems = ref<NavigationMenuItem[][]>([
   [
     {
@@ -46,21 +48,29 @@ const themeItems = ref<NavigationMenuItem[][]>([
           label: 'System',
           icon: 'i-lucide-laptop-minimal',
           onSelect: () => toggleTheme(-1),
-        }
+        },
       ]
+    },
+    {
+      icon: 'i-lucide-cog',
+      label: '',
+      slot: 'settings' as const,
     }
   ]
 ])
 
-const homeItem = ref<NavigationMenuItem[][]>([
-  [
-    {
-      icon: 'i-lucide-home',
-      label: '',
-      to: '/',
-    }
-  ]
-])
+watch(zarlashtTheme, () => {
+  document.getElementsByTagName('html')[0].classList.toggle('zTheme')
+})
+
+
+watch(bgAnimation, () => {
+  document.getElementById('fogWrap')!.classList.toggle('hidden')
+  document.getElementsByTagName('html')[0].classList.toggle('noAnim')
+  let videoBGelem = document.getElementById("video-bg-elem") as HTMLVideoElement;
+  if (videoBGelem.paused) videoBGelem.play();
+  else videoBGelem.pause();
+})
 
 autoSetTheme()
 </script>
@@ -73,7 +83,7 @@ autoSetTheme()
       <MazAnimatedElement direction="right" :delay='300' :duration="700"
         class="flex items-center hover:text-black dark:hover:text-white">
         <nuxt-link to="/">
-          <UIcon name="i-lucide-home" class="mx-6.5 mt-1.5 " />
+          <UIcon name="i-lucide-home" class="mx-6.5 mt-1.5 text-[#90a1b9]" />
         </nuxt-link>
         <USeparator orientation="vertical" class="h-8 self-center " />
       </MazAnimatedElement>
@@ -92,17 +102,31 @@ autoSetTheme()
       <MazAnimatedElement direction="left" :delay="900" :duration="700"
         class="relative flex w-auto justify-end">
         <!-- Theme Switch -->
-        <USeparator orientation="vertical" class="h-8 self-center ml-4" />
         <UNavigationMenu content-orientation="vertical" color="neutral"
           :items="themeItems" variant="link" trailing-icon=" " :ui="{
-            viewport: '-translate-y-18/12 -translate-x-8 min-h-32 max-h-32 pr-27',
-            content: 'w-auto',
+            viewport: '-translate-y-18/12 -translate-x-4 min-h-32 max-h-32 pr-28',
+            content: 'w-auto  ml-0.5',
             childList: 'w-auto',
             childLabel: 'w-full',
             childLinkDescription: 'line-clamp-1'
-          }" class="relative flex w-auto justify-end">
+          }"
+          class="relative flex w-auto justify-end bg-[#f6f7fa] dark:bg-[#0e0d0d] rounded-full px-3 mr-1.5 h-8 transition-all ease-in-out duration-200">
           <template #item="{ item }">
-            <UIcon :name="item.icon" class="mx-4 !size-4.5" />
+            <UIcon :name="item.icon" class="!size-4.5" />
+          </template>
+          <template #settings="{ item }">
+            <USeparator orientation="vertical"
+              class="h-4 mx-4 -ml-0.5 invert opacity-20" />
+            <UIcon :name="item.icon" class="!size-4.5"
+              :class="bgAnimation ? 'animate-[spin_3s_linear_infinite]' : ''" />
+          </template>
+          <template #settings-content>
+            <div class="px-0.5 flex flex-col items-start justify-around !h-32">
+              <USwitch v-model="bgAnimation" color="neutral" size="xs"
+                description="Background" label="Animating" />
+              <USwitch v-model="zarlashtTheme" color="neutral" size="xs"
+                description="theme" label="Zarlasht" />
+            </div>
           </template>
         </UNavigationMenu>
       </MazAnimatedElement>
