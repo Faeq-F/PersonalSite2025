@@ -163,6 +163,16 @@ a {
     auto !important;
 }
 
+.stepper button {
+  cursor: url(/PersonalSite2025/cursors/light-Point.cur),
+  auto !important;
+}
+
+.dark .stepper button {
+  cursor: url(/PersonalSite2025/cursors/dark-Point.cur),
+  auto !important;
+}
+
 .dark textarea,
 .dark label,
 html.dark {
@@ -177,4 +187,14 @@ html.dark {
 .dark a {
   cursor: url(/PersonalSite2025/cursors/dark-Click.cur),
     auto !important;
+}
+
+/* Other */
+
+.cardShadow{
+  box-shadow: #00000007 0 5px 15px, #191c210c 0 15px 35px -5px, #00000006 0 0 0 1px;
+}
+
+.dark .cardShadow{
+  box-shadow: #00000014 0 5px 15px, #191c2133 0 15px 35px -5px, #ffffff12 0 0 0 1px;
 }
