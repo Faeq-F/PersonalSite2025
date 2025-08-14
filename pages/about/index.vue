@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref, useTemplateRef } from 'vue';
 import type { StepperItem } from '@nuxt/ui'
+import contentPanels from '~/components/layoutSections/contentPanels.vue';
 
 const items: StepperItem[] = [
   {
@@ -46,66 +47,60 @@ const active = ref(0)
 </script>
 
 <template>
-  <div class="p-8 h-full w-full">
-    <div class="flex h-full w-full">
+  <contentPanels>
+    <template #left-panel-header>
+      <div class="font-bold varela" style="line-height: 1;">
+        <p class="text-[3rem]">About me</p>
+        <p class="text-[1rem]">Who I am and what I get up to</p>
+      </div>
+    </template>
+
+    <template #left-panel-content>
+      <UStepper ref="stepper" :items="items" orientation="vertical"
+        v-model="active" class="h-full w-full -mt-4 stepper"
+        style="--ui-primary: #4a5565"
+        :ui="{ separator: 'h-8 transition-all ease-in-out duration-200', item: 'mt-4', indicator: 'transition-all ease-in-out duration-200', trigger: 'transition-all ease-in-out duration-200' }"
+        disabled />
+    </template>
+
+    <template #left-panel-footer>
+      <div>
+        <div class="flex gap-2 justify-between mt-4">
+          <UButton leading-icon="i-lucide-arrow-left"
+            :disabled="!stepper?.hasPrev" @click="stepper?.prev()"
+            style="--ui-primary: #4a5565">
+            Prev
+          </UButton>
+
+          <UButton trailing-icon="i-lucide-arrow-right"
+            :disabled="!stepper?.hasNext" @click="stepper?.next()"
+            style="--ui-primary: #4a5565">
+            Next
+          </UButton>
+        </div>
+      </div>
+    </template>
+
+    <template #content>
       <UCard
-        class="m-4 h-full w-96 opacity-80 cardShadow border border-[var(--ui-border)]">
+        class="m-4 h-60 opacity-80 cardShadow border border-[var(--ui-border)]"
+        v-for="i in Array(8).keys()">
         <template #header>
-          <div class="font-bold varela" style="line-height: 1;">
-            <p class="text-[3rem]">About me</p>
-            <p class="text-[1rem]">Who I am and what I get up to</p>
-          </div>
+          header
         </template>
 
-        <div class="min-h-[60vh]">
-          <UStepper ref="stepper" :items="items" orientation="vertical"
-            v-model="active" class="h-full w-full -mt-4 stepper"
-            style="--ui-primary: #4a5565"
-            :ui="{ separator: 'h-8 transition-all ease-in-out duration-200', item: 'mt-4', indicator: 'transition-all ease-in-out duration-200', trigger: 'transition-all ease-in-out duration-200' }"
-            disabled />
+        <div class="min-h-20">
+          content
         </div>
 
         <template #footer>
           <div>
-
-            <div class="flex gap-2 justify-between mt-4">
-              <UButton leading-icon="i-lucide-arrow-left"
-                :disabled="!stepper?.hasPrev" @click="stepper?.prev()"
-                style="--ui-primary: #4a5565">
-                Prev
-              </UButton>
-
-              <UButton trailing-icon="i-lucide-arrow-right"
-                :disabled="!stepper?.hasNext" @click="stepper?.next()"
-                style="--ui-primary: #4a5565">
-                Next
-              </UButton>
-            </div>
+            footer
           </div>
         </template>
       </UCard>
-      <!-- Snap scroll these or transition them -->
-      <div
-        class="flex flex-col h-full w-full mr-8 mt-4 overflow-y-scroll overflow-x-hidden"
-        data-lenis-prevent>
-        <UCard
-          class="m-4 h-60 opacity-80 cardShadow border border-[var(--ui-border)]"
-          v-for="i in Array(8).keys()">
-          <template #header>
-            header
-          </template>
+    </template>
 
-          <div class="min-h-20">
-            content
-          </div>
+  </contentPanels>
 
-          <template #footer>
-            <div>
-              footer
-            </div>
-          </template>
-        </UCard>
-      </div>
-    </div>
-  </div>
 </template>
