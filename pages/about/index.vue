@@ -49,8 +49,8 @@ const active = ref(0)
 <template>
   <contentPanels>
     <template #left-panel-header>
-      <div class="font-bold varela" style="line-height: 1;">
-        <p class="text-[3rem]">About me</p>
+      <div class="font-bold" style="line-height: 1;">
+        <p class="text-[3rem] varela">About me</p>
         <p class="text-[1rem]">Who I am and what I get up to</p>
       </div>
     </template>
@@ -82,6 +82,53 @@ const active = ref(0)
     </template>
 
     <template #content>
+      <UCard class="m-4 opacity-80 cardShadow border border-[var(--ui-border)]">
+
+        <div class="min-h-96 flex max-h-96 w-full">
+          <div class="grow">
+            <div class="varela underline m-4">
+              Introduction
+            </div>
+            <div class="mr-4 ml-8">
+              I'm a software engineer with a passion for building
+              useful things. I'm always working on a wide range of projects,
+              with a diverse set of technologies, many of which are publicly
+              available as open-source contributions.
+              <br /><br />
+              I am constantly learning, whether through formal education or
+              independently. I completed my Bachelor's degree in Software
+              Engineering at Royal Holloway, University of London, graduating
+              with a First Class Honours. Now I'm expanding my expertise,
+              learning new skills on the job while proactively exploring
+              exciting, new technologies.
+              <br /><br />
+              <USeparator class="w-11/12 self-center " />
+              My current interests lie in declarative, functional
+              programming, with a focus on concurrency and event-based
+              architectures. I enjoy FOSS projects with plugin-based
+              architectures and customizability. My preferred technologies
+              include C#, Vue.js, TypeScript, TailwindCSS, Gleam, and Flutter.
+              <br /><br />
+              I am constantly learning, whether through formal education or
+              independently. I completed my Bachelor's degree in Software
+              Engineering at Royal Holloway, University of London, graduating
+              with a First Class Honours. Now I'm expanding my expertise,
+              learning new skills on the job while proactively exploring
+              exciting, new technologies.
+              <br /><br />
+            </div>
+          </div>
+          <USeparator orientation="vertical" class="h-70 self-center " />
+          <img src="/media/me.jpeg" class="min-h-96 max-h-96 rounded-lg ml-4" />
+        </div>
+
+        <template #footer>
+          <div>
+            footer
+          </div>
+        </template>
+      </UCard>
+
       <UCard
         class="m-4 h-60 opacity-80 cardShadow border border-[var(--ui-border)]"
         v-for="i in Array(8).keys()">

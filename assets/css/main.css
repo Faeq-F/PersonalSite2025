@@ -11,6 +11,11 @@ import 'maz-ui/styles'
   scroll-behavior: smooth;
 }
 
+*{
+  transition: 200ms all;
+  scroll-behavior: smooth;
+}
+
 #navbar,
 body{
   transition: 200ms all ease-in-out;
@@ -43,6 +48,10 @@ body{
 }
 
 .outfit {
+  font-family: "Outfit", sans-serif;
+}
+
+*{
   font-family: "Outfit", sans-serif;
 }
 
