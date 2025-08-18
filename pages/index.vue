@@ -7,9 +7,9 @@ import linkedin from '~/components/icons/linkedin.vue'
 <template>
   <div class="p-8 h-full w-full">
     <div class="flex flex-col justify-center pl-8 h-full w-full">
-      <div class="font-bold mb-5 varela" style="line-height: 1;">
-        <p class="text-[4rem]">Hello, I'm Faeq</p>
-        <p class="text-[2.3rem]">A software engineer</p>
+      <div class="font-bold mb-5" style="line-height: 1;">
+        <p class="text-[4rem] varela">Hello, I'm Faeq</p>
+        <p class="text-[2.3rem] varela">A software engineer</p>
       </div>
       <div id="HomeSocialButtonGroup" class="">
         <a href="mailto:faeqfaisal@hotmail.co.uk" target="_blank">

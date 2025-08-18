@@ -24,7 +24,8 @@ onMounted(async () => {
   <div class="h-full w-full rounded-3xl" id="bodyPanel">
 
     <div id="vidBG" class="border-default border border-accent">
-      <video autoplay loop disablePictureInPicture muted id="video-bg-elem">
+      <video autoplay loop disablePictureInPicture muted id="video-bg-elem"
+        class="h-full w-full">
         <source src="/media/bg.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>

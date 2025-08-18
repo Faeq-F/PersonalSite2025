@@ -82,7 +82,8 @@ const active = ref(0)
     </template>
 
     <template #content>
-      <UCard class="m-4 opacity-80 cardShadow border border-[var(--ui-border)]">
+      <UCard
+        class="m-5 opacity-80 cardShadow border border-[var(--ui-border)] snap-always snap-start">
 
         <div class="min-h-96 flex max-h-96 w-full">
           <div class="grow">
@@ -103,18 +104,33 @@ const active = ref(0)
               exciting, new technologies.
               <br /><br />
               <USeparator class="w-11/12 self-center " />
+              <br />
               My current interests lie in declarative, functional
               programming, with a focus on concurrency and event-based
               architectures. I enjoy FOSS projects with plugin-based
               architectures and customizability. My preferred technologies
               include C#, Vue.js, TypeScript, TailwindCSS, Gleam, and Flutter.
               <br /><br />
-              I am constantly learning, whether through formal education or
-              independently. I completed my Bachelor's degree in Software
-              Engineering at Royal Holloway, University of London, graduating
-              with a First Class Honours. Now I'm expanding my expertise,
-              learning new skills on the job while proactively exploring
-              exciting, new technologies.
+              My main, current personal endeavor is
+              <UPopover mode="hover">
+                <nuxt-link to="https://faeq-f.github.io/Quokka" target="_blank"
+                  class="boxLink">Quokka</nuxt-link>
+                <template #content>
+                  <p class="p-1 text-sm">(project site)</p>
+                </template>
+              </UPopover>
+              <UPopover mode="hover">
+                <nuxt-link to="/project/quokka" class="boxLink">
+                  <UIcon name="i-lucide-info" />
+                </nuxt-link>
+                <template #content>
+                  <p class="p-1 text-sm">(project information)</p>
+                </template>
+              </UPopover>
+              , a portable keystroke launcher for Windows. It features fuzzy
+              searching, plugins, and is highly customizable. As a completely
+              free and open-source project, it is available for everyone to
+              use and contribute to.
               <br /><br />
             </div>
           </div>
@@ -123,14 +139,33 @@ const active = ref(0)
         </div>
 
         <template #footer>
-          <div>
-            footer
+          <div class="flex justify-evenly">
+            <span>
+              <UBadge icon="i-lucide-user" size="lg" color="neutral"
+                variant="soft">Legal Name: Faeq Faisal</UBadge>
+            </span>
+            <span>
+              <UBadge icon="i-lucide-map-pin-house" size="lg" color="neutral"
+                variant="soft">Location: London, UK</UBadge>
+            </span>
+            <span>
+              <nuxt-link to="/portfolio">
+                <UBadge icon="i-lucide-square-kanban" size="lg" color="neutral"
+                  variant="soft">Number of Projects: 00</UBadge>
+              </nuxt-link>
+            </span>
+            <span>
+              <nuxt-link to="/portfolio">
+                <UBadge icon="i-lucide-file-badge" size="lg" color="neutral"
+                  variant="soft">Number of Certifications: 00</UBadge>
+              </nuxt-link>
+            </span>
           </div>
         </template>
       </UCard>
 
       <UCard
-        class="m-4 h-60 opacity-80 cardShadow border border-[var(--ui-border)]"
+        class="m-5 h-60 opacity-80 cardShadow border border-[var(--ui-border)] snap-always snap-start"
         v-for="i in Array(8).keys()">
         <template #header>
           header

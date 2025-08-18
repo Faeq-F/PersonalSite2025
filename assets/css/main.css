@@ -16,6 +16,10 @@ import 'maz-ui/styles'
   scroll-behavior: smooth;
 }
 
+[data-reka-popper-content-wrapper]{
+  transition: unset;
+}
+
 #navbar,
 body{
   transition: 200ms all ease-in-out;
@@ -206,4 +210,15 @@ html.dark {
 
 .dark .cardShadow{
   box-shadow: #00000014 0 5px 15px, #191c2133 0 15px 35px -5px, #ffffff12 0 0 0 1px;
+}
+
+.boxLink{
+  text-decoration: underline;
+
+  &:hover {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    filter: brightness(0.5);
+    box-shadow: #00000014 0 5px 15px, #191c2133 0 15px 35px -5px, #ffffff12 0 0 0 1px;
+  }
 }
