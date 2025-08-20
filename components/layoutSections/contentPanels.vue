@@ -19,7 +19,7 @@
         </template>
       </UCard>
       <!-- Snap scroll these or transition them -->
-      <div
+      <div id="contentPanelsContent"
         class="flex flex-col h-full w-full mr-8 mt-4 overflow-y-scroll overflow-x-hidden snap-mandatory snap-y"
         data-lenis-prevent>
         <slot name="content"></slot>

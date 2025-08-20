@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, useTemplateRef } from 'vue';
+import { ref, useTemplateRef, watch } from 'vue';
 import type { StepperItem } from '@nuxt/ui'
 import contentPanels from '~/components/layoutSections/contentPanels.vue';
 
@@ -36,13 +36,17 @@ const items: StepperItem[] = [
   },
   {
     title: '2025',
-    description: '21 years old - now',
+    description: '21 years old',
     icon: 'i-lucide-truck'
   },
 ]
 
 const stepper = useTemplateRef('stepper')
 const active = ref(0)
+
+watch(active, (newActiveVal) => {
+  document.getElementById('contentPanelsContent')!.scrollTo({ top: document.getElementById('AboutMeCard' + newActiveVal)!.offsetTop, behavior: 'smooth' })
+})
 
 </script>
 
@@ -82,10 +86,10 @@ const active = ref(0)
     </template>
 
     <template #content>
-      <UCard
-        class="m-5 opacity-80 cardShadow border border-[var(--ui-border)] snap-always snap-start">
+      <UCard id="AboutMeCard0"
+        class="my-5 mx-4 opacity-80 cardShadow border border-[var(--ui-border)]">
 
-        <div class="min-h-96 flex max-h-96 w-full">
+        <div class="min-h-[24.5rem] flex max-h-[24.5rem] w-full">
           <div class="grow">
             <div class="varela underline m-4">
               Introduction
@@ -116,7 +120,7 @@ const active = ref(0)
                 <nuxt-link to="https://faeq-f.github.io/Quokka" target="_blank"
                   class="boxLink">Quokka</nuxt-link>
                 <template #content>
-                  <p class="p-1 text-sm">(project site)</p>
+                  <p class="p-1 text-sm">Project Site</p>
                 </template>
               </UPopover>
               <UPopover mode="hover">
@@ -124,7 +128,7 @@ const active = ref(0)
                   <UIcon name="i-lucide-info" />
                 </nuxt-link>
                 <template #content>
-                  <p class="p-1 text-sm">(project information)</p>
+                  <p class="p-1 text-sm">Project Information</p>
                 </template>
               </UPopover>
               , a portable keystroke launcher for Windows. It features fuzzy
@@ -142,33 +146,197 @@ const active = ref(0)
           <div class="flex justify-evenly">
             <span>
               <UBadge icon="i-lucide-user" size="lg" color="neutral"
-                variant="soft">Legal Name: Faeq Faisal</UBadge>
+                variant="soft">
+                <USeparator orientation="vertical"
+                  class="h-4 invert opacity-20" />
+                Legal Name:
+                <span class="opacity-80">
+                  Faeq Faisal
+                </span>
+              </UBadge>
             </span>
             <span>
               <UBadge icon="i-lucide-map-pin-house" size="lg" color="neutral"
-                variant="soft">Location: London, UK</UBadge>
+                variant="soft">
+                <USeparator orientation="vertical"
+                  class="h-4 invert opacity-20" />
+                Location:
+                <span class="opacity-80">
+                  London, UK
+                </span>
+              </UBadge>
             </span>
             <span>
               <nuxt-link to="/portfolio">
                 <UBadge icon="i-lucide-square-kanban" size="lg" color="neutral"
-                  variant="soft">Number of Projects: 00</UBadge>
+                  variant="soft">
+                  <USeparator orientation="vertical"
+                    class="h-4 invert opacity-20" />
+                  Number of Projects:
+                  <span class="opacity-80">
+                    00
+                  </span>
+                </UBadge>
               </nuxt-link>
             </span>
             <span>
               <nuxt-link to="/portfolio">
                 <UBadge icon="i-lucide-file-badge" size="lg" color="neutral"
-                  variant="soft">Number of Certifications: 00</UBadge>
+                  variant="soft">
+                  <USeparator orientation="vertical"
+                    class="h-4 invert opacity-20" />
+                  Number of Certifications:
+                  <span class="opacity-80">
+                    00
+                  </span>
+                </UBadge>
               </nuxt-link>
             </span>
           </div>
         </template>
       </UCard>
 
-      <UCard
-        class="m-5 h-60 opacity-80 cardShadow border border-[var(--ui-border)] snap-always snap-start"
-        v-for="i in Array(8).keys()">
+      <UCard id="AboutMeCard1"
+        class="m-5 max-h-[15.5rem] min-h-[15.5rem] opacity-80 cardShadow border border-[var(--ui-border)]">
         <template #header>
-          header
+          <div class="flex justify-between">
+            <span class="flex items-center">
+              2010
+              <USeparator orientation="vertical"
+                class="h-4 inline-block mx-4" />
+              Modding
+            </span>
+            <span class="opacity-70">
+              6 years old
+            </span>
+          </div>
+        </template>
+
+        <div class="flex">
+          <div class="leading-[1.4]">
+            My journey began with digital games. I was captivated by everything,
+            from the puzzle widget on Windows XP, to the exhilarating 3D
+            Brawlers on the Nintendo Wii.
+            <br /><br />
+            This soon led me to successfully
+            modifying my Wii console to accommodate SD-cards formatted with the
+            WBFS manager, allowing me to play any game without the need of a
+            physical copy.
+            <br /><br />
+            This initiated my profound interest in technology
+            and its vast potential. I quickly became a proficient tinkerer,
+            focusing on high levels of customization.
+          </div>
+          <USeparator orientation="vertical"
+            class="ml-4 self-center h-[6rem]" />
+          <img src="/media/TimeLineImage1.png"
+            class="rounded-lg ml-4 h-[9rem]" />
+        </div>
+      </UCard>
+
+      <UCard id="AboutMeCard2"
+        class="m-5 h-[24.5rem] opacity-80 cardShadow border border-[var(--ui-border)]">
+        <template #header>
+          <div class="flex justify-between">
+            <span>
+              2016
+            </span>
+            <span class="opacity-70">
+              12 years old
+            </span>
+          </div>
+        </template>
+
+        <div class="min-h-20">
+          content
+        </div>
+
+        <template #footer>
+          <div>
+            footer
+          </div>
+        </template>
+      </UCard>
+      <UCard id="AboutMeCard3"
+        class="m-5 h-[24.5rem] opacity-80 cardShadow border border-[var(--ui-border)]">
+        <template #header>
+          <div class="flex justify-between">
+            <span>
+              2018
+            </span>
+            <span class="opacity-70">
+              14 years old
+            </span>
+          </div>
+        </template>
+
+        <div class="min-h-20">
+          content
+        </div>
+
+        <template #footer>
+          <div>
+            footer
+          </div>
+        </template>
+      </UCard>
+      <UCard id="AboutMeCard4"
+        class="m-5 h-[24.5rem] opacity-80 cardShadow border border-[var(--ui-border)]">
+        <template #header>
+          <div class="flex justify-between">
+            <span>
+              2020
+            </span>
+            <span class="opacity-70">
+              16 years old
+            </span>
+          </div>
+        </template>
+
+        <div class="min-h-20">
+          content
+        </div>
+
+        <template #footer>
+          <div>
+            footer
+          </div>
+        </template>
+      </UCard>
+      <UCard id="AboutMeCard5"
+        class="m-5 h-[24.5rem] opacity-80 cardShadow border border-[var(--ui-border)]">
+        <template #header>
+          <div class="flex justify-between">
+            <span>
+              2022
+            </span>
+            <span class="opacity-70">
+              18 years old
+            </span>
+          </div>
+        </template>
+
+        <div class="min-h-20">
+          content
+        </div>
+
+        <template #footer>
+          <div>
+            footer
+          </div>
+        </template>
+      </UCard>
+      <UCard id="AboutMeCard6"
+        class="m-5 h-[24.5rem] opacity-80 cardShadow border border-[var(--ui-border)]">
+        <template #header>
+          <div class="flex justify-between">
+            <span>
+              2025
+            </span>
+            <span class="opacity-70">
+              21 years old
+            </span>
+          </div>
         </template>
 
         <div class="min-h-20">

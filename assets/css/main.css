@@ -222,3 +222,8 @@ html.dark {
     box-shadow: #00000014 0 5px 15px, #191c2133 0 15px 35px -5px, #ffffff12 0 0 0 1px;
   }
 }
+
+#contentPanelsContent > *{
+  scroll-snap-stop: always;
+  scroll-snap-align: start;
+}
