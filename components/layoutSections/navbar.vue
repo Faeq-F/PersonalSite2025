@@ -73,6 +73,8 @@ watch(bgAnimation, () => {
 })
 
 autoSetTheme()
+
+const searchVal = ref('')
 </script>
 
 <template>
@@ -81,11 +83,34 @@ autoSetTheme()
       class="max-h-12 rounded-3xl flex items-center gap-3 border-default border border-accent sticky top-0 bg-white dark:bg-[var(--ui-bg)] navbar"
       style="width: calc(100% - 3rem); margin: 0 auto;">
       <MazAnimatedElement direction="right" :delay='300' :duration="700"
-        class="flex items-center hover:text-black dark:hover:text-white">
-        <nuxt-link to="/">
-          <UIcon name="i-lucide-home" class="mx-6.5 mt-1.5 text-[#90a1b9]" />
-        </nuxt-link>
-        <USeparator orientation="vertical" class="h-8 self-center " />
+        class="flex items-center">
+        <div
+          class="flex items-center bg-[#f6f7fa] dark:bg-[#0e0d0d] rounded-full px-3 ml-1.5 h-8 transition-all ease-in-out duration-200">
+          <nuxt-link to="/" class="contents">
+            <UIcon name="i-lucide-home"
+              class="!size-4.5 hover:text-black dark:hover:text-white" />
+          </nuxt-link>
+          <USeparator orientation="vertical"
+            class="h-4 mx-4 invert opacity-20" />
+          <UPopover :ui="{ content: '-translate-y-6 ml-6' }">
+            <UIcon name="i-lucide-search"
+              class="!size-4.5 h-full clickable hover:text-black dark:hover:text-white" />
+            <template #content>
+              <div class="min-h-96 max-h-96 w-96">
+                <UInput icon="i-lucide-search" size="md" variant="none"
+                  placeholder="Search..." class="w-full p-1"
+                  v-model="searchVal" />
+                <USeparator class="w-full " />
+                <ul>
+                  <li>Result Item 1</li>
+                  <li>Result Item 2</li>
+                  <li>Result Item 3</li>
+                  <li>Result Item 4</li>
+                </ul>
+              </div>
+            </template>
+          </UPopover>
+        </div>
       </MazAnimatedElement>
       <MazAnimatedElement direction="up" :delay="700" :duration="700"
         class="w-full justify-center flex">
@@ -104,7 +129,7 @@ autoSetTheme()
         <!-- Theme Switch -->
         <UNavigationMenu content-orientation="vertical" color="neutral"
           :items="themeItems" variant="link" trailing-icon=" " :ui="{
-            viewport: '-translate-y-18/12 -translate-x-4 min-h-32 max-h-32 pr-28',
+            viewport: '-translate-y-46 -translate-x-4 min-h-32 max-h-32 pr-28',
             content: 'w-auto  ml-0.5',
             childList: 'w-auto',
             childLabel: 'w-full',

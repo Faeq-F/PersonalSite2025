@@ -1,43 +1,58 @@
 <script lang="ts" setup>
-import { ref, useTemplateRef, watch } from 'vue';
+import { onMounted, ref, useTemplateRef, watch } from 'vue';
 import type { StepperItem } from '@nuxt/ui'
 import contentPanels from '~/components/layoutSections/contentPanels.vue';
+import IntroCard from '~/components/aboutMeCards/IntroductionCard.vue';
+import Card2010 from '~/components/aboutMeCards/2010Card.vue';
+import Card2016 from '~/components/aboutMeCards/2016Card.vue';
+import Card2018 from '~/components/aboutMeCards/2018Card.vue';
+import Card2020 from '~/components/aboutMeCards/2020Card.vue';
+import Card2022 from '~/components/aboutMeCards/2022Card.vue';
+import Card2025 from '~/components/aboutMeCards/2025Card.vue';
+
 
 const items: StepperItem[] = [
   {
     title: 'Introduction',
     description: 'A little on me',
+    label: 'Introduction',
     icon: 'i-lucide-house'
   },
   {
     title: '2010',
     description: '6 years old',
-    icon: 'i-lucide-truck'
+    label: 'Modding',
+    icon: 'i-lucide-wrench'
   },
   {
     title: '2016',
     description: '12 years old',
-    icon: 'i-lucide-truck'
+    label: 'Scratch & Python',
+    icon: 'i-lucide-square-function'
   },
   {
     title: '2018',
     description: '14 years old',
-    icon: 'i-lucide-truck'
+    label: 'The Web',
+    icon: 'i-lucide-link'
   },
   {
     title: '2020',
     description: '16 years old',
-    icon: 'i-lucide-truck'
+    label: 'GCSEs',
+    icon: 'i-lucide-school'
   },
   {
     title: '2022',
     description: '18 years old',
-    icon: 'i-lucide-truck'
+    label: 'A-levels',
+    icon: 'i-lucide-book-text'
   },
   {
     title: '2025',
     description: '21 years old',
-    icon: 'i-lucide-truck'
+    label: 'Degree',
+    icon: 'i-lucide-graduation-cap'
   },
 ]
 
@@ -47,6 +62,49 @@ const active = ref(0)
 watch(active, (newActiveVal) => {
   document.getElementById('contentPanelsContent')!.scrollTo({ top: document.getElementById('AboutMeCard' + newActiveVal)!.offsetTop, behavior: 'smooth' })
 })
+
+// Update about-me timeline as you scroll
+class Scroller {
+  static headers: (Element | null)[];
+  static ticking: boolean;
+  static activeHeader: any;
+
+  static init() {
+    const rootContainer = document.getElementById("contentPanelsContent");
+    this.headers = Array.from(document.querySelectorAll("#AboutMeCard0, #AboutMeCard1, #AboutMeCard2, #AboutMeCard3, #AboutMeCard4, #AboutMeCard5, #AboutMeCard6"))
+    this.ticking = false;
+    rootContainer!.addEventListener('scroll', (e) => {
+      this.onScroll()
+    })
+  }
+
+  static onScroll() {
+    if (!this.ticking) {
+      requestAnimationFrame(this.update.bind(this));
+      this.ticking = true;
+    }
+  }
+
+  static update() {
+    this.activeHeader ||= this.headers[0];
+    let activeIndex = this.headers.findIndex((header) => {
+      return header!.getBoundingClientRect().top > 180;
+    });
+    if (activeIndex == -1) {
+      activeIndex = this.headers.length - 1;
+    } else if (activeIndex > 0) {
+      activeIndex--;
+    }
+    let activeH = this.headers[activeIndex];
+    if (activeH !== this.activeHeader) {
+      this.activeHeader = activeH;
+      active.value = activeIndex
+    }
+    this.ticking = false;
+  }
+}
+
+onMounted(() => { Scroller.init(); })
 
 </script>
 
@@ -75,7 +133,7 @@ watch(active, (newActiveVal) => {
             style="--ui-primary: #4a5565">
             Prev
           </UButton>
-
+          <span class="pt-1">{{ items[active].label }}</span>
           <UButton trailing-icon="i-lucide-arrow-right"
             :disabled="!stepper?.hasNext" @click="stepper?.next()"
             style="--ui-primary: #4a5565">
@@ -86,269 +144,13 @@ watch(active, (newActiveVal) => {
     </template>
 
     <template #content>
-      <UCard id="AboutMeCard0"
-        class="my-5 mx-4 opacity-80 cardShadow border border-[var(--ui-border)]">
-
-        <div class="min-h-[24.5rem] flex max-h-[24.5rem] w-full">
-          <div class="grow">
-            <div class="varela underline m-4">
-              Introduction
-            </div>
-            <div class="mr-4 ml-8">
-              I'm a software engineer with a passion for building
-              useful things. I'm always working on a wide range of projects,
-              with a diverse set of technologies, many of which are publicly
-              available as open-source contributions.
-              <br /><br />
-              I am constantly learning, whether through formal education or
-              independently. I completed my Bachelor's degree in Software
-              Engineering at Royal Holloway, University of London, graduating
-              with a First Class Honours. Now I'm expanding my expertise,
-              learning new skills on the job while proactively exploring
-              exciting, new technologies.
-              <br /><br />
-              <USeparator class="w-11/12 self-center " />
-              <br />
-              My current interests lie in declarative, functional
-              programming, with a focus on concurrency and event-based
-              architectures. I enjoy FOSS projects with plugin-based
-              architectures and customizability. My preferred technologies
-              include C#, Vue.js, TypeScript, TailwindCSS, Gleam, and Flutter.
-              <br /><br />
-              My main, current personal endeavor is
-              <UPopover mode="hover">
-                <nuxt-link to="https://faeq-f.github.io/Quokka" target="_blank"
-                  class="boxLink">Quokka</nuxt-link>
-                <template #content>
-                  <p class="p-1 text-sm">Project Site</p>
-                </template>
-              </UPopover>
-              <UPopover mode="hover">
-                <nuxt-link to="/project/quokka" class="boxLink">
-                  <UIcon name="i-lucide-info" />
-                </nuxt-link>
-                <template #content>
-                  <p class="p-1 text-sm">Project Information</p>
-                </template>
-              </UPopover>
-              , a portable keystroke launcher for Windows. It features fuzzy
-              searching, plugins, and is highly customizable. As a completely
-              free and open-source project, it is available for everyone to
-              use and contribute to.
-              <br /><br />
-            </div>
-          </div>
-          <USeparator orientation="vertical" class="h-70 self-center " />
-          <img src="/media/me.jpeg" class="min-h-96 max-h-96 rounded-lg ml-4" />
-        </div>
-
-        <template #footer>
-          <div class="flex justify-evenly">
-            <span>
-              <UBadge icon="i-lucide-user" size="lg" color="neutral"
-                variant="soft">
-                <USeparator orientation="vertical"
-                  class="h-4 invert opacity-20" />
-                Legal Name:
-                <span class="opacity-80">
-                  Faeq Faisal
-                </span>
-              </UBadge>
-            </span>
-            <span>
-              <UBadge icon="i-lucide-map-pin-house" size="lg" color="neutral"
-                variant="soft">
-                <USeparator orientation="vertical"
-                  class="h-4 invert opacity-20" />
-                Location:
-                <span class="opacity-80">
-                  London, UK
-                </span>
-              </UBadge>
-            </span>
-            <span>
-              <nuxt-link to="/portfolio">
-                <UBadge icon="i-lucide-square-kanban" size="lg" color="neutral"
-                  variant="soft">
-                  <USeparator orientation="vertical"
-                    class="h-4 invert opacity-20" />
-                  Number of Projects:
-                  <span class="opacity-80">
-                    00
-                  </span>
-                </UBadge>
-              </nuxt-link>
-            </span>
-            <span>
-              <nuxt-link to="/portfolio">
-                <UBadge icon="i-lucide-file-badge" size="lg" color="neutral"
-                  variant="soft">
-                  <USeparator orientation="vertical"
-                    class="h-4 invert opacity-20" />
-                  Number of Certifications:
-                  <span class="opacity-80">
-                    00
-                  </span>
-                </UBadge>
-              </nuxt-link>
-            </span>
-          </div>
-        </template>
-      </UCard>
-
-      <UCard id="AboutMeCard1"
-        class="m-5 max-h-[15.5rem] min-h-[15.5rem] opacity-80 cardShadow border border-[var(--ui-border)]">
-        <template #header>
-          <div class="flex justify-between">
-            <span class="flex items-center">
-              2010
-              <USeparator orientation="vertical"
-                class="h-4 inline-block mx-4" />
-              Modding
-            </span>
-            <span class="opacity-70">
-              6 years old
-            </span>
-          </div>
-        </template>
-
-        <div class="flex">
-          <div class="leading-[1.4]">
-            My journey began with digital games. I was captivated by everything,
-            from the puzzle widget on Windows XP, to the exhilarating 3D
-            Brawlers on the Nintendo Wii.
-            <br /><br />
-            This soon led me to successfully
-            modifying my Wii console to accommodate SD-cards formatted with the
-            WBFS manager, allowing me to play any game without the need of a
-            physical copy.
-            <br /><br />
-            This initiated my profound interest in technology
-            and its vast potential. I quickly became a proficient tinkerer,
-            focusing on high levels of customization.
-          </div>
-          <USeparator orientation="vertical"
-            class="ml-4 self-center h-[6rem]" />
-          <img src="/media/TimeLineImage1.png"
-            class="rounded-lg ml-4 h-[9rem]" />
-        </div>
-      </UCard>
-
-      <UCard id="AboutMeCard2"
-        class="m-5 h-[24.5rem] opacity-80 cardShadow border border-[var(--ui-border)]">
-        <template #header>
-          <div class="flex justify-between">
-            <span>
-              2016
-            </span>
-            <span class="opacity-70">
-              12 years old
-            </span>
-          </div>
-        </template>
-
-        <div class="min-h-20">
-          content
-        </div>
-
-        <template #footer>
-          <div>
-            footer
-          </div>
-        </template>
-      </UCard>
-      <UCard id="AboutMeCard3"
-        class="m-5 h-[24.5rem] opacity-80 cardShadow border border-[var(--ui-border)]">
-        <template #header>
-          <div class="flex justify-between">
-            <span>
-              2018
-            </span>
-            <span class="opacity-70">
-              14 years old
-            </span>
-          </div>
-        </template>
-
-        <div class="min-h-20">
-          content
-        </div>
-
-        <template #footer>
-          <div>
-            footer
-          </div>
-        </template>
-      </UCard>
-      <UCard id="AboutMeCard4"
-        class="m-5 h-[24.5rem] opacity-80 cardShadow border border-[var(--ui-border)]">
-        <template #header>
-          <div class="flex justify-between">
-            <span>
-              2020
-            </span>
-            <span class="opacity-70">
-              16 years old
-            </span>
-          </div>
-        </template>
-
-        <div class="min-h-20">
-          content
-        </div>
-
-        <template #footer>
-          <div>
-            footer
-          </div>
-        </template>
-      </UCard>
-      <UCard id="AboutMeCard5"
-        class="m-5 h-[24.5rem] opacity-80 cardShadow border border-[var(--ui-border)]">
-        <template #header>
-          <div class="flex justify-between">
-            <span>
-              2022
-            </span>
-            <span class="opacity-70">
-              18 years old
-            </span>
-          </div>
-        </template>
-
-        <div class="min-h-20">
-          content
-        </div>
-
-        <template #footer>
-          <div>
-            footer
-          </div>
-        </template>
-      </UCard>
-      <UCard id="AboutMeCard6"
-        class="m-5 h-[24.5rem] opacity-80 cardShadow border border-[var(--ui-border)]">
-        <template #header>
-          <div class="flex justify-between">
-            <span>
-              2025
-            </span>
-            <span class="opacity-70">
-              21 years old
-            </span>
-          </div>
-        </template>
-
-        <div class="min-h-20">
-          content
-        </div>
-
-        <template #footer>
-          <div>
-            footer
-          </div>
-        </template>
-      </UCard>
+      <IntroCard />
+      <Card2010 />
+      <Card2016 />
+      <Card2018 />
+      <Card2020 />
+      <Card2022 />
+      <Card2025 />
     </template>
 
   </contentPanels>
