@@ -14,6 +14,7 @@ export const useMiddleNavbarItems = defineStore("middleNavbarItems", {
       }
     });
     return ({
+      //maybe do something with a content slot here
       items: [
         [
           {
@@ -22,13 +23,57 @@ export const useMiddleNavbarItems = defineStore("middleNavbarItems", {
             to: '/about',
             active: false,
             defaultOpen: true,
-            children: [...pluginsChildren, {
-              label: 'more...',
-              icon: 'i-lucide-box',
-              description: 'lots more available',
-              to: '/plugin',
-              active: false
-            }]
+            children: [
+              {
+                label: 'Introduction',
+                icon: 'i-lucide-user',
+                description: 'A little on me',
+                to: '/about',
+                active: false
+              },
+              {
+                label: '2010',
+                icon: 'i-lucide-user',
+                description: '6 years old | Modding',
+                to: '/about',
+                active: false
+              },
+              {
+                label: '2016',
+                icon: 'i-lucide-user',
+                description: '12 years old | Programming',
+                to: '/about',
+                active: false
+              },
+              {
+                label: '2018',
+                icon: 'i-lucide-user',
+                description: '14 years old | The Web',
+                to: '/about',
+                active: false
+              },
+              {
+                label: '2020',
+                icon: 'i-lucide-user',
+                description: '16 years old | GCSEs',
+                to: '/about',
+                active: false
+              },
+              {
+                label: '2022',
+                icon: 'i-lucide-user',
+                description: 'A-18 years old | levels',
+                to: '/about',
+                active: false
+              },
+              {
+                label: '2025',
+                icon: 'i-lucide-user',
+                description: '21 years old | Degree',
+                to: '/about',
+                active: false
+              },
+            ]
           },
           {
             label: 'Experience',

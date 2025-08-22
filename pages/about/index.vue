@@ -27,7 +27,7 @@ const items: StepperItem[] = [
   {
     title: '2016',
     description: '12 years old',
-    label: 'Scratch & Python',
+    label: 'Programming',
     icon: 'i-lucide-square-function'
   },
   {

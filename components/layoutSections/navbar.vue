@@ -74,7 +74,66 @@ watch(bgAnimation, () => {
 
 autoSetTheme()
 
+//temp
+const pages = [
+  {
+    title: 'About Me',
+    description: 'A brief introduction about myself',
+    icon: 'i-lucide-user',
+    category: 'About Me',
+    url: '/about'
+  },
+  {
+    title: 'Experience',
+    description: 'My professional journey and experiences',
+    icon: 'i-lucide-briefcase',
+    category: 'About Me',
+    url: '/experience'
+  },
+  {
+    title: 'Projects',
+    description: 'Showcasing my projects and contributions',
+    icon: 'i-lucide-folder',
+    category: 'About Me',
+    url: '/about'
+  },
+  {
+    title: 'Skills',
+    description: 'My technical skills and proficiencies',
+    icon: 'i-lucide-code',
+    category: 'About Me',
+    url: '/about'
+  },
+  {
+    title: 'Contact',
+    description: 'How to get in touch with me',
+    icon: 'i-lucide-mail',
+    category: 'About Me',
+    url: '/about'
+  },
+  {
+    title: 'Degree',
+    description: 'My academic qualifications',
+    icon: 'i-lucide-mail',
+    category: 'About Me',
+    url: '/about'
+  }
+]
+
+import Fuse from 'fuse.js'
 const searchVal = ref('')
+const searchedPages = ref(pages)
+const fuse = new Fuse(pages, {
+  keys: ['description', 'title', 'category'],
+});
+
+watch(searchVal, (newSearch, _oldSearch) => {
+  if (newSearch === '') {
+    searchedPages.value = pages;
+  } else {
+    searchedPages.value = fuse.search(newSearch).map((result) => result.item);
+  }
+})
 </script>
 
 <template>
@@ -88,24 +147,46 @@ const searchVal = ref('')
           class="flex items-center bg-[#f6f7fa] dark:bg-[#0e0d0d] rounded-full px-3 ml-1.5 h-8 transition-all ease-in-out duration-200">
           <nuxt-link to="/" class="contents">
             <UIcon name="i-lucide-home"
-              class="!size-4.5 hover:text-black dark:hover:text-white" />
+              class="!size-4.5 hover:text-black dark:hover:text-white text-muted mx-2 my-1.5" />
           </nuxt-link>
           <USeparator orientation="vertical"
-            class="h-4 mx-4 invert opacity-20" />
+            class="h-4 mx-2.5 invert opacity-20" />
           <UPopover :ui="{ content: '-translate-y-6 ml-6' }">
             <UIcon name="i-lucide-search"
-              class="!size-4.5 h-full clickable hover:text-black dark:hover:text-white" />
+              class="!size-4.5 h-full clickable hover:text-black dark:hover:text-white text-muted mx-2.5 my-1.5" />
             <template #content>
               <div class="min-h-96 max-h-96 w-96">
                 <UInput icon="i-lucide-search" size="md" variant="none"
-                  placeholder="Search..." class="w-full p-1"
+                  placeholder="Search Pages..." class="w-full p-1"
                   v-model="searchVal" />
                 <USeparator class="w-full " />
-                <ul>
-                  <li>Result Item 1</li>
-                  <li>Result Item 2</li>
-                  <li>Result Item 3</li>
-                  <li>Result Item 4</li>
+                <ul class="overflow-y-scroll max-h-86 pt-2 mr-0.5"
+                  data-lenis-prevent>
+                  <li v-for="(page, i) in searchedPages" :key="i"
+                    class="w-full p-2 pt-0 pr-1">
+                    <nuxt-link :to="page.url">
+                      <UButton :icon="page.icon" size="md" color="neutral"
+                        variant="soft" class="w-full">
+                        <USeparator orientation="vertical"
+                          class="h-6 invert opacity-20 ml-1" />
+                        <div class="w-full">
+                          <div
+                            class="w-full text-left pl-1.5 flex items-center justify-between">
+                            <span>
+                              {{ page.title }}
+                            </span>
+                            <UBadge size="sm" color="neutral" variant="outline"
+                              class="text-muted flex items-center opacity-80">
+                              {{ page.category }}
+                            </UBadge>
+                          </div>
+                          <div class="text-muted pl-1.5 w-full text-left">
+                            {{ page.description }}
+                          </div>
+                        </div>
+                      </UButton>
+                    </nuxt-link>
+                  </li>
                 </ul>
               </div>
             </template>

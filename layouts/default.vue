@@ -23,7 +23,7 @@ onMounted(async () => {
 <template>
   <div class="h-full w-full rounded-3xl" id="bodyPanel">
 
-    <div id="vidBG" class="border-default border border-accent">
+    <div id="vidBG" class="border-default rounded-none border border-accent">
       <video autoplay loop disablePictureInPicture muted id="video-bg-elem"
         class="h-full w-full">
         <source src="/media/bg.mp4" type="video/mp4">
@@ -53,15 +53,95 @@ onMounted(async () => {
     </div>
 
     <template #content>
-      <div class="h-52">
-        <a href="https://youtu.be/Bj0h4VtMDQA">Background video</a>
-        Maz UI
-        Nuxt UI
-        Varela Font
-        Outfit Font
-        svgl icons
-        tailwindcss
-        lucide icons
+      <div class="h-64 p-4 w-full">
+        This site was built by Faeq &copy;, using:
+        <div class="rounded-2xl w-full h-full mt-4 ">
+          <div class="flex h-1/5">
+            <UButton
+              class="rounded-none rounded-tl-2xl p-2.5 w-1/4 border-t border-r border-accented border-l"
+              icon="i-lucide-rocket" size="md" color="neutral" variant="ghost">
+              <a target="_blank" href="https://youtu.be/Bj0h4VtMDQA">
+                Background video
+              </a>
+            </UButton>
+            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+              variant="ghost"
+              class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented">
+              Maz UI
+            </UButton>
+            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+              variant="ghost"
+              class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented ">
+              Nuxt UI
+            </UButton>
+            <UButton
+              class=" rounded-none rounded-tr-2xl p-2.5 w-1/4 border-t border-r border-accented "
+              icon="i-lucide-rocket" size="md" color="neutral" variant="ghost">
+              Pinia
+            </UButton>
+          </div>
+          <div class="flex h-1/5">
+            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+              variant="ghost"
+              class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented  border-l">
+              Varela Font
+            </UButton>
+            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+              variant="ghost"
+              class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented ">
+              Outfit Font
+            </UButton>
+            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+              variant="ghost"
+              class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented ">
+              svgl icons
+            </UButton>
+            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+              variant="ghost"
+              class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented ">
+              lucide icons
+            </UButton>
+          </div>
+          <div class="flex h-1/5">
+            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+              variant="ghost"
+              class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented  border-l">
+              tailwindcss
+            </UButton>
+            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+              variant="ghost"
+              class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented ">
+              cursors
+            </UButton>
+            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+              variant="ghost"
+              class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented ">
+              dexie
+            </UButton>
+            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+              variant="ghost"
+              class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented ">
+              scroller
+            </UButton>
+          </div>
+          <div class="flex h-1/5">
+            <UButton
+              class=" rounded-none rounded-bl-2xl p-2.5 w-1/4 border-t border-r border-accented border-b border-l"
+              icon="i-lucide-rocket" size="md" color="neutral" variant="ghost">
+              fuse.js
+            </UButton>
+            <UButton disabled size="md" color="neutral" variant="ghost"
+              class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented border-b">
+            </UButton>
+            <UButton disabled size="md" color="neutral" variant="ghost"
+              class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented border-b">
+            </UButton>
+            <UButton
+              class=" rounded-none rounded-br-2xl p-2.5 w-1/4 border-t border-r border-accented border-b"
+              disabled size="md" color="neutral" variant="ghost">
+            </UButton>
+          </div>
+        </div>
       </div>
     </template>
   </UDrawer>
