@@ -225,6 +225,7 @@ html.dark {
   }
 }
 
+#cvContainer.scrollCV > *,
 #contentPanelsContent > *{
   scroll-snap-stop: always;
   scroll-snap-align: start;

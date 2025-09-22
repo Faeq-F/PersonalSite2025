@@ -18,7 +18,6 @@
           <slot name="left-panel-footer"></slot>
         </template>
       </UCard>
-      <!-- Snap scroll these or transition them -->
       <div id="contentPanelsContent"
         class="flex flex-col h-full w-full mr-8 mt-4 overflow-y-scroll overflow-x-hidden snap-mandatory snap-y"
         data-lenis-prevent>

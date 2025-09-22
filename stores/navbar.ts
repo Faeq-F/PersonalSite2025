@@ -145,7 +145,7 @@ export const useMiddleNavbarItems = defineStore("middleNavbarItems", {
           {
             label: 'CV',
             icon: 'i-lucide-file-text',
-            to: { path: '/', hash: '#faq' },
+            to: '/cv',
             active: false
           }
         ],

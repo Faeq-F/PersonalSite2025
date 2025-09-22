@@ -166,7 +166,6 @@ await db.skillCategories.bulkPut([
   { name: 'Creative Skills', subCategories: [] },
 ]);
 
-
 await db.skills.bulkPut([
   { name: "Python", category: [], experienceLevel: [] },
   { name: "JavaScript", category: [], experienceLevel: [] },
@@ -270,6 +269,38 @@ await db.skills.bulkPut([
   // { name: "", category: [], experienceLevel: [] },
   // { name: "", category: [], experienceLevel: [] },
 ]);
+
+await db.linkTypes.bulkPut([
+  { name: "" },
+])
+
+await db.links.bulkPut([
+  { url: "", type: '' },
+])
+
+await db.organizations.bulkPut([
+  { name: "", roles: [7], locations: [''], links: [''] },
+])
+
+await db.certificates.bulkPut([
+  { name: "", description: '', organization: [''], code: '', links: [''], images: [''], skills: [''] },
+])
+
+await db.projects.bulkPut([
+  { name: "", description: '', links: [''], skills: [''], startDate: new Date(), endDate: new Date(), relatedActivities: [4], relatedProjects: [''] },
+])
+
+await db.roleCategories.bulkPut([
+  { name: "", skills: [''] },
+])
+
+await db.modules.bulkPut([
+  { organization: [''], name: "", code: "", grade: "", year: "" },
+])
+
+await db.roles.bulkPut([
+  { id: 0, organization: [''], name: "", type: '', category: [''], startDate: new Date(), endDate: new Date(), description: '', links: [''], skills: [''], modules: [''], locations: [''], relatedActivities: [4] },
+])
 
 export type { Skill, SkillCategory, Certificate, Project, Link, LinkType, Role, RoleCategory, Organization, Module };
 export { db };

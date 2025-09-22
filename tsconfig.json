@@ -5,4 +5,15 @@
     "components.d.ts",
     "auto-imports.d.ts",
   ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "./*"
+      ],
+      "@/*": [
+        "./*"
+      ]
+    },
+  }
 }

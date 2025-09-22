@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import contentPanels from '~/components/layoutSections/contentPanels.vue';
 import type { TabsItem } from '@nuxt/ui'
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 
 const certsOptions = ref<TabsItem[]>([
   {
@@ -108,36 +108,58 @@ function onInputOpen(open) {
 
       <UTabs :content="false" :items="certsOptions" class="mx-auto my-4 w-fit"
         style="--ui-primary: #4a5565" orientation="vertical"
-        v-model="certsActive" :ui="{ trigger: 'self-start' }" />
+        v-model="certsActive"
+        :ui="{ trigger: 'self-start', label: 'dark:text-white', leadingIcon: 'dark:text-white' }" />
 
     </template>
 
     <template #left-panel-footer>
-      <UTabs :content="false" :items="viewOptions" class="mx-auto my-4 w-fit"
+      <UTabs :content="false" :items="viewOptions" class="mx-auto my-4 w-fit "
         style="--ui-primary: #4a5565" v-model="viewActive"
-        :ui="{ trigger: 'self-start' }" />
+        :ui="{ trigger: 'self-start', label: 'dark:text-white', leadingIcon: 'dark:text-white' }" />
     </template>
 
     <template #content>
-      <div :class="viewActive == 'grid' ? 'flex justify-evenly flex-wrap' : ''">
-        <UCard class="opacity-80 cardShadow border border-[var(--ui-border)] "
-          :class="viewActive == 'grid' ? 'm-4 min-w-4/9' : 'm-4 h-60'"
-          v-for="i in Array(8).keys()">
-          <template #header>
-            header
-          </template>
+      <transition name="slide" mode="out-in">
+        <div class="" v-if="viewActive == 'list'">
+          <UCard
+            class="opacity-80 cardShadow border border-[var(--ui-border)] m-4 h-60"
+            v-for="i in Array(8).keys()">
+            <template #header>
+              header
+            </template>
 
-          <div class="min-h-20">
-            content
-          </div>
-
-          <template #footer>
-            <div>
-              footer
+            <div class="min-h-20">
+              content
             </div>
-          </template>
-        </UCard>
-      </div>
+
+            <template #footer>
+              <div>
+                footer
+              </div>
+            </template>
+          </UCard>
+        </div>
+        <div class="flex justify-evenly flex-wrap" v-else>
+          <UCard
+            class="opacity-80 cardShadow border border-[var(--ui-border)] m-4 min-w-4/9"
+            v-for="i in Array(8).keys()">
+            <template #header>
+              header
+            </template>
+
+            <div class="min-h-20">
+              content
+            </div>
+
+            <template #footer>
+              <div>
+                footer
+              </div>
+            </template>
+          </UCard>
+        </div>
+      </transition>
     </template>
 
   </contentPanels>

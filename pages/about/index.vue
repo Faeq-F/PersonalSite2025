@@ -121,7 +121,7 @@ onMounted(() => { Scroller.init(); })
       <UStepper ref="stepper" :items="items" orientation="vertical"
         v-model="active" class="h-full w-full -mt-4 stepper"
         style="--ui-primary: #4a5565"
-        :ui="{ separator: 'h-8 transition-all ease-in-out duration-200', item: 'mt-4', indicator: 'transition-all ease-in-out duration-200', trigger: 'transition-all ease-in-out duration-200' }"
+        :ui="{ separator: 'h-8 transition-all ease-in-out duration-200', item: 'mt-4', indicator: 'transition-all ease-in-out duration-200 dark:text-white', trigger: 'transition-all ease-in-out duration-200' }"
         disabled />
     </template>
 
@@ -130,13 +130,13 @@ onMounted(() => { Scroller.init(); })
         <div class="flex gap-2 justify-between mt-4">
           <UButton leading-icon="i-lucide-arrow-left"
             :disabled="!stepper?.hasPrev" @click="stepper?.prev()"
-            style="--ui-primary: #4a5565">
+            style="--ui-primary: #4a5565" class="dark:text-white">
             Prev
           </UButton>
           <span class="pt-1">{{ items[active].label }}</span>
           <UButton trailing-icon="i-lucide-arrow-right"
             :disabled="!stepper?.hasNext" @click="stepper?.next()"
-            style="--ui-primary: #4a5565">
+            style="--ui-primary: #4a5565" class="dark:text-white">
             Next
           </UButton>
         </div>

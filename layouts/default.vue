@@ -154,13 +154,13 @@ onMounted(async () => {
 //=-------------------------------------------------------------------
 //== Page transitions ==//
 
-// .slide-enter-active,
+.slide-enter-active,
 .slide-leave-active {
   transition:
-    opacity 1s,
+    opacity 1s ease,
 }
 
-// .slide-enter-from,
+.slide-enter-from,
 .slide-leave-to {
   opacity: 0;
 }

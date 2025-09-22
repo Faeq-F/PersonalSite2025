@@ -19,6 +19,7 @@
     "@nuxt/ui": "^3.1.2",
     "@nuxtjs/composition-api": "^0.34.0",
     "@pinia/nuxt": "^0.11.0",
+    "@tato30/vue-pdf": "^1.11.4",
     "@unhead/vue": "^2.0.10",
     "@vueuse/rxjs": "^13.6.0",
     "better-sqlite3": "^12.2.0",

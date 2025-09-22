@@ -43,7 +43,6 @@ export default defineNuxtConfig({
     "@nuxt/scripts",
     "@nuxt/ui",
     "@pinia/nuxt",
-
   ],
   icon: {
     clientBundle: {
