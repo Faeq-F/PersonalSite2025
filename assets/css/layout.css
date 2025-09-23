@@ -36,8 +36,9 @@ body{
 }
 
 #credits {
+  pointer-events: all;
   position: fixed;
-  bottom: -1px;
+  bottom: 0px;
   font-size: x-small;
   width: 100vw;
   text-align: center;
@@ -64,12 +65,17 @@ body{
   box-shadow: #00000014 0 5px 15px, #191c2133 0 15px 35px -5px, #ffffff12 0 0 0 1px;
 }
 
-.zTheme #vidBG {
-  display: none;
-}
-
-html.zTheme #bodyPanel {
+html.zTheme #vidBG {
   background-image: url('/media/bgZtheme.png');
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.zTheme #vidBG video{
+  display: none;
+}
+
+html.zTheme.dark #vidBG {
+  filter: invert(1);
+  border-color: #cebea7; /* Inverted border color */
 }

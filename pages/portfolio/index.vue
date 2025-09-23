@@ -83,8 +83,8 @@ function onInputOpen(open) {
 <template>
   <contentPanels>
     <template #left-panel-header>
-      <div class="font-bold varela" style="line-height: 1;">
-        <p class="text-[3rem]">Portfolio</p>
+      <div class="font-bold " style="line-height: 1;">
+        <p class="text-[3rem] varela">Portfolio</p>
         <p class="text-[1rem]">What I have worked on</p>
       </div>
     </template>

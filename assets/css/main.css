@@ -171,6 +171,7 @@ span[role="slider"],
 .clickable,
 button,
 input,
+#credits,
 a {
   cursor: url(/PersonalSite2025/cursors/light-Click.cur),
     auto !important;
@@ -193,6 +194,7 @@ html.dark {
 .dark .clickable,
 .dark button,
 .dark input,
+.dark #credits,
 .dark a {
   cursor: url(/PersonalSite2025/cursors/dark-Click.cur),
     auto !important;

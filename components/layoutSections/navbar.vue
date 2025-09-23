@@ -212,8 +212,9 @@ watch(searchVal, (newSearch, _oldSearch) => {
           :items="themeItems" variant="link" trailing-icon=" " :ui="{
             viewport: '-translate-y-46 -translate-x-4 min-h-32 max-h-32 pr-28',
             content: 'w-auto  ml-0.5',
-            childList: 'w-auto',
+            childList: 'w-auto flex flex-col',
             childLabel: 'w-full',
+            childLinkIcon: 'mt-0.5',
             childLinkDescription: 'line-clamp-1'
           }"
           class="relative flex w-auto justify-end bg-[#f6f7fa] dark:bg-[#0e0d0d] rounded-full px-3 mr-1.5 h-8 transition-all ease-in-out duration-200">

@@ -16,7 +16,7 @@
     "@nuxt/icon": "^1.13.0",
     "@nuxt/image": "^1.10.0",
     "@nuxt/scripts": "^0.11.7",
-    "@nuxt/ui": "^3.1.2",
+    "@nuxt/ui": "^3.3.4",
     "@nuxtjs/composition-api": "^0.34.0",
     "@pinia/nuxt": "^0.11.0",
     "@tato30/vue-pdf": "^1.11.4",

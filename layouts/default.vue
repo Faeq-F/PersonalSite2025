@@ -47,88 +47,93 @@ onMounted(async () => {
     </div>
 
   </div>
-  <UDrawer direction="bottom" title="Credits" description="Thank you!" inset>
-    <div id="credits">&copy; Faeq - Built From The Ground Up - <span
-        style="text-decoration: underline; pointer-events: all;cursor: pointer;">credits</span>
-    </div>
+  <UDrawer direction="bottom" title="Credits" description="Thank you!" inset
+    :handle="false" :ui="{ content: 'rounded-3xl' }">
+    <div id="credits" class="hover:underline">
+      Made with ❤️ by Faeq &copy;</div>
 
     <template #content>
-      <div class="h-64 p-4 w-full">
-        This site was built by Faeq &copy;, using:
-        <div class="rounded-2xl w-full h-full mt-4 ">
+      <div class="h-64 p-4 pb-0 w-full">
+        This site was built by <a target="_blank"
+          href="https://github.com/faeq-f" class="underline">Faeq</a> using:
+        <div class="rounded-2xl w-full h-full mt-2 ">
           <div class="flex h-1/5">
-            <UButton
-              class="rounded-none rounded-tl-2xl p-2.5 w-1/4 border-t border-r border-accented border-l"
-              icon="i-lucide-rocket" size="md" color="neutral" variant="ghost">
-              <a target="_blank" href="https://youtu.be/Bj0h4VtMDQA">
+            <nuxt-link target="_blank" to="https://youtu.be/Bj0h4VtMDQA"
+              class="w-1/4 rounded-none rounded-tl-2xl border-t border-r border-accented border-l">
+              <UButton
+                class="p-2.5 rounded-none rounded-tl-2xl hover:bg-[var(--ui-bg-elevated)] w-full h-full"
+                icon="i-lucide-image-play" size="md" color="neutral "
+                variant="ghost">
                 Background video
-              </a>
-            </UButton>
-            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+              </UButton>
+            </nuxt-link>
+            <UButton icon="i-lucide-component" size="md" color="neutral"
               variant="ghost"
               class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented">
               Maz UI
             </UButton>
-            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+            <UButton icon="i-lucide-puzzle" size="md" color="neutral"
               variant="ghost"
               class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented ">
               Nuxt UI
             </UButton>
             <UButton
               class=" rounded-none rounded-tr-2xl p-2.5 w-1/4 border-t border-r border-accented "
-              icon="i-lucide-rocket" size="md" color="neutral" variant="ghost">
+              icon="i-lucide-cylinder" size="md" color="neutral"
+              variant="ghost">
               Pinia
             </UButton>
           </div>
           <div class="flex h-1/5">
-            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+            <UButton icon="i-lucide-type-outline" size="md" color="neutral"
               variant="ghost"
               class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented  border-l">
               Varela Font
             </UButton>
-            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+            <UButton icon="i-lucide-case-sensitive" size="md" color="neutral"
               variant="ghost"
               class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented ">
               Outfit Font
             </UButton>
-            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+            <UButton icon="i-lucide-code-xml" size="md" color="neutral"
               variant="ghost"
               class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented ">
-              svgl icons
+              SVGL icons
             </UButton>
-            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+            <UButton icon="i-lucide-shell" size="md" color="neutral"
               variant="ghost"
               class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented ">
-              lucide icons
+              Lucide icons
             </UButton>
           </div>
           <div class="flex h-1/5">
-            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+            <UButton icon="i-lucide-wind" size="md" color="neutral"
               variant="ghost"
               class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented  border-l">
-              tailwindcss
+              TailwindCSS
             </UButton>
-            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+            <UButton icon="i-lucide-mouse-pointer-2" size="md" color="neutral"
               variant="ghost"
               class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented ">
-              cursors
+              Cursors
             </UButton>
-            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+            <UButton icon="i-lucide-database" size="md" color="neutral"
               variant="ghost"
               class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented ">
-              dexie
+              Dexie.js
             </UButton>
-            <UButton icon="i-lucide-rocket" size="md" color="neutral"
+            <UButton icon="i-lucide-gallery-vertical" size="md" color="neutral"
               variant="ghost"
               class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented ">
-              scroller
+              Scroller
             </UButton>
           </div>
           <div class="flex h-1/5">
             <UButton
               class=" rounded-none rounded-bl-2xl p-2.5 w-1/4 border-t border-r border-accented border-b border-l"
-              icon="i-lucide-rocket" size="md" color="neutral" variant="ghost">
-              fuse.js
+              icon="i-lucide-binoculars" size="md" color="neutral"
+              variant="ghost">
+              Fuse.js
             </UButton>
             <UButton disabled size="md" color="neutral" variant="ghost"
               class=" rounded-none p-2.5 w-1/4 border-t border-r border-accented border-b">
