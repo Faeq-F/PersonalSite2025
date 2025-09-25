@@ -51,7 +51,7 @@ const items: StepperItem[] = [
   {
     title: '2025',
     description: '21 years old',
-    label: 'Degree',
+    label: 'My Degree',
     icon: 'i-lucide-graduation-cap'
   },
 ]

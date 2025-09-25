@@ -198,9 +198,9 @@ watch(searchVal, (newSearch, _oldSearch) => {
         <UNavigationMenu highlight highlight-color="neutral" color="neutral"
           orientation="horizontal" :items="middleItems.items" variant="link"
           :ui="{
-            viewport: '!px-70 -translate-y-14/12 min-h-96 max-h-96',
+            viewport: '!px-70 mt-[1px] -translate-y-15/12 min-h-65 max-h-65',
             content: '',
-            childLink: 'bg-white hover:bg-gray-100 dark:bg-[var(--ui-bg)] dark:hover:bg-gray-800',
+            childLink: 'bg-white hover:bg-gray-100 dark:bg-[var(--ui-bg)] dark:hover:bg-gray-800 rounded-lg',
             childLinkDescription: 'text-balance line-clamp-2',
             linkTrailingIcon: 'rotate-180 group-data-[state=open]:rotate-0'
           }" />
@@ -215,7 +215,8 @@ watch(searchVal, (newSearch, _oldSearch) => {
             childList: 'w-auto flex flex-col',
             childLabel: 'w-full',
             childLinkIcon: 'mt-0.5',
-            childLinkDescription: 'line-clamp-1'
+            childLinkDescription: 'line-clamp-1',
+            childLink: '-mt-0.25 bg-white hover:bg-gray-100 dark:bg-[var(--ui-bg)] dark:hover:bg-gray-800 rounded-lg',
           }"
           class="relative flex w-auto justify-end bg-[#f6f7fa] dark:bg-[#0e0d0d] rounded-full px-3 mr-1.5 h-8 transition-all ease-in-out duration-200">
           <template #item="{ item }">

@@ -3,6 +3,9 @@ import contentPanels from '~/components/layoutSections/contentPanels.vue';
 import type { TabsItem } from '@nuxt/ui'
 import { ref } from 'vue';
 
+import { useRoute } from 'nuxt/app';
+const route = useRoute()
+
 const certsOptions = ref<TabsItem[]>([
   {
     label: 'Only Certificates',
@@ -20,7 +23,7 @@ const certsOptions = ref<TabsItem[]>([
     value: 'noCerts'
   }
 ])
-const certsActive = ref('all')
+const certsActive = ref((route.query.certs as string) || 'all')
 
 const viewOptions = ref<TabsItem[]>([
   {

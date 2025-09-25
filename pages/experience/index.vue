@@ -68,27 +68,27 @@ const roles = ref<CheckboxGroupItem[]>([
   {
     label: 'Jobs',
     value: 'jobs',
-    description: 'A paid position of regular employment.'
+    description: 'A paid position of regular employment'
   },
   {
     label: 'Education',
     value: 'education',
-    description: 'Formal learning experiences, degrees, and certifications.'
+    description: 'Formal learning experiences, degrees, and certifications'
   },
   {
     label: 'Volunteering',
     value: 'volunteering',
-    description: 'Unpaid work for the community or charitable organizations.'
+    description: 'Unpaid work for the community or charitable organizations'
   },
   {
     label: 'Events',
     value: 'events',
-    description: 'Various affairs taken part in.'
+    description: 'Various affairs taken part in'
   },
   {
     label: 'Long-term projects',
     value: 'projects',
-    description: 'Significant undertakings with defined goals and timelines.'
+    description: 'Significant undertakings with defined goals and timelines'
   }
 ])
 const activeRole = ref<CheckboxGroupValue[]>(['jobs', 'education', 'projects', 'volunteering', 'events'])
