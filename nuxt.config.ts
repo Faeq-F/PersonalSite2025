@@ -24,6 +24,20 @@ export default defineNuxtConfig({
       failOnError: false,
     },
   },
+  vite: {
+    optimizeDeps: {
+      esbuildOptions: {
+        supported: {
+          'top-level-await': true,
+        },
+      },
+    },
+    esbuild: {
+      supported: {
+        'top-level-await': true,
+      },
+    }
+  },
   vue: {
     compilerOptions: {
       whitespace: 'preserve'
