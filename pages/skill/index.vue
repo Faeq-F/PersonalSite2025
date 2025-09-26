@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { liveQuery } from "dexie";
 import { useObservable } from "@vueuse/rxjs";
-import { db } from "~/assets/scripts/db.ts";
+import { from } from "rxjs";
+import { db, type Skill } from "~/assets/scripts/db";
 
-
-let skills = useObservable(liveQuery(() => db.skills.toArray()))
-
+let skills = useObservable<Skill[]>(from(liveQuery<Skill[]>(() => db.skills.toArray())))
+//let n = skills.value![1].category // types now working!!!!!!!!!!!!!!!!!!!!!
 </script>
 <template>
-  {{ skills }}
+  <div>{{ skills }}</div>
 </template>

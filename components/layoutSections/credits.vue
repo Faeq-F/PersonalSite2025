@@ -8,7 +8,7 @@
           class="w-1/4 rounded-none rounded-tl-2xl border-t border-r border-accented border-l">
           <UButton
             class="p-2.5 rounded-none rounded-tl-2xl hover:bg-[var(--ui-bg-elevated)] w-full h-full"
-            icon="i-lucide-server" size="md" color="neutral " variant="ghost">
+            icon="i-lucide-server" size="md" color="neutral" variant="ghost">
             Nuxt
           </UButton>
         </nuxt-link>
@@ -33,7 +33,7 @@
           class="w-1/4 rounded-none border-t border-r border-accented border-l">
           <UButton
             class="p-2.5 rounded-none hover:bg-[var(--ui-bg-elevated)] w-full h-full"
-            icon="i-lucide-image-play" size="md" color="neutral "
+            icon="i-lucide-image-play" size="md" color="neutral"
             variant="ghost">
             Background video
           </UButton>

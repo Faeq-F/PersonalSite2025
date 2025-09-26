@@ -15,7 +15,7 @@ const {
   watchChanges: true,
 })
 
-function toggleTheme(theme) {
+function toggleTheme(theme: number) {
   if (theme == 1) {
     setLightTheme()
   } else if (theme == 0) {
@@ -210,7 +210,7 @@ watch(searchVal, (newSearch, _oldSearch) => {
         <!-- Theme Switch -->
         <UNavigationMenu content-orientation="vertical" color="neutral"
           :items="themeItems" variant="link" trailing-icon=" " :ui="{
-            viewport: '-translate-y-46 -translate-x-4 min-h-32 max-h-32 pr-28',
+            viewport: '-translate-y-46 -translate-x-4 min-h-32 max-h-32 pr-28 ',
             content: 'w-auto  ml-0.5',
             childList: 'w-auto flex flex-col',
             childLabel: 'w-full',
@@ -220,12 +220,12 @@ watch(searchVal, (newSearch, _oldSearch) => {
           }"
           class="relative flex w-auto justify-end bg-[#f6f7fa] dark:bg-[#0e0d0d] rounded-full px-3 mr-1.5 h-8 transition-all ease-in-out duration-200">
           <template #item="{ item }">
-            <UIcon :name="item.icon" class="!size-4.5" />
+            <UIcon :name="item.icon!" class="!size-4.5" />
           </template>
-          <template #settings="{ item }">
+          <template #settings="{ item }: { item: NavigationMenuItem }">
             <USeparator orientation="vertical"
               class="h-4 mx-4 -ml-0.5 invert opacity-20" />
-            <UIcon :name="item.icon" class="!size-4.5"
+            <UIcon :name="item.icon!" class="!size-4.5"
               :class="bgAnimation ? 'animate-[spin_3s_linear_infinite]' : ''" />
           </template>
           <template #settings-content>

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { onMounted, ref, useTemplateRef, watch } from 'vue';
-import type { StepperItem } from '@nuxt/ui'
+import type { StepperItem, TabsItem } from '@nuxt/ui'
 import contentPanels from '~/components/layoutSections/contentPanels.vue';
 import IntroCard from '~/components/aboutMeCards/IntroductionCard.vue';
 import Card2010 from '~/components/aboutMeCards/2010Card.vue';
@@ -106,6 +106,20 @@ class Scroller {
 
 onMounted(() => { Scroller.init(); })
 
+const scrollOptions = ref<TabsItem[]>([
+  {
+    label: 'Regular Scroll',
+    icon: 'i-lucide-align-vertical-space-between',
+    value: 'normal'
+  },
+  {
+    label: 'Snap Scroll',
+    icon: 'i-lucide-align-vertical-space-around',
+    value: 'snap'
+  },
+])
+const scrollActive = ref('snap')
+
 </script>
 
 <template>
@@ -126,8 +140,8 @@ onMounted(() => { Scroller.init(); })
     </template>
 
     <template #left-panel-footer>
-      <div>
-        <div class="flex gap-2 justify-between mt-4">
+      <div class="flex gap-4 flex-col">
+        <div class="flex gap-2 justify-between">
           <UButton leading-icon="i-lucide-arrow-left"
             :disabled="!stepper?.hasPrev" @click="stepper?.prev()"
             style="--ui-primary: #4a5565" class="dark:text-white">
@@ -140,17 +154,22 @@ onMounted(() => { Scroller.init(); })
             Next
           </UButton>
         </div>
+        <UTabs :content="false" :items="scrollOptions" v-model="scrollActive"
+          :ui="{ trigger: 'self-start', label: 'dark:text-white', leadingIcon: 'dark:text-white' }"
+          style="--ui-primary: #4a5565" size="sm" />
       </div>
     </template>
 
     <template #content>
-      <IntroCard />
-      <Card2010 />
-      <Card2016 />
-      <Card2018 />
-      <Card2020 />
-      <Card2022 />
-      <Card2025 />
+      <div :class="scrollActive == 'snap' ? 'snapScroll' : ''">
+        <IntroCard />
+        <Card2010 />
+        <Card2016 />
+        <Card2018 />
+        <Card2020 />
+        <Card2022 />
+        <Card2025 />
+      </div>
     </template>
 
   </contentPanels>

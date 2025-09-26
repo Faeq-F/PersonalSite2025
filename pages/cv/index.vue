@@ -11,12 +11,12 @@ import type { TabsItem } from '@nuxt/ui'
 const viewOptions = ref<TabsItem[]>([
   {
     label: 'Single Page',
-    icon: 'i-lucide-table',
+    icon: 'i-lucide-rectangle-vertical',
     value: 'single'
   },
   {
     label: 'Dual Page',
-    icon: 'i-lucide-rows-3',
+    icon: 'i-lucide-columns-2',
     value: 'dual'
   },
 ])
@@ -25,12 +25,12 @@ const viewActive = ref('dual')
 const scrollOptions = ref<TabsItem[]>([
   {
     label: 'Regular Scroll',
-    icon: 'i-lucide-table',
+    icon: 'i-lucide-align-vertical-space-between',
     value: 'normal'
   },
   {
     label: 'Snap Scroll',
-    icon: 'i-lucide-rows-3',
+    icon: 'i-lucide-align-vertical-space-around',
     value: 'snap'
   },
 ])
@@ -191,7 +191,7 @@ watch(page, (newPageVal) => {
     </div>
 
     <div
-      class="opacity-80 m-4 h-full overflow-y-scroll transition-all snap-mandatory snap-both"
+      class="opacity-80 m-4 h-full overflow-y-scroll transition-all snap-mandatory snap-both ScrollBlur"
       id="cvContainer" data-lenis-prevent
       :class="viewActive == 'single' ? scrollActive == 'snap' ? 'scrollCV' : '' : 'flex-auto flex -mx-4'">
       <div v-for="page in pages" :key="page" :id="`cvPage${page}`"

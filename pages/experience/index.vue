@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import contentPanels from '~/components/layoutSections/contentPanels.vue';
-import type { CheckboxGroupItem, CheckboxGroupValue, RadioGroupValue, TabsItem } from '@nuxt/ui'
+import type { CheckboxGroupItem, CheckboxGroupValue, InputMenuItem, RadioGroupValue, TabsItem } from '@nuxt/ui'
 import { ref } from 'vue';
 
 import type { TimelineItem } from '@nuxt/ui'
@@ -27,6 +27,42 @@ const items = ref<TimelineItem[]>([
     icon: 'i-lucide-code',
     to: '/about/'
   },
+  {
+    date: 'Apr 5 2025',
+    title: 'Testing & Deployment',
+    description: 'QA testing and performance optimization. Deployed the application to production.',
+    icon: 'i-lucide-check-circle',
+    to: '/about/'
+  },
+  {
+    date: 'Apr 5 2025',
+    title: 'Testing & Deployment',
+    description: 'QA testing and performance optimization. Deployed the application to production.',
+    icon: 'i-lucide-check-circle',
+    to: '/about/'
+  },
+  {
+    date: 'Apr 5 2025',
+    title: 'Testing & Deployment',
+    description: 'QA testing and performance optimization. Deployed the application to production.',
+    icon: 'i-lucide-check-circle',
+    to: '/about/'
+  },
+  {
+    date: 'Apr 5 2025',
+    title: 'Testing & Deployment',
+    description: 'QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.',
+    icon: 'i-lucide-check-circle',
+    to: '/about/'
+  },
+  {
+    date: 'Apr 5 2025',
+    title: 'Testing & Deployment',
+    description: 'QA testing and performance optimization. Deployed the application to production.',
+    icon: 'i-lucide-check-circle',
+    to: '/about/'
+  },
+
   {
     date: 'Apr 5 2025',
     title: 'Testing & Deployment',
@@ -97,36 +133,63 @@ const TagCatItems = ref([
   {
     type: 'label',
     label: 'Fruits',
-    icon: 'i-lucide-circle-help'
-
   },
-  'Apple',
-  'Banana',
-  'Blueberry',
-  'Grapes',
-  'Pineapple',
+  {
+    type: 'item',
+    label: 'Apple',
+    icon: 'i-lucide-circle-help'
+  },
+  {
+    type: 'item',
+    label: 'Banana',
+    icon: 'i-lucide-circle-help'
+  },
+  {
+    type: 'item',
+    label: 'Blueberry',
+    icon: 'i-lucide-circle-help'
+  },
+  {
+    type: 'item',
+    label: 'Grapes',
+    icon: 'i-lucide-circle-help'
+  },
+  {
+    type: 'item',
+    label: 'Pineapple',
+    icon: 'i-lucide-circle-help'
+  },
   {
     type: 'separator'
   },
   {
     type: 'label',
     label: 'Vegetables',
-    icon: 'i-lucide-circle-help'
-
   },
   {
-    label: 'Vegetables',
+    type: 'item',
+    label: 'Broccoli',
     icon: 'i-lucide-circle-help'
-
   },
-  'Broccoli',
-  'Carrot',
-  'Courgette',
-  'Leek'
-])
+  {
+    type: 'item',
+    label: 'Carrot',
+    icon: 'i-lucide-circle-help'
+  },
+  {
+    type: 'item',
+    label: 'Courgette',
+    icon: 'i-lucide-circle-help'
+  },
+  {
+    type: 'item',
+    label: 'Leek',
+    icon: 'i-lucide-circle-help'
+  }
+] satisfies InputMenuItem[])
 const TagCatValue = ref()
 
-function onInputOpen(open) {
+function onInputOpen(open: boolean) {
   if (open) {
     // make popup scrollable
     setTimeout(() => {
@@ -134,6 +197,21 @@ function onInputOpen(open) {
     }, 100);
   }
 }
+
+
+const scrollOptions = ref<TabsItem[]>([
+  {
+    label: 'Regular Scroll',
+    icon: 'i-lucide-align-vertical-space-between',
+    value: 'normal'
+  },
+  {
+    label: 'Snap Scroll',
+    icon: 'i-lucide-align-vertical-space-around',
+    value: 'snap'
+  },
+])
+const scrollActive = ref('snap')
 
 </script>
 
@@ -168,7 +246,7 @@ function onInputOpen(open) {
         }" data-lenis-prevent class="mx-auto my-4 w-fit block"
         @update:open="onInputOpen">
         <template #tags-item-text="item">
-          <UIcon :name="item.item.icon" />
+          <UIcon :name="item.item.icon as string" />
           {{ item.item.label }}
         </template>
       </UInputMenu>
@@ -176,38 +254,38 @@ function onInputOpen(open) {
     </template>
 
     <template #left-panel-footer>
-
+      <UTabs :content="false" :items="scrollOptions" v-model="scrollActive"
+        :ui="{ trigger: 'self-start', label: 'dark:text-white', leadingIcon: 'dark:text-white' }"
+        style="--ui-primary: #4a5565" size="sm" />
     </template>
 
     <template #content>
-      <transition name="slide" mode="out-in">
-        <div class="">
-          <UTimeline :default-value="-1" :items="items" class="w-full" size="lg"
-            :ui="{
-              date: 'float-end ms-1 pr-4',
-              description: 'px-3 mr-4 py-2 mt-2 rounded-md text-default cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
-              separator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black brightness-200',
-              indicator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
-            }">
-            <template #date="{ item }">
-              <nuxt-link :to="item.to">
-                {{ item.date }}
-              </nuxt-link>
-            </template>
-            <template #title="{ item }">
-              <nuxt-link :to="item.to">
-                {{ item.title }}
-              </nuxt-link>
-            </template>
-            <template #description="{ item }">
-              <nuxt-link :to="item.to">
-                <!-- Could use md here -->
-                {{ item.description }}
-              </nuxt-link>
-            </template>
-          </UTimeline>
-        </div>
-      </transition>
+      <UTimeline :default-value="-1" :items="items" class="w-full "
+        :class="scrollActive == 'snap' ? 'snapScroll' : ''" size="lg" :ui="{
+          date: 'float-end ms-1 pr-4',
+          description: 'px-3 mr-4 py-2 mt-2 rounded-md text-default cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
+          separator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black brightness-200',
+          indicator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
+        }">
+        <template #date="{ item }">
+          <nuxt-link :to="item.to">
+            {{ item.date }}
+          </nuxt-link>
+        </template>
+        <template #title="{ item }">
+          <nuxt-link :to="item.to">
+            {{ item.title }}
+          </nuxt-link>
+        </template>
+        <template #description="{ item }">
+          <nuxt-link :to="item.to">
+            <!-- Could use md here -->
+            {{ item.description }}
+          </nuxt-link>
+        </template>
+      </UTimeline>
+
+
     </template>
 
   </contentPanels>
