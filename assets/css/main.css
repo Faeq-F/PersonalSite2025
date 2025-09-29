@@ -265,3 +265,35 @@ html.dark {
     pointer-events: none;
   }
 }
+
+.skillsScrollBlur{
+  &:before {
+    content: "";
+    inset: 0;
+    display: block;
+    backdrop-filter: blur(2px) saturate(1.2);
+    mask-image: linear-gradient(rgba(#000, 0), rgba(#000, .9) 80%, #000);
+    position: sticky;
+    top: 0rem;
+    left: 0;
+    height: 0.5rem;
+    z-index: 10;
+    width: 100%;
+    pointer-events: none;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    -webkit-backdrop-filter: blur(1px) saturate(1.2);
+    backdrop-filter: blur(2px) saturate(1.2);
+    mask-image: linear-gradient(rgba(#000, 0), rgba(#000, .9) 80%, #000);
+    position: sticky;
+        bottom: 0;
+        left: 0;
+        height: 1rem;
+        z-index: 10;
+        width: 100%;
+    pointer-events: none;
+  }
+}

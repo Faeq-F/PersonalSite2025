@@ -215,9 +215,6 @@ let myProjects = useObservable<Project[]>(from(liveQuery<Project[]>(() => db.pro
       <div class="flex justify-evenly flex-wrap"
         :class="scrollActive == 'snap' ? 'snapScroll' : ''">
 
-        {{ myCertificates }}
-        {{ myProjects }}
-
         <Card1 />
         <Card2 />
         <Card3 />
