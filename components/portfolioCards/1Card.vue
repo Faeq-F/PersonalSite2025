@@ -21,13 +21,6 @@ const projectEnd = computed(() => {
     : `${settings.months[project.value.endDate.getMonth()]?.substring(0, 3) ?? ''} ${project.value.endDate.getFullYear()}`;
 });
 
-const images = [
-  'https://faeq-f.github.io/Quokka/media/AppScreenshots/AllApps.png',
-  'https://faeq-f.github.io/Quokka/media/AppScreenshots/AllApps.png',
-  'https://faeq-f.github.io/Quokka/media/AppScreenshots/AllApps.png',
-  'https://faeq-f.github.io/Quokka/media/AppScreenshots/AllApps.png',
-  'https://faeq-f.github.io/Quokka/media/AppScreenshots/AllApps.png',
-]
 </script>
 
 <template>
@@ -44,8 +37,11 @@ const images = [
       </template>
 
       <div class="h-60 flex justify-between">
-        <div class="h-full">
-          {{ project }}
+        <div
+          class="h-full w-full dark:border-gray-600 !border-default border rounded-2xl">
+          <img
+            class="object-cover max-h-full w-full object-top  rounded-2xl hover:transform-[scale(0.95)]"
+            src="https://faeq-f.github.io/Quokka/media/AppScreenshots/AllApps.png" />
         </div>
         <div class="min-w-50 max-w-50 flex">
           <USeparator orientation="vertical" class="h-full mx-3"
