@@ -349,7 +349,11 @@ db.on('populate', () => {
   ])
 
   db.roleCategories.bulkPut([
-    { name: "", skills: [''] },
+    { name: "jobs", skills: [''] },
+    { name: "education", skills: [''] },
+    { name: "volunteering", skills: [''] },
+    { name: "events", skills: [''] },
+    { name: "projects", skills: [''] },
   ])
 
   db.modules.bulkPut([
@@ -357,7 +361,84 @@ db.on('populate', () => {
   ])
 
   db.roles.bulkPut([
-    { id: 0, organization: [''], name: "", type: '', category: [''], startDate: new Date(), endDate: new Date(), description: '', links: [''], skills: [''], modules: [''], locations: [''], relatedActivities: [4] },
+    {
+      id: 4, organization: [''], name: "Volunteer Consultant",
+      type: 'volunteering', category: [''],
+      startDate: new Date("September 2017"),
+      endDate: new Date(),
+      description: 'Served as Subject Captain, advising and mentoring younger students in computer education, programming, assisting with coursework, classwork, and homework.Supported learning in classrooms and extracurricular clubs through one-on-one and group guidance.',
+      links: [''], skills: [''], modules: [''], locations: [''], relatedActivities: [4]
+    },
+    {
+      id: 0, organization: [''], name: "GCSEs",
+      type: 'education', category: [''],
+      startDate: new Date("September 2018"),
+      endDate: new Date(),
+      description: 'Studied 10 GCSEs including; Computer Science (9), Mathematics (7), Physics (7), English (7), Biology (8)',
+      links: [''], skills: [''], modules: [''], locations: [''], relatedActivities: [4]
+    },
+    {
+      id: 1, organization: [''], name: "Quokka",
+      type: 'projects', category: [''],
+      startDate: new Date("January 2020"),
+      endDate: new Date(),
+      description: 'A lightweight, customizable keystroke launcher in C#, C++, WPF and .NET. Enables diverse, flexible workflows via a plugin-driven design, enabling users to extend functionality according to unique needs. Accompanied by default plugins.',
+      links: [''], skills: [''], modules: [''], locations: [''], relatedActivities: [4]
+    },
+    {
+      id: 2, organization: [''], name: "A-levels",
+      type: 'education', category: [''],
+      startDate: new Date("September 2020"),
+      endDate: new Date(),
+      description: 'Studied 3 A-Levels; Computer Science (A), Mathematics (B), Physics (C)',
+      links: [''], skills: [''], modules: [''], locations: [''], relatedActivities: [4]
+    },
+    {
+      id: 3, organization: [''], name: "Pathway To Your Future Programme",
+      type: 'events', category: [''],
+      startDate: new Date("February 2022"),
+      endDate: new Date(),
+      description: 'Gained insights into software design and development lifecycle during a one-week program, collaborating with a group of 4 professionals and completing a hands-on, self-led project.',
+      links: [''], skills: [''], modules: [''], locations: [''], relatedActivities: [4]
+    },
+    {
+      id: 5, organization: [''], name: "BSc Hons. Computer Science (Software Engineering)", type: 'education', category: [''], startDate: new Date("September 2022"), endDate: new Date(),
+      description: 'With my dissertation on Concurrency-Based Game Environments, I studied several modules including; Software Engineering, Operating Systems, Databases, Software Design, Algorithms and Complexity, Symbolic AI',
+      links: [''], skills: [''], modules: [''], locations: [''], relatedActivities: [4]
+    },
+    {
+      id: 6, organization: [''], name: "Royal Hackaway v6",
+      type: 'events', category: [''],
+      startDate: new Date("February 2023"),
+      endDate: new Date(),
+      description: '',
+      links: [''], skills: [''], modules: [''], locations: [''], relatedActivities: [4]
+    },
+    {
+      id: 7, organization: [''], name: "Royal Hackaway v7",
+      type: 'events', category: [''],
+      startDate: new Date("January 2024"),
+      endDate: new Date(),
+      description: '',
+      links: [''], skills: [''], modules: [''], locations: [''], relatedActivities: [4]
+    },
+    {
+      id: 8, organization: [''], name: "Computer Science Teaching Assistant",
+      type: 'jobs', category: [''],
+      startDate: new Date("September 2024"),
+      endDate: new Date(),
+      description: 'Guided undergraduates in programming labs (Python, Java, SWI-Prolog), explaining complex programming concepts and advised with debugging and other practical exercises. Led weekly review sessions, assessed coursework, and gave feedback. Enhanced students\' problem - solving skills, fostering critical thinking, while strengthening technical expertise.',
+      links: [''], skills: [''], modules: [''], locations: [''], relatedActivities: [4]
+    },
+    {
+      id: 9, organization: [''], name: "Royal Hackaway v8",
+      type: 'events', category: [''],
+      startDate: new Date("February 2025"),
+      endDate: new Date(),
+      description: 'Won 1st place for Verdn\'s Environmental Hack challenge at Royal Hackaway v8. Developed a tool to track LLM carbon footprints and auto- offset emissions via Verdn’s initiatives(e.g., tree-planting). Produced during a 48-hour hackathon (team of 3), demonstrating rapid full-stack development.',
+      links: [''], skills: [''], modules: [''], locations: [''], relatedActivities: [4]
+    },
+    // todo add rest
   ])
 });
 

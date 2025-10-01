@@ -3,102 +3,31 @@ import contentPanels from '~/components/layoutSections/contentPanels.vue';
 import type { CheckboxGroupItem, CheckboxGroupValue, InputMenuItem, RadioGroupValue, TabsItem } from '@nuxt/ui'
 import { ref } from 'vue';
 
-import type { TimelineItem } from '@nuxt/ui'
+import { db, type Role } from "~/assets/scripts/db";
+import { liveQuery } from 'dexie';
+import { useObservable } from "@vueuse/rxjs";
+import { from } from "rxjs";
 
-const items = ref<TimelineItem[]>([
-  {
-    date: 'Mar 15, 2025',
-    title: 'Project Kickoff',
-    description: 'Kicked off the project with team alignment. Set up project milestones and allocated resources.',
-    icon: 'i-lucide-rocket',
-    to: '/about/'
-  },
-  {
-    date: 'Mar 22 2025',
-    title: 'Design Phase',
-    description: 'User research and design workshops. Created wireframes and prototypes for user testing.',
-    icon: 'i-lucide-palette',
-    to: '/about/'
-  },
-  {
-    date: 'Mar 29 2025',
-    title: 'Development Sprint',
-    description: 'Frontend and backend development. Implemented core features and integrated with APIs.',
-    icon: 'i-lucide-code',
-    to: '/about/'
-  },
-  {
-    date: 'Apr 5 2025',
-    title: 'Testing & Deployment',
-    description: 'QA testing and performance optimization. Deployed the application to production.',
-    icon: 'i-lucide-check-circle',
-    to: '/about/'
-  },
-  {
-    date: 'Apr 5 2025',
-    title: 'Testing & Deployment',
-    description: 'QA testing and performance optimization. Deployed the application to production.',
-    icon: 'i-lucide-check-circle',
-    to: '/about/'
-  },
-  {
-    date: 'Apr 5 2025',
-    title: 'Testing & Deployment',
-    description: 'QA testing and performance optimization. Deployed the application to production.',
-    icon: 'i-lucide-check-circle',
-    to: '/about/'
-  },
-  {
-    date: 'Apr 5 2025',
-    title: 'Testing & Deployment',
-    description: 'QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.',
-    icon: 'i-lucide-check-circle',
-    to: '/about/'
-  },
-  {
-    date: 'Apr 5 2025',
-    title: 'Testing & Deployment',
-    description: 'QA testing and performance optimization. Deployed the application to production.',
-    icon: 'i-lucide-check-circle',
-    to: '/about/'
-  },
+import { useSettingsStore } from '~/stores/settings'
+const settings = useSettingsStore()
+const allRoles = useObservable<Role[] | undefined>(from(liveQuery(async () => await db.roles.toArray())));
 
-  {
-    date: 'Apr 5 2025',
-    title: 'Testing & Deployment',
-    description: 'QA testing and performance optimization. Deployed the application to production.',
-    icon: 'i-lucide-check-circle',
-    to: '/about/'
-  },
-  {
-    date: 'Apr 5 2025',
-    title: 'Testing & Deployment',
-    description: 'QA testing and performance optimization. Deployed the application to production.',
-    icon: 'i-lucide-check-circle',
-    to: '/about/'
-  },
-  {
-    date: 'Apr 5 2025',
-    title: 'Testing & Deployment',
-    description: 'QA testing and performance optimization. Deployed the application to production.',
-    icon: 'i-lucide-check-circle',
-    to: '/about/'
-  },
-  {
-    date: 'Apr 5 2025',
-    title: 'Testing & Deployment',
-    description: 'QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.QA testing and performance optimization. Deployed the application to production.',
-    icon: 'i-lucide-check-circle',
-    to: '/about/'
-  },
-  {
-    date: 'Apr 5 2025',
-    title: 'Testing & Deployment',
-    description: 'QA testing and performance optimization. Deployed the application to production.',
-    icon: 'i-lucide-check-circle',
-    to: '/about/'
-  }
-]);
+const items = computed(() => {
+  return allRoles.value?.filter((role) => {
+    return activeRole.value.includes(role.type);
+  }).map((role) => ({
+    date: `${settings.months[role.startDate.getMonth() ?? 0]?.substring(0, 3) ?? ''} ${role.startDate.getFullYear()}`,
+    title: role.name,
+    description: role.description || 'No description available',
+    icon: role.type == 'jobs' ? 'i-lucide-briefcase-business' :
+      role.type == 'education' ? 'i-lucide-backpack' :
+        role.type == 'volunteering' ? 'i-lucide-handbag' :
+          role.type == 'events' ? 'i-lucide-ticket-check' :
+            role.type == 'projects' ? 'i-lucide-chart-gantt' :
+              'i-lucide-activity',
+    to: `/experience/${role.id}`
+  })) || []
+});
 
 const roles = ref<CheckboxGroupItem[]>([
   {
@@ -260,33 +189,60 @@ const scrollActive = ref('snap')
     </template>
 
     <template #content>
-      <UTimeline :default-value="-1" :items="items" class="w-full "
-        :class="scrollActive == 'snap' ? 'snapScroll' : ''" size="lg" :ui="{
-          date: 'float-end ms-1 pr-4',
-          description: 'px-3 mr-4 py-2 mt-2 rounded-md text-default cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
-          separator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black brightness-200',
-          indicator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
-        }">
-        <template #date="{ item }">
-          <nuxt-link :to="item.to">
-            {{ item.date }}
-          </nuxt-link>
+      <TransitionGroup name="list">
+        <!-- multiple timelines used instead of one so that items can be transitioned -->
+        <template v-for="(role, i) in items" :key="i">
+          <UTimeline :default-value="-1" :items="i == items.length - 1 ? [role] : [role,
+            { date: '', title: '', to: '', description: 'empty' }
+          ]" class="w-full mt-1 timeline"
+            :class="scrollActive == 'snap' ? 'snapScroll' : ''" size="lg" :ui="{
+              date: 'float-end ms-1 pr-4',
+              description: 'px-3 mr-4 py-2 mt-2 rounded-md text-default cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
+              separator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black brightness-200',
+              indicator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
+            }">
+            <template #date="{ item }">
+              <div v-if="item.description == 'empty'" class="hidden"></div>
+              <nuxt-link :to="item.to" v-else>
+                {{ item.date }}
+              </nuxt-link>
+            </template>
+            <template #title="{ item }">
+              <div v-if="item.description == 'empty'" class="hidden">
+              </div>
+              <nuxt-link :to="item.to" v-else>
+                {{ item.title }}
+              </nuxt-link>
+            </template>
+            <template #description="{ item }">
+              <div v-if="item.description == 'empty'" class="hidden"></div>
+              <nuxt-link v-else :to="item.to">
+                <!-- Could use md here -->
+                {{ item.description }}
+              </nuxt-link>
+            </template>
+          </UTimeline>
         </template>
-        <template #title="{ item }">
-          <nuxt-link :to="item.to">
-            {{ item.title }}
-          </nuxt-link>
-        </template>
-        <template #description="{ item }">
-          <nuxt-link :to="item.to">
-            <!-- Could use md here -->
-            {{ item.description }}
-          </nuxt-link>
-        </template>
-      </UTimeline>
-
-
+      </TransitionGroup>
     </template>
 
   </contentPanels>
 </template>
+
+<style>
+.timeline div:has(.hidden) {
+  display: none;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition:
+    opacity 1s ease,
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+</style>
