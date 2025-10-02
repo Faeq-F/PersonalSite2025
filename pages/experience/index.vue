@@ -127,7 +127,6 @@ function onInputOpen(open: boolean) {
   }
 }
 
-
 const scrollOptions = ref<TabsItem[]>([
   {
     label: 'Regular Scroll',
@@ -191,38 +190,38 @@ const scrollActive = ref('snap')
     <template #content>
       <TransitionGroup name="list">
         <!-- multiple timelines used instead of one so that items can be transitioned -->
-        <template v-for="(role, i) in items" :key="i">
-          <UTimeline :default-value="-1" :items="i == items.length - 1 ? [role] : [role,
+        <UTimeline :default-value="-1" v-for="(role, i) in items" :key="i"
+          :data-index="i" :items="i == items.length - 1 ? [role] : [role,
             { date: '', title: '', to: '', description: 'empty' }
           ]" class="w-full mt-1 timeline"
-            :class="scrollActive == 'snap' ? 'snapScroll' : ''" size="lg" :ui="{
-              date: 'float-end ms-1 pr-4',
-              description: 'px-3 mr-4 py-2 mt-2 rounded-md text-default cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
-              separator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black brightness-200',
-              indicator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
-            }">
-            <template #date="{ item }">
-              <div v-if="item.description == 'empty'" class="hidden"></div>
-              <nuxt-link :to="item.to" v-else>
-                {{ item.date }}
-              </nuxt-link>
-            </template>
-            <template #title="{ item }">
-              <div v-if="item.description == 'empty'" class="hidden">
-              </div>
-              <nuxt-link :to="item.to" v-else>
-                {{ item.title }}
-              </nuxt-link>
-            </template>
-            <template #description="{ item }">
-              <div v-if="item.description == 'empty'" class="hidden"></div>
-              <nuxt-link v-else :to="item.to">
-                <!-- Could use md here -->
-                {{ item.description }}
-              </nuxt-link>
-            </template>
-          </UTimeline>
-        </template>
+          :class="scrollActive == 'snap' ? 'snapScroll' : ''" size="lg" :ui="{
+            date: 'float-end ms-1 pr-4',
+            description: 'px-3 mr-4 py-2 mt-2 rounded-md text-default cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
+            separator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black brightness-200',
+            indicator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
+          }">
+          <template #date="{ item }">
+            <div v-if="item.description == 'empty'" class="hidden"></div>
+            <nuxt-link :to="item.to" v-else>
+              {{ item.date }}
+            </nuxt-link>
+          </template>
+          <template #title="{ item }">
+            <div v-if="item.description == 'empty'" class="hidden">
+            </div>
+            <nuxt-link :to="item.to" v-else>
+              {{ item.title }}
+            </nuxt-link>
+          </template>
+          <template #description="{ item }">
+            <div v-if="item.description == 'empty'" class="hidden"></div>
+            <nuxt-link v-else :to="item.to">
+              <!-- Could use md here -->
+              {{ item.description }}
+            </nuxt-link>
+          </template>
+        </UTimeline>
+
       </TransitionGroup>
     </template>
 
@@ -236,13 +235,12 @@ const scrollActive = ref('snap')
 
 .list-enter-active,
 .list-leave-active {
-  transition:
-    opacity 1s ease,
+  transition: all 1s ease;
 }
 
 .list-enter-from,
 .list-leave-to {
   opacity: 0;
-  transform: translateX(30px);
+  transform: translateY(70px);
 }
 </style>
