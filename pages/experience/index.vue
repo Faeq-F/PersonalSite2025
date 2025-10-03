@@ -191,7 +191,7 @@ const scrollActive = ref('snap')
       <TransitionGroup name="list">
         <!-- multiple timelines used instead of one so that items can be transitioned -->
         <UTimeline :default-value="-1" v-for="(role, i) in items" :key="i"
-          :data-index="i" :items="i == items.length - 1 ? [role] : [role,
+          :items="i == items.length - 1 ? [role] : [role,
             { date: '', title: '', to: '', description: 'empty' }
           ]" class="w-full mt-1 timeline"
           :class="scrollActive == 'snap' ? 'snapScroll' : ''" size="lg" :ui="{

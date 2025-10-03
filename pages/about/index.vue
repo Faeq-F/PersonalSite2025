@@ -161,7 +161,8 @@ const scrollActive = ref('snap')
     </template>
 
     <template #content>
-      <div :class="scrollActive == 'snap' ? 'snapScroll' : ''">
+      <div :class="scrollActive == 'snap' ? 'snapScroll' : ''"
+        id="leniscontent">
         <IntroCard />
         <Card2010 />
         <Card2016 />

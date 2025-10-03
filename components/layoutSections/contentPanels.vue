@@ -1,4 +1,16 @@
 <script lang="ts" setup>
+import { VueLenis } from 'lenis/vue'
+
+let options = {}
+onMounted(() => {
+  options = {
+    autoRaf: true,
+    lerp: 0.1,
+    // anchors: true,
+    content: document.getElementById('leniscontent'),
+    wrapper: document.getElementById('contentPanelsContent'),
+  }
+})
 </script>
 
 <template>
@@ -19,8 +31,8 @@
         </template>
       </UCard>
       <div id="contentPanelsContent"
-        class="flex flex-col h-full w-full mr-8 mt-4 overflow-y-scroll overflow-x-hidden snap-mandatory snap-y ScrollBlur"
-        data-lenis-prevent>
+        class="flex flex-col h-full w-full mr-8 mt-4 overflow-y-scroll overflow-x-hidden snap-mandatory snap-y ScrollBlur">
+        <VueLenis root :options="options" />
         <slot name="content"></slot>
       </div>
     </div>
