@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { onMounted, ref, useTemplateRef, watch } from 'vue';
-import type { StepperItem, TabsItem } from '@nuxt/ui'
+import type { StepperItem } from '@nuxt/ui'
 import contentPanels from '~/components/layoutSections/contentPanels.vue';
 import IntroCard from '~/components/aboutMeCards/IntroductionCard.vue';
 import Card2010 from '~/components/aboutMeCards/2010Card.vue';
@@ -104,26 +104,12 @@ class Scroller {
   }
 }
 
+const scrollActive = ref('normal')
 onMounted(() => { Scroller.init(); })
-
-const scrollOptions = ref<TabsItem[]>([
-  {
-    label: 'Regular Scroll',
-    icon: 'i-lucide-align-vertical-space-between',
-    value: 'normal'
-  },
-  {
-    label: 'Snap Scroll',
-    icon: 'i-lucide-align-vertical-space-around',
-    value: 'snap'
-  },
-])
-const scrollActive = ref('snap')
-
 </script>
 
 <template>
-  <contentPanels>
+  <contentPanels @snap="(v) => scrollActive = v">
     <template #left-panel-header>
       <div class="font-bold" style="line-height: 1;">
         <p class="text-[3rem] varela">About me</p>
@@ -140,23 +126,18 @@ const scrollActive = ref('snap')
     </template>
 
     <template #left-panel-footer>
-      <div class="flex gap-4 flex-col">
-        <div class="flex gap-2 justify-between">
-          <UButton leading-icon="i-lucide-arrow-left"
-            :disabled="!stepper?.hasPrev" @click="stepper?.prev()"
-            style="--ui-primary: #4a5565" class="dark:text-white">
-            Prev
-          </UButton>
-          <span class="pt-1">{{ items[active].label }}</span>
-          <UButton trailing-icon="i-lucide-arrow-right"
-            :disabled="!stepper?.hasNext" @click="stepper?.next()"
-            style="--ui-primary: #4a5565" class="dark:text-white">
-            Next
-          </UButton>
-        </div>
-        <UTabs :content="false" :items="scrollOptions" v-model="scrollActive"
-          :ui="{ trigger: 'self-start', label: 'dark:text-white', leadingIcon: 'dark:text-white' }"
-          style="--ui-primary: #4a5565" size="sm" />
+      <div class="flex gap-2 justify-between">
+        <UButton leading-icon="i-lucide-arrow-left"
+          :disabled="!stepper?.hasPrev" @click="stepper?.prev()"
+          style="--ui-primary: #4a5565" class="dark:text-white">
+          Prev
+        </UButton>
+        <span class="pt-1">{{ items[active].label }}</span>
+        <UButton trailing-icon="i-lucide-arrow-right"
+          :disabled="!stepper?.hasNext" @click="stepper?.next()"
+          style="--ui-primary: #4a5565" class="dark:text-white">
+          Next
+        </UButton>
       </div>
     </template>
 

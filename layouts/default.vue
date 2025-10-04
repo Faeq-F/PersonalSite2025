@@ -3,20 +3,8 @@ import navbar from '~/components/layoutSections/navbar.vue'
 import Credits from '~/components/layoutSections/credits.vue'
 const route = useRoute()
 
-
-//import { onMounted, ref } from "vue";
-// import { db } from '@/lib/db';
-
 onMounted(async () => {
   document.getElementById("video-bg-elem").play();
-
-  //   const id = await db.friends.add({
-  //     name: "Faeq",
-  //     age: 20
-  //   });
-
-  //   console.log(id)
-
 })
 
 </script>

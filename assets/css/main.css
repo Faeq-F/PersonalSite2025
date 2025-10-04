@@ -227,9 +227,13 @@ html.dark {
   }
 }
 
+.snapScroll{
+  scroll-snap-type: both proximity;
+}
+
 #cvContainer.scrollCV > *,
 #contentPanelsContent .snapScroll> *{
-  scroll-snap-stop: always;
+  scroll-snap-stop: normal;
   scroll-snap-align: start;
 }
 
@@ -238,10 +242,10 @@ html.dark {
     content: "";
     inset: 0;
     display: block;
-    backdrop-filter: blur(1px) saturate(1.2);
+    backdrop-filter: blur(2px) saturate(1.2);
     mask-image: linear-gradient(rgba(#000, 0), rgba(#000, .9) 80%, #000);
     position: fixed;
-    top: 1rem;
+    top: 1.5rem;
     left: 23rem;
     height: 2.5rem;
     z-index: 10;

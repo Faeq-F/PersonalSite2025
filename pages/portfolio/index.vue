@@ -76,22 +76,6 @@ const certsOptions = ref<TabsItem[]>([
 ])
 const certsActive = ref((route.query.certs as string) || 'all')
 
-
-const scrollOptions = ref<TabsItem[]>([
-  {
-    label: 'Regular Scroll',
-    icon: 'i-lucide-align-vertical-space-between',
-    value: 'normal'
-  },
-  {
-    label: 'Snap Scroll',
-    icon: 'i-lucide-align-vertical-space-around',
-    value: 'snap'
-  },
-])
-const scrollActive = ref('snap')
-
-
 const TagCatItems = ref([
   {
     type: 'label',
@@ -169,10 +153,11 @@ import { db, type Certificate, type Project } from "~/assets/scripts/db";
 let myCertificates = useObservable<Certificate[]>(from(liveQuery<Certificate[]>(() => db.certificates.toArray())))
 let myProjects = useObservable<Project[]>(from(liveQuery<Project[]>(() => db.projects.toArray())))
 
+const scrollActive = ref('normal')
 </script>
 
 <template>
-  <contentPanels>
+  <contentPanels @snap="(v) => scrollActive = v">
     <template #left-panel-header>
       <div class="font-bold " style="line-height: 1;">
         <p class="text-[3rem] varela">Portfolio</p>
@@ -204,15 +189,9 @@ let myProjects = useObservable<Project[]>(from(liveQuery<Project[]>(() => db.pro
 
     </template>
 
-    <template #left-panel-footer>
-      <UTabs :content="false" :items="scrollOptions" v-model="scrollActive"
-        :ui="{ trigger: 'self-start', label: 'dark:text-white', leadingIcon: 'dark:text-white' }"
-        style="--ui-primary: #4a5565" size="sm" />
-    </template>
-
     <template #content>
 
-      <div class="flex justify-evenly flex-wrap"
+      <div class="flex justify-evenly flex-wrap" id="leniscontent"
         :class="scrollActive == 'snap' ? 'snapScroll' : ''">
 
         <Card1 />

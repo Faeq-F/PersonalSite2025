@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import contentPanels from '~/components/layoutSections/contentPanels.vue';
-import type { CheckboxGroupItem, CheckboxGroupValue, InputMenuItem, RadioGroupValue, TabsItem } from '@nuxt/ui'
+import type { CheckboxGroupItem, CheckboxGroupValue, InputMenuItem, } from '@nuxt/ui'
 import { ref } from 'vue';
 
 import { db, type Role } from "~/assets/scripts/db";
@@ -127,24 +127,12 @@ function onInputOpen(open: boolean) {
   }
 }
 
-const scrollOptions = ref<TabsItem[]>([
-  {
-    label: 'Regular Scroll',
-    icon: 'i-lucide-align-vertical-space-between',
-    value: 'normal'
-  },
-  {
-    label: 'Snap Scroll',
-    icon: 'i-lucide-align-vertical-space-around',
-    value: 'snap'
-  },
-])
-const scrollActive = ref('snap')
 
+const scrollActive = ref('normal')
 </script>
 
 <template>
-  <contentPanels>
+  <contentPanels @snap="(v) => scrollActive = v">
     <template #left-panel-header>
       <div class="font-bold " style="line-height: 1;">
         <p class="text-[3rem] varela">Experience</p>
@@ -181,48 +169,45 @@ const scrollActive = ref('snap')
 
     </template>
 
-    <template #left-panel-footer>
-      <UTabs :content="false" :items="scrollOptions" v-model="scrollActive"
-        :ui="{ trigger: 'self-start', label: 'dark:text-white', leadingIcon: 'dark:text-white' }"
-        style="--ui-primary: #4a5565" size="sm" />
-    </template>
-
     <template #content>
-      <TransitionGroup name="list">
-        <!-- multiple timelines used instead of one so that items can be transitioned -->
-        <UTimeline :default-value="-1" v-for="(role, i) in items" :key="i"
-          :items="i == items.length - 1 ? [role] : [role,
-            { date: '', title: '', to: '', description: 'empty' }
-          ]" class="w-full mt-1 timeline"
-          :class="scrollActive == 'snap' ? 'snapScroll' : ''" size="lg" :ui="{
+      <div id="leniscontent"
+        :class="scrollActive == 'snap' ? 'snapScroll' : ''">
+
+        <TransitionGroup name="list">
+          <!-- multiple timelines used inst\ead of one so that items can be transitioned -->
+          <UTimeline :default-value="-1" v-for="(role, i) in items" :key="i"
+            :items="i == items.length - 1 ? [role] : [role,
+              { date: '', title: '', to: '', description: 'empty' }
+            ]" class="w-full mt-1 timeline" size="lg" :ui="{
             date: 'float-end ms-1 pr-4',
             description: 'px-3 mr-4 py-2 mt-2 rounded-md text-default cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
             separator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black brightness-200',
             indicator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
           }">
-          <template #date="{ item }">
-            <div v-if="item.description == 'empty'" class="hidden"></div>
-            <nuxt-link :to="item.to" v-else>
-              {{ item.date }}
-            </nuxt-link>
-          </template>
-          <template #title="{ item }">
-            <div v-if="item.description == 'empty'" class="hidden">
-            </div>
-            <nuxt-link :to="item.to" v-else>
-              {{ item.title }}
-            </nuxt-link>
-          </template>
-          <template #description="{ item }">
-            <div v-if="item.description == 'empty'" class="hidden"></div>
-            <nuxt-link v-else :to="item.to">
-              <!-- Could use md here -->
-              {{ item.description }}
-            </nuxt-link>
-          </template>
-        </UTimeline>
+            <template #date="{ item }">
+              <div v-if="item.description == 'empty'" class="hidden"></div>
+              <nuxt-link :to="item.to" v-else>
+                {{ item.date }}
+              </nuxt-link>
+            </template>
+            <template #title="{ item }">
+              <div v-if="item.description == 'empty'" class="hidden">
+              </div>
+              <nuxt-link :to="item.to" v-else>
+                {{ item.title }}
+              </nuxt-link>
+            </template>
+            <template #description="{ item }">
+              <div v-if="item.description == 'empty'" class="hidden"></div>
+              <nuxt-link v-else :to="item.to">
+                <!-- Could use md here -->
+                {{ item.description }}
+              </nuxt-link>
+            </template>
+          </UTimeline>
 
-      </TransitionGroup>
+        </TransitionGroup>
+      </div>
     </template>
 
   </contentPanels>
