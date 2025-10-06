@@ -49,7 +49,8 @@ const projectEnd = computed(() => {
           <div class="w-full">
             <span
               class="font-bold varela text-sm text-center w-full block pr-2.5">Skills</span>
-            <ul class="overflow-y-scroll skillsScrollBlur h-full">
+            <ul class="overflow-y-scroll skillsScrollBlur h-full"
+              data-lenis-prevent>
               <li v-for="(skill, i) in project?.skills || []" :key="i"
                 class="mb-2 text-center">
                 <UPopover mode="hover">

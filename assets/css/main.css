@@ -227,16 +227,6 @@ html.dark {
   }
 }
 
-.snapScroll{
-  scroll-snap-type: both proximity;
-}
-
-#cvContainer.scrollCV > *,
-#contentPanelsContent .snapScroll> *{
-  scroll-snap-stop: normal;
-  scroll-snap-align: start;
-}
-
 .ScrollBlur {
   &:before {
     content: "";

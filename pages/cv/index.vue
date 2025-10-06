@@ -5,7 +5,7 @@ import { ref, watch } from 'vue'
 
 const { pdf, pages } = usePDF('/PersonalSite2025/cv.pdf')
 
-const scale = ref(1)
+const scale = ref(0.95)
 
 import type { TabsItem } from '@nuxt/ui'
 const viewOptions = ref<TabsItem[]>([
@@ -22,20 +22,6 @@ const viewOptions = ref<TabsItem[]>([
 ])
 const viewActive = ref('dual')
 
-const scrollOptions = ref<TabsItem[]>([
-  {
-    label: 'Regular Scroll',
-    icon: 'i-lucide-align-vertical-space-between',
-    value: 'normal'
-  },
-  {
-    label: 'Snap Scroll',
-    icon: 'i-lucide-align-vertical-space-around',
-    value: 'snap'
-  },
-])
-const scrollActive = ref('normal')
-
 const highlightText = ref('')
 const highlightOptions = ref({
   completeWords: false,
@@ -47,6 +33,10 @@ watch(page, (newPageVal) => {
   document.getElementById('cvContainer')!.scrollTo({ top: document.getElementById('cvPage' + newPageVal)!.offsetTop, left: document.getElementById('cvPage' + newPageVal)!.offsetLeft, behavior: 'smooth' })
 })
 
+
+const LenisWrapper = ref();
+const LenisContent = ref();
+
 </script>
 
 
@@ -54,7 +44,7 @@ watch(page, (newPageVal) => {
   <div class="flex w-full p-8 h-full">
 
     <div class="p-8 pb-0 h-full transition-all duration-200"
-      :class="viewActive == 'single' ? 'flex-auto' : ''">
+      :class="viewActive == 'single' ? 'flex-1/10' : ''">
 
       <UCard
         class="h-full w-full opacity-80 cardShadow border border-[var(--ui-border)]">
@@ -74,7 +64,7 @@ watch(page, (newPageVal) => {
         <div class="">
           <p class="font-bold text-[1rem]">Related content</p>
           <USeparator class="w-28 mb-4 mt-0.5 self-center " />
-          <div class="max-h-[40vh] overflow-y-scroll flex flex-col gap-2 p-2"
+          <div class="max-h-[45vh] overflow-y-scroll flex flex-col gap-2 p-2"
             data-lenis-prevent>
             <div class="flex flex-col gap-2">
               <nuxt-link to="/">
@@ -141,7 +131,7 @@ watch(page, (newPageVal) => {
 
         <template #footer>
           <div class="flex flex-col gap-4">
-            <div class="flex gap-4">
+            <div class="flex gap-4 items-end w-full justify-between">
               <UFormField label="Page">
                 <UInputNumber v-model="page" :min="1" :max="pages"
                   orientation="vertical" color="neutral"
@@ -154,13 +144,7 @@ watch(page, (newPageVal) => {
                     style: 'percent'
                   }" />
               </UFormField>
-            </div>
-            <div class="flex gap-4">
               <UTabs :content="false" :items="viewOptions" v-model="viewActive"
-                :ui="{ trigger: 'self-start', label: 'dark:text-white', leadingIcon: 'dark:text-white' }"
-                style="--ui-primary: #4a5565" />
-              <UTabs :content="false" :items="scrollOptions"
-                v-model="scrollActive"
                 :ui="{ trigger: 'self-start', label: 'dark:text-white', leadingIcon: 'dark:text-white' }"
                 style="--ui-primary: #4a5565" />
             </div>
@@ -189,19 +173,27 @@ watch(page, (newPageVal) => {
 
       </UCard>
     </div>
-
-    <div
-      class="opacity-80 m-4 h-full overflow-y-scroll transition-all snap-mandatory snap-both ScrollBlur"
-      id="cvContainer" data-lenis-prevent
-      :class="viewActive == 'single' ? scrollActive == 'snap' ? 'scrollCV' : '' : 'flex-auto flex -mx-4'">
-      <div v-for="page in pages" :key="page" :id="`cvPage${page}`"
-        class="my-4 mr-2 cardShadow border border-[var(--ui-border)] rounded-md w-fit">
-        <VuePDF :pdf="pdf" :page="page" text-layer
-          :highlight-text="highlightText" :highlight-options="highlightOptions"
-          :scale="scale" />
+    <div ref="LenisWrapper" id="cvContainer"
+      class="opacity-80 h-full overflow-y-scroll transition-all ScrollBlur flex items-center mt-4"
+      :class="viewActive == 'single' ? '' : 'flex-9/10'">
+      <VueLenis root :options="{
+        autoRaf: true,
+        lerp: 0.1,
+        anchors: true,
+        content: LenisContent,
+        wrapper: LenisWrapper,
+      }" />
+      <div ref="LenisContent"
+        :class="viewActive == 'single' ? '' : ' flex mx-0.25 '">
+        <div v-for="page in pages" :key="page" :id="`cvPage${page}`"
+          class="cardShadow border border-[var(--ui-border)] rounded-md w-fit h-fit "
+          :class="viewActive == 'single' ? page == 1 ? 'mb-2' : '' : page == 1 ? 'mr-2' : ''">
+          <VuePDF :pdf="pdf" :page="page" text-layer
+            :highlight-text="highlightText"
+            :highlight-options="highlightOptions" :scale="scale" />
+        </div>
       </div>
     </div>
-
   </div>
 </template>
 

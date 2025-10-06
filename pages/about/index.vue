@@ -104,12 +104,11 @@ class Scroller {
   }
 }
 
-const scrollActive = ref('normal')
 onMounted(() => { Scroller.init(); })
 </script>
 
 <template>
-  <contentPanels @snap="(v) => scrollActive = v">
+  <contentPanels>
     <template #left-panel-header>
       <div class="font-bold" style="line-height: 1;">
         <p class="text-[3rem] varela">About me</p>
@@ -142,16 +141,15 @@ onMounted(() => { Scroller.init(); })
     </template>
 
     <template #content>
-      <div :class="scrollActive == 'snap' ? 'snapScroll' : ''"
-        id="leniscontent">
-        <IntroCard />
-        <Card2010 />
-        <Card2016 />
-        <Card2018 />
-        <Card2020 />
-        <Card2022 />
-        <Card2025 />
-      </div>
+
+      <IntroCard />
+      <Card2010 />
+      <Card2016 />
+      <Card2018 />
+      <Card2020 />
+      <Card2022 />
+      <Card2025 />
+
     </template>
 
   </contentPanels>

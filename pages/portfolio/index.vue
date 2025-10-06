@@ -153,11 +153,10 @@ import { db, type Certificate, type Project } from "~/assets/scripts/db";
 let myCertificates = useObservable<Certificate[]>(from(liveQuery<Certificate[]>(() => db.certificates.toArray())))
 let myProjects = useObservable<Project[]>(from(liveQuery<Project[]>(() => db.projects.toArray())))
 
-const scrollActive = ref('normal')
 </script>
 
 <template>
-  <contentPanels @snap="(v) => scrollActive = v">
+  <contentPanels contentClasses="flex justify-evenly flex-wrap">
     <template #left-panel-header>
       <div class="font-bold " style="line-height: 1;">
         <p class="text-[3rem] varela">Portfolio</p>
@@ -191,61 +190,60 @@ const scrollActive = ref('normal')
 
     <template #content>
 
-      <div class="flex justify-evenly flex-wrap" id="leniscontent"
-        :class="scrollActive == 'snap' ? 'snapScroll' : ''">
 
-        <Card1 />
-        <Card2 />
-        <Card3 />
-        <Card4 />
-        <Card5 />
-        <Card6 />
-        <Card7 />
-        <Card8 />
-        <Card9 />
-        <Card10 />
-        <Card11 />
-        <Card12 />
-        <Card13 />
-        <Card14 />
-        <Card15 />
-        <Card16 />
-        <Card17 />
-        <Card18 />
-        <Card19 />
-        <Card20 />
-        <Card21 />
-        <Card22 />
-        <Card23 />
-        <Card24 />
-        <Card25 />
-        <Card26 />
-        <Card27 />
-        <Card28 />
-        <Card29 />
-        <Card30 />
-        <Card31 />
-        <Card32 />
-        <Card33 />
-        <Card34 />
-        <Card35 />
-        <Card36 />
-        <Card37 />
-        <Card38 />
-        <Card39 />
-        <Card40 />
-        <Card41 />
-        <Card42 />
-        <Card43 />
-        <Card44 />
-        <Card45 />
-        <Card46 />
-        <Card47 />
-        <Card48 />
-        <Card49 />
-        <Card50 />
 
-      </div>
+      <Card1 />
+      <Card2 />
+      <Card3 />
+      <Card4 />
+      <Card5 />
+      <Card6 />
+      <Card7 />
+      <Card8 />
+      <Card9 />
+      <Card10 />
+      <Card11 />
+      <Card12 />
+      <Card13 />
+      <Card14 />
+      <Card15 />
+      <Card16 />
+      <Card17 />
+      <Card18 />
+      <Card19 />
+      <Card20 />
+      <Card21 />
+      <Card22 />
+      <Card23 />
+      <Card24 />
+      <Card25 />
+      <Card26 />
+      <Card27 />
+      <Card28 />
+      <Card29 />
+      <Card30 />
+      <Card31 />
+      <Card32 />
+      <Card33 />
+      <Card34 />
+      <Card35 />
+      <Card36 />
+      <Card37 />
+      <Card38 />
+      <Card39 />
+      <Card40 />
+      <Card41 />
+      <Card42 />
+      <Card43 />
+      <Card44 />
+      <Card45 />
+      <Card46 />
+      <Card47 />
+      <Card48 />
+      <Card49 />
+      <Card50 />
+
+
 
     </template>
 
