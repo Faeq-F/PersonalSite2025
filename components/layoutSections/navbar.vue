@@ -160,33 +160,36 @@ watch(searchVal, (newSearch, _oldSearch) => {
                   placeholder="Search Pages..." class="w-full p-1"
                   v-model="searchVal" />
                 <USeparator class="w-full " />
-                <ul class="overflow-y-scroll max-h-86 pt-2 mr-0.5"
+                <ul class="overflow-y-scroll max-h-86 min-h-86 pt-2 mr-0.5"
                   data-lenis-prevent>
-                  <li v-for="(page, i) in searchedPages" :key="i"
-                    class="w-full p-2 pt-0 pr-1">
-                    <nuxt-link :to="page.url">
-                      <UButton :icon="page.icon" size="md" color="neutral"
-                        variant="soft" class="w-full">
-                        <USeparator orientation="vertical"
-                          class="h-6 invert opacity-20 ml-1" />
-                        <div class="w-full">
-                          <div
-                            class="w-full text-left pl-1.5 flex items-center justify-between">
-                            <span>
-                              {{ page.title }}
-                            </span>
-                            <UBadge size="sm" color="neutral" variant="outline"
-                              class="text-muted flex items-center opacity-80">
-                              {{ page.category }}
-                            </UBadge>
+                  <TransitionGroup name="list">
+                    <li v-for="(page, i) in searchedPages" :key="i"
+                      class="w-full p-2 pt-0 pr-1">
+                      <nuxt-link :to="page.url">
+                        <UButton :icon="page.icon" size="md" color="neutral"
+                          variant="soft" class="w-full">
+                          <USeparator orientation="vertical"
+                            class="h-6 invert opacity-20 ml-1" />
+                          <div class="w-full">
+                            <div
+                              class="w-full text-left pl-1.5 flex items-center justify-between">
+                              <span>
+                                {{ page.title }}
+                              </span>
+                              <UBadge size="sm" color="neutral"
+                                variant="outline"
+                                class="text-muted flex items-center opacity-80">
+                                {{ page.category }}
+                              </UBadge>
+                            </div>
+                            <div class="text-muted pl-1.5 w-full text-left">
+                              {{ page.description }}
+                            </div>
                           </div>
-                          <div class="text-muted pl-1.5 w-full text-left">
-                            {{ page.description }}
-                          </div>
-                        </div>
-                      </UButton>
-                    </nuxt-link>
-                  </li>
+                        </UButton>
+                      </nuxt-link>
+                    </li>
+                  </TransitionGroup>
                 </ul>
               </div>
             </template>

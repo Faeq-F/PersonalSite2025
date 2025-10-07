@@ -159,92 +159,193 @@ let myProjects = useObservable<Project[]>(from(liveQuery<Project[]>(() => db.pro
   <contentPanels contentClasses="flex justify-evenly flex-wrap">
     <template #left-panel-header>
       <div class="font-bold " style="line-height: 1;">
-        <p class="text-[3rem] varela">Portfolio</p>
-        <p class="text-[1rem]">What I have worked on</p>
+        <MazAnimatedElement direction="up" :duration="700" :delay="500">
+          <p class="text-[3rem] varela">Portfolio</p>
+        </MazAnimatedElement>
+        <MazAnimatedElement direction="up" :duration="700" :delay="600">
+          <p class="text-[1rem]">What I have worked on</p>
+        </MazAnimatedElement>
       </div>
     </template>
 
     <template #left-panel-content>
       filters here
+      <MazAnimatedElement direction="up" :duration="700" :delay="700">
+        <UInputMenu v-model="TagCatValue" :items="TagCatItems" multiple
+          placeholder="Select for tag cat" variant="soft"
+          style="--ui-primary: #4a5565" :icon="TagCatValue?.icon" :ui="{
+            trailingIcon: 'group-data-[state=open]:rotate-180 transition-transform duration-200'
+          }" data-lenis-prevent class="mx-auto my-4 w-fit block"
+          @update:open="onInputOpen">
+          <template #tags-item-text="item">
+            <UIcon :name="item.item.icon as string" />
+            {{ item.item.label }}
+          </template>
+        </UInputMenu>
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="700" :delay="800">
+        <UTabs :content="false" :items="certsOptions" class="mx-auto w-fit"
+          style="--ui-primary: #4a5565" orientation="vertical"
+          v-model="certsActive"
+          :ui="{ trigger: 'self-start', label: 'dark:text-white', leadingIcon: 'dark:text-white' }" />
+      </MazAnimatedElement>
+    </template>
 
-      <UInputMenu v-model="TagCatValue" :items="TagCatItems" multiple
-        placeholder="Select for tag cat" variant="soft"
-        style="--ui-primary: #4a5565" :icon="TagCatValue?.icon" :ui="{
-          trailingIcon: 'group-data-[state=open]:rotate-180 transition-transform duration-200'
-        }" data-lenis-prevent class="mx-auto my-4 w-fit block"
-        @update:open="onInputOpen">
-        <template #tags-item-text="item">
-          <UIcon :name="item.item.icon as string" />
-          {{ item.item.label }}
-        </template>
-      </UInputMenu>
-
-
-
-      <UTabs :content="false" :items="certsOptions" class="mx-auto my-4 w-fit"
-        style="--ui-primary: #4a5565" orientation="vertical"
-        v-model="certsActive"
-        :ui="{ trigger: 'self-start', label: 'dark:text-white', leadingIcon: 'dark:text-white' }" />
+    <template #left-panel-footer>
 
     </template>
 
     <template #content>
-
-
-
-      <Card1 />
-      <Card2 />
-      <Card3 />
-      <Card4 />
-      <Card5 />
-      <Card6 />
-      <Card7 />
-      <Card8 />
-      <Card9 />
-      <Card10 />
-      <Card11 />
-      <Card12 />
-      <Card13 />
-      <Card14 />
-      <Card15 />
-      <Card16 />
-      <Card17 />
-      <Card18 />
-      <Card19 />
-      <Card20 />
-      <Card21 />
-      <Card22 />
-      <Card23 />
-      <Card24 />
-      <Card25 />
-      <Card26 />
-      <Card27 />
-      <Card28 />
-      <Card29 />
-      <Card30 />
-      <Card31 />
-      <Card32 />
-      <Card33 />
-      <Card34 />
-      <Card35 />
-      <Card36 />
-      <Card37 />
-      <Card38 />
-      <Card39 />
-      <Card40 />
-      <Card41 />
-      <Card42 />
-      <Card43 />
-      <Card44 />
-      <Card45 />
-      <Card46 />
-      <Card47 />
-      <Card48 />
-      <Card49 />
-      <Card50 />
-
-
-
+      <MazAnimatedElement direction="right" :duration="1000">
+        <Card1 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="left" :duration="1000">
+        <Card2 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="right" :duration="1000">
+        <Card3 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card4 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="left" :duration="1000">
+        <Card5 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="right" :duration="1000">
+        <Card6 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card7 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="left" :duration="1000">
+        <Card8 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="right" :duration="1000">
+        <Card9 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card10 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="left" :duration="1000">
+        <Card11 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card12 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="right" :duration="1000">
+        <Card13 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card14 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="down" :duration="1000">
+        <Card15 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="left" :duration="1000">
+        <Card16 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="right" :duration="1000">
+        <Card17 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="left" :duration="1000">
+        <Card18 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="right" :duration="1000">
+        <Card19 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="left" :duration="1000">
+        <Card20 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card21 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card22 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card23 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card24 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card25 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card26 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card27 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card28 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card29 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card30 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card31 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card32 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card33 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card34 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card35 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card36 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card37 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card38 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card39 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card40 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card41 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card42 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card43 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card44 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card45 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card46 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card47 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card48 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card49 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="1000">
+        <Card50 />
+      </MazAnimatedElement>
     </template>
 
   </contentPanels>

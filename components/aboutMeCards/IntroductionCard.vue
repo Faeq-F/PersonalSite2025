@@ -1,5 +1,5 @@
 <template>
-  <UCard id="AboutMeCard0"
+  <UCard
     class="my-5 mx-4 opacity-80 min-h-[32rem] cardShadow border border-[var(--ui-border)]">
 
     <div class="min-h-[24.5rem] flex max-h-[24.5rem] w-full">

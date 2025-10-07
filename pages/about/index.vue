@@ -111,44 +111,66 @@ onMounted(() => { Scroller.init(); })
   <contentPanels>
     <template #left-panel-header>
       <div class="font-bold" style="line-height: 1;">
-        <p class="text-[3rem] varela">About me</p>
-        <p class="text-[1rem]">Who I am and what I get up to</p>
+        <MazAnimatedElement direction="up" :duration="700" :delay="500">
+          <p class="text-[3rem] varela">About me</p>
+        </MazAnimatedElement>
+        <MazAnimatedElement direction="up" :duration="700" :delay="600">
+          <p class="text-[1rem]">Who I am and what I get up to</p>
+        </MazAnimatedElement>
       </div>
     </template>
 
     <template #left-panel-content>
-      <UStepper ref="stepper" :items="items" orientation="vertical"
-        v-model="active" class="h-full w-full -mt-4 stepper"
-        style="--ui-primary: #4a5565"
-        :ui="{ separator: 'h-8 transition-all ease-in-out duration-200', item: 'mt-4', indicator: 'transition-all ease-in-out duration-200 dark:text-white', trigger: 'transition-all ease-in-out duration-200' }"
-        disabled />
+      <MazAnimatedElement direction="right" :duration="700" :delay="700">
+        <UStepper ref="stepper" :items="items" orientation="vertical"
+          v-model="active" class="h-full w-full -mt-4 stepper"
+          style="--ui-primary: #4a5565"
+          :ui="{ separator: 'h-8 transition-all ease-in-out duration-200', item: 'mt-4', indicator: 'transition-all ease-in-out duration-200 dark:text-white', trigger: 'transition-all ease-in-out duration-200' }"
+          disabled />
+      </MazAnimatedElement>
     </template>
 
     <template #left-panel-footer>
-      <div class="flex gap-2 justify-between">
-        <UButton leading-icon="i-lucide-arrow-left"
-          :disabled="!stepper?.hasPrev" @click="stepper?.prev()"
-          style="--ui-primary: #4a5565" class="dark:text-white">
-          Prev
-        </UButton>
-        <span class="pt-1">{{ items[active].label }}</span>
-        <UButton trailing-icon="i-lucide-arrow-right"
-          :disabled="!stepper?.hasNext" @click="stepper?.next()"
-          style="--ui-primary: #4a5565" class="dark:text-white">
-          Next
-        </UButton>
-      </div>
+      <MazAnimatedElement direction="up" :duration="700" :delay="800">
+        <div class="flex gap-2 justify-between">
+          <UButton leading-icon="i-lucide-arrow-left"
+            :disabled="!stepper?.hasPrev" @click="stepper?.prev()"
+            style="--ui-primary: #4a5565" class="dark:text-white">
+            Prev
+          </UButton>
+          <span class="pt-1">{{ items[active].label }}</span>
+          <UButton trailing-icon="i-lucide-arrow-right"
+            :disabled="!stepper?.hasNext" @click="stepper?.next()"
+            style="--ui-primary: #4a5565" class="dark:text-white">
+            Next
+          </UButton>
+        </div>
+      </MazAnimatedElement>
     </template>
 
     <template #content>
 
-      <IntroCard />
-      <Card2010 />
-      <Card2016 />
-      <Card2018 />
-      <Card2020 />
-      <Card2022 />
-      <Card2025 />
+      <MazAnimatedElement direction="down" :duration="1000" id="AboutMeCard0">
+        <IntroCard />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="down" :duration="1000" id="AboutMeCard1">
+        <Card2010 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="down" :duration="1000" id="AboutMeCard2">
+        <Card2016 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="down" :duration="1000" id="AboutMeCard3">
+        <Card2018 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="down" :duration="1000" id="AboutMeCard4">
+        <Card2020 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="down" :duration="1000" id="AboutMeCard5">
+        <Card2022 />
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="down" :duration="1000" id="AboutMeCard6">
+        <Card2025 />
+      </MazAnimatedElement>
 
     </template>
 

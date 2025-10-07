@@ -133,54 +133,57 @@ function onInputOpen(open: boolean) {
   <contentPanels>
     <template #left-panel-header>
       <div class="font-bold " style="line-height: 1;">
-        <p class="text-[3rem] varela">Experience</p>
-        <p class="text-[1rem]">My professional growth</p>
+        <MazAnimatedElement direction="up" :duration="700" :delay="500">
+          <p class="text-[3rem] varela">Experience</p>
+        </MazAnimatedElement>
+        <MazAnimatedElement direction="up" :duration="700" :delay="600">
+          <p class="text-[1rem]">My professional growth</p>
+        </MazAnimatedElement>
       </div>
     </template>
 
     <template #left-panel-content>
-
-      <UCheckboxGroup color="neutral" variant="table" :items="roles"
-        v-model="activeRole" legend="Filter by role"
-        :default-value="['jobs', 'education', 'projects', 'volunteering', 'events']">
-        <template #legend>
-          <UButton
-            :icon="activeRole?.length! < 3 ? 'i-lucide-check-check' : 'i-lucide-squares-subtract'"
-            color="neutral" variant="outline" size="sm"
-            @click="activeRole?.length! < 3 ? activeRole = ['jobs', 'education', 'projects', 'volunteering', 'events'] : activeRole = []" />
-          <div class="font-bold ml-1 align-text-bottom inline">Filter by role
-          </div>
-        </template>
-      </UCheckboxGroup>
-
-      <UInputMenu v-model="TagCatValue" :items="TagCatItems" multiple
-        placeholder="Select for tag cat" variant="soft"
-        style="--ui-primary: #4a5565" :icon="TagCatValue?.icon" :ui="{
-          trailingIcon: 'group-data-[state=open]:rotate-180 transition-transform duration-200'
-        }" data-lenis-prevent class="mx-auto my-4 w-fit block"
-        @update:open="onInputOpen">
-        <template #tags-item-text="item">
-          <UIcon :name="item.item.icon as string" />
-          {{ item.item.label }}
-        </template>
-      </UInputMenu>
-
+      <MazAnimatedElement direction="up" :duration="700" :delay="700">
+        <UCheckboxGroup color="neutral" variant="table" :items="roles"
+          v-model="activeRole" legend="Filter by role"
+          :default-value="['jobs', 'education', 'projects', 'volunteering', 'events']">
+          <template #legend>
+            <UButton
+              :icon="activeRole?.length! < 3 ? 'i-lucide-check-check' : 'i-lucide-squares-subtract'"
+              color="neutral" variant="outline" size="sm"
+              @click="activeRole?.length! < 3 ? activeRole = ['jobs', 'education', 'projects', 'volunteering', 'events'] : activeRole = []" />
+            <div class="font-bold ml-1 align-text-bottom inline">Filter by role
+            </div>
+          </template>
+        </UCheckboxGroup>
+      </MazAnimatedElement>
+      <MazAnimatedElement direction="up" :duration="700" :delay="800">
+        <UInputMenu v-model="TagCatValue" :items="TagCatItems" multiple
+          placeholder="Select for tag cat" variant="soft"
+          style="--ui-primary: #4a5565" :icon="TagCatValue?.icon" :ui="{
+            trailingIcon: 'group-data-[state=open]:rotate-180 transition-transform duration-200'
+          }" data-lenis-prevent class="mx-auto my-4 w-fit block"
+          @update:open="onInputOpen">
+          <template #tags-item-text="item">
+            <UIcon :name="item.item.icon as string" />
+            {{ item.item.label }}
+          </template>
+        </UInputMenu>
+      </MazAnimatedElement>
     </template>
 
     <template #content>
-
-
       <TransitionGroup name="list">
-        <!-- multiple timelines used inst\ead of one so that items can be transitioned -->
+        <!-- multiple timelines used instead of one so that items can be transitioned -->
         <UTimeline :default-value="-1" v-for="(role, i) in items" :key="i"
           :items="i == items.length - 1 ? [role] : [role,
             { date: '', title: '', to: '', description: 'empty' }
           ]" class="w-full mt-1 timeline" size="lg" :ui="{
-              date: 'float-end ms-1 pr-4',
-              description: 'px-3 mr-4 py-2 mt-2 rounded-md text-default cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
-              separator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black brightness-200',
-              indicator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
-            }">
+            date: 'float-end ms-1 pr-4',
+            description: 'px-3 mr-4 py-2 mt-2 rounded-md text-default cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
+            separator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black brightness-200',
+            indicator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
+          }">
           <template #date="{ item }">
             <div v-if="item.description == 'empty'" class="hidden"></div>
             <nuxt-link :to="item.to" v-else>
@@ -202,9 +205,7 @@ function onInputOpen(open: boolean) {
             </nuxt-link>
           </template>
         </UTimeline>
-
       </TransitionGroup>
-
     </template>
 
   </contentPanels>
