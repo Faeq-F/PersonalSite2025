@@ -149,9 +149,13 @@ import { liveQuery } from "dexie";
 import { useObservable } from "@vueuse/rxjs";
 import { from } from "rxjs";
 import { db, type Certificate, type Project } from "~/assets/scripts/db";
+import { carousel } from '#build/ui';
 
 let myCertificates = useObservable<Certificate[]>(from(liveQuery<Certificate[]>(() => db.certificates.toArray())))
 let myProjects = useObservable<Project[]>(from(liveQuery<Project[]>(() => db.projects.toArray())))
+
+const CarouselBG = ref(true)
+const CarouselScroll = ref(true)
 
 </script>
 
@@ -192,12 +196,17 @@ let myProjects = useObservable<Project[]>(from(liveQuery<Project[]>(() => db.pro
     </template>
 
     <template #left-panel-footer>
-
+      <div class=" flex items-start justify-between flex-col gap-4">
+        <USwitch v-model="CarouselBG" color="neutral"
+          label="Carousel Background" size="sm" />
+        <USwitch v-model="CarouselScroll" color="neutral" size="sm"
+          description="(on hover)" label="Carousel Scrolling" />
+      </div>
     </template>
 
     <template #content>
       <MazAnimatedElement direction="right" :duration="1000">
-        <Card1 />
+        <Card1 :CarouselBG="CarouselBG" :CarouselScroll="CarouselScroll" />
       </MazAnimatedElement>
       <MazAnimatedElement direction="left" :duration="1000">
         <Card2 />
