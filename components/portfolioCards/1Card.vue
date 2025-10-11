@@ -123,17 +123,18 @@ const carouselContainerBG = computed(() => {
 
 .noCarouselContainerBG {
   background-color: #00000000;
-  background-image: none;
   animation: fadeOutBG 0.7s;
 }
 
 @keyframes fadeOutBG {
   0% {
-    opacity: 1
+    opacity: 1;
+    background-image: url("/media/portfolioBackgrounds/cartographer.png");
   }
 
   100% {
-    opacity: 0
+    opacity: 0;
+    background-image: none;
   }
 }
 </style>

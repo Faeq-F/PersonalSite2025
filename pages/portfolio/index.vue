@@ -198,7 +198,7 @@ const CarouselScroll = ref(true)
     <template #left-panel-footer>
       <div class=" flex items-start justify-between flex-col gap-4">
         <USwitch v-model="CarouselBG" color="neutral"
-          label="Carousel Background" size="sm" />
+          label="Carousel Backgrounds" size="sm" />
         <USwitch v-model="CarouselScroll" color="neutral" size="sm"
           description="(on hover)" label="Carousel Scrolling" />
       </div>
