@@ -1,18 +1,26 @@
+<script setup lang="ts">
+import PortfolioCard from '~/components/layoutSections/portfolioCard.vue'
+const props = defineProps<{
+  CarouselBG: boolean,
+  CarouselScroll: boolean
+}>();
+
+import { db, type Project } from "~/assets/scripts/db";
+import { liveQuery } from 'dexie';
+import { useObservable } from "@vueuse/rxjs";
+import { from } from "rxjs";
+
+const project = useObservable<Project | undefined>(from(liveQuery(async () => await db.projects.get('WhatsappPortable'))));
+
+const images = [
+  'https://raw.githubusercontent.com/Faeq-F/whatsappPortable/main/Screenshot.png',
+  'https://raw.githubusercontent.com/Faeq-F/whatsappPortable/main/ScreenshotDark.png',
+  'https://raw.githubusercontent.com/Faeq-F/whatsappPortable/main/Screenshot.png',
+  'https://raw.githubusercontent.com/Faeq-F/whatsappPortable/main/ScreenshotDark.png',
+]
+</script>
+
 <template>
-  <UCard
-    class="opacity-80 cardShadow border border-[var(--ui-border)] m-4 min-w-100">
-    <template #header>
-      WhatsappPortable
-    </template>
-
-    <div class="h-60">
-      content
-    </div>
-
-    <template #footer>
-      <div>
-        footer
-      </div>
-    </template>
-  </UCard>
+  <PortfolioCard :project="project!" :images="images" :CarouselBG="CarouselBG"
+    :CarouselScroll="CarouselScroll" widthClass="min-w-100 max-w-100" />
 </template>

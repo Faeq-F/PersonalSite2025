@@ -246,8 +246,8 @@ db.on('populate', () => {
     { name: "Linux", category: [], experienceLevel: [] },
     { name: "Windows", category: [], experienceLevel: [] },
     // { name: "", category: [], experienceLevel: [] },
-    // { name: "", category: [], experienceLevel: [] },
-    // { name: "", category: [], experienceLevel: [] },
+    { name: "Dart", category: [], experienceLevel: [] },
+    { name: "Flutter", category: [], experienceLevel: [] },
     // { name: "", category: [], experienceLevel: [] },
     // { name: "", category: [], experienceLevel: [] },
     // { name: "", category: [], experienceLevel: [] },
@@ -321,7 +321,12 @@ db.on('populate', () => {
         'C#', '.NET', 'WPF', 'XAML', 'JSON', 'Visual Studio', 'Git', 'GitHub', 'Markdown', 'Windows'
       ], startDate: new Date("January 2020"), endDate: new Date("December 2019"), relatedActivities: [4], relatedProjects: ['']
     },
-    { name: "whatsapp portable", description: '', links: [''], skills: [''], startDate: new Date(), endDate: new Date(), relatedActivities: [4], relatedProjects: [''] },
+    {
+      name: "WhatsappPortable", description: 'A portable application to use WhatsApp',
+      links: [''], skills: [
+        'Flutter', 'Dart', 'CSS3', 'JavaScript', 'HTML5',
+      ], startDate: new Date('June 2024'), endDate: new Date('"December 2023"'), relatedActivities: [4], relatedProjects: ['']
+    },
     { name: "personal site", description: '', links: [''], skills: [''], startDate: new Date(), endDate: new Date(), relatedActivities: [4], relatedProjects: [''] },
     { name: "dynamic memory allocator", description: '', links: [''], skills: [''], startDate: new Date(), endDate: new Date(), relatedActivities: [4], relatedProjects: [''] },
     { name: "Notes", description: '', links: [''], skills: [''], startDate: new Date(), endDate: new Date(), relatedActivities: [4], relatedProjects: [''] },

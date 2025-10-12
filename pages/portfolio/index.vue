@@ -209,7 +209,7 @@ const CarouselScroll = ref(true)
         <Card1 :CarouselBG="CarouselBG" :CarouselScroll="CarouselScroll" />
       </MazAnimatedElement>
       <MazAnimatedElement direction="left" :duration="1000">
-        <Card2 />
+        <Card2 :CarouselBG="CarouselBG" :CarouselScroll="CarouselScroll" />
       </MazAnimatedElement>
       <MazAnimatedElement direction="right" :duration="1000">
         <Card3 />
