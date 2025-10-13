@@ -56,11 +56,20 @@ const items: StepperItem[] = [
   },
 ]
 
+import { useRoute } from 'nuxt/app';
+const route = useRoute()
+
 const stepper = useTemplateRef('stepper')
 const active = ref(0)
 
-watch(active, (newActiveVal) => {
-  document.getElementById('contentPanelsContent')!.scrollTo({ top: document.getElementById('AboutMeCard' + newActiveVal)!.offsetTop, behavior: 'smooth' })
+const switchSectionTo = (to: any) => {
+  active.value = (typeof to == 'string') ? items.indexOf(items.find((section) => section.title == to.replace('/about?section=', '')) || items[0]) : to
+  document.getElementById('contentPanelsContent')!.scrollTo({ top: document.getElementById('AboutMeCard' + active.value)!.offsetTop, behavior: 'smooth' })
+}
+onMounted(() => {
+  switchSectionTo(route.query.section)
+  watch(() => route.query.section, switchSectionTo, { immediate: true })
+  watch(active, switchSectionTo, { immediate: true })
 })
 
 // Update about-me timeline as you scroll

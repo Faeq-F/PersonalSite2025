@@ -16,49 +16,49 @@ export const useMiddleNavbarItems = defineStore("middleNavbarItems", {
                 label: 'Introduction',
                 icon: 'i-lucide-house',
                 description: 'A little on me',
-                to: '/about',
+                to: '/about?section=Introduction',
                 active: false
               },
               {
                 label: '2010',
                 icon: 'i-lucide-wrench',
                 description: '6 years old | Modding',
-                to: '/about',
+                to: '/about?section=2010',
                 active: false
               },
               {
                 label: '2016',
                 icon: 'i-lucide-square-function',
                 description: '12 years old | Programming',
-                to: '/about',
+                to: '/about?section=2016',
                 active: false
               },
               {
                 label: '2018',
                 icon: 'i-lucide-link',
                 description: '14 years old | The Web',
-                to: '/about',
+                to: '/about?section=2018',
                 active: false
               },
               {
                 label: '2020',
                 icon: 'i-lucide-school',
                 description: '16 years old | GCSEs',
-                to: '/about',
+                to: '/about?section=2020',
                 active: false
               },
               {
                 label: '2022',
                 icon: 'i-lucide-book-text',
                 description: '18 years old | A-levels',
-                to: '/about',
+                to: '/about?section=2022',
                 active: false
               },
               {
                 label: '2025',
                 icon: 'i-lucide-graduation-cap',
                 description: '21 years old | My Degree',
-                to: '/about',
+                to: '/about?section=2025',
                 active: false,
                 class: '-mt-0.5'
               },
@@ -83,42 +83,42 @@ export const useMiddleNavbarItems = defineStore("middleNavbarItems", {
                 label: 'All Roles',
                 icon: 'i-lucide-briefcase',
                 description: 'A summary of all my roles',
-                to: '/about',
+                to: '/experience',
                 active: false
               },
               {
                 label: 'Jobs',
                 icon: 'i-lucide-briefcase-business',
                 description: 'A paid position of regular employment',
-                to: '/about',
+                to: '/experience?filter=Jobs',
                 active: false
               },
               {
                 label: 'Education',
                 icon: 'i-lucide-backpack',
                 description: 'Formal learning experiences, degrees, and certifications',
-                to: '/about',
+                to: '/experience?filter=Education',
                 active: false
               },
               {
                 label: 'Volunteering',
                 icon: 'i-lucide-handbag',
                 description: 'Unpaid work for the community or charitable organizations',
-                to: '/about',
+                to: '/experience?filter=Volunteering',
                 active: false
               },
               {
                 label: 'Long-term projects',
                 icon: 'i-lucide-chart-gantt',
                 description: 'Significant undertakings with defined goals and timelines',
-                to: '/about',
+                to: '/experience?filter=LongTermProjects',
                 active: false
               },
               {
                 label: 'Events',
                 icon: 'i-lucide-ticket-check',
                 description: 'Various affairs taken part in',
-                to: '/about',
+                to: '/experience?filter=Events',
                 active: false
               },
             ]

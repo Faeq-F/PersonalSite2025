@@ -221,7 +221,7 @@ const LenisContent = ref();
         wrapper: LenisWrapper,
       }" />
       <div ref="LenisContent"
-        :class="viewActive == 'single' ? '' : ' flex mx-0.25 '">
+        :class="viewActive == 'single' ? 'h-full' : ' flex mx-0.25 '">
         <TransitionGroup name="list">
           <div v-for="page in pages" :key="page" :id="`cvPage${page}`"
             class="cardShadow border border-[var(--ui-border)] rounded-md w-fit h-fit "
