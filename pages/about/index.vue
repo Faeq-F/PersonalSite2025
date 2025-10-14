@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import MazAnimatedElement from 'maz-ui/components/MazAnimatedElement'
 import { onMounted, ref, useTemplateRef, watch } from 'vue';
 import type { StepperItem } from '@nuxt/ui'
 import contentPanels from '~/components/layoutSections/contentPanels.vue';
@@ -62,14 +63,16 @@ const route = useRoute()
 const stepper = useTemplateRef('stepper')
 const active = ref(0)
 
-const switchSectionTo = (to: any) => {
-  active.value = (typeof to == 'string') ? items.indexOf(items.find((section) => section.title == to.replace('/about?section=', '')) || items[0]) : to
-  document.getElementById('contentPanelsContent')!.scrollTo({ top: document.getElementById('AboutMeCard' + active.value)!.offsetTop, behavior: 'smooth' })
-}
+const queryChange = (to: any) =>
+  active.value = items.indexOf(items.find((section) => section.title == to?.replace('/about?section=', '')) || items[0])
+
+const switchSectionTo = (newVal: number) =>
+  document.getElementById('contentPanelsContent')!.scrollTo({ top: document.getElementById('AboutMeCard' + newVal)!.offsetTop, behavior: 'smooth' });
+
 onMounted(() => {
-  switchSectionTo(route.query.section)
-  watch(() => route.query.section, switchSectionTo, { immediate: true })
-  watch(active, switchSectionTo, { immediate: true })
+  queryChange(route.query.section ? route.query.section : 'Introduction');
+  watch(active, switchSectionTo, { immediate: true });
+  watch(() => route.query.section, queryChange, { immediate: true });
 })
 
 // Update about-me timeline as you scroll

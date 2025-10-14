@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import MazAnimatedElement from 'maz-ui/components/MazAnimatedElement'
 import contentPanels from '~/components/layoutSections/contentPanels.vue';
 import type { CheckboxGroupItem, CheckboxGroupValue, InputMenuItem, } from '@nuxt/ui'
 import { ref } from 'vue';
@@ -126,6 +127,19 @@ function onInputOpen(open: boolean) {
     }, 100);
   }
 }
+
+import { useRoute } from 'nuxt/app';
+const route = useRoute()
+
+const queryChange = (to: any) =>
+  activeRole.value = to?.replace('/experience?filter=', '').split(',')
+
+onMounted(() => {
+  queryChange(route.query.filter ? route.query.filter :
+    'jobs,education,projects,volunteering,events'
+  );
+  watch(() => route.query.filter, queryChange, { immediate: true });
+})
 
 </script>
 

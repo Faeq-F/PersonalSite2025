@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import MazAnimatedElement from 'maz-ui/components/MazAnimatedElement'
 import { VuePDF, usePDF } from '@tato30/vue-pdf'
 import '@tato30/vue-pdf/style.css'
 import { ref, watch } from 'vue'

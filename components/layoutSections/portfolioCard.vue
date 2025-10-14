@@ -123,7 +123,7 @@ $colors: #fff, #eee, #000, #bbb, #555, #888;
 @each $image in $images {
   .carouselContainerBG-#{$image} {
     background-color: nth($colors, random(length($colors)));
-    background-image: url("/media/portfolioBackgrounds/" +#{$image}+".png");
+    background-image: url("/media/portfolioBackgrounds/" + #{$image} + ".png");
     animation: fadeInBG 0.7s;
   }
 
@@ -135,7 +135,7 @@ $colors: #fff, #eee, #000, #bbb, #555, #888;
   @keyframes fadeOutBG-#{$image} {
     0% {
       opacity: 1;
-      background-image: url("/media/portfolioBackgrounds/" +#{$image}+".png");
+      background-image: url("/media/portfolioBackgrounds/" + #{$image} + ".png");
     }
 
     100% {

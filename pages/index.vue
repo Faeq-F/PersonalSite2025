@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import MazAnimatedElement from 'maz-ui/components/MazAnimatedElement'
 import stackoverflow from '~/components/icons/stackoverflow.vue'
 import github from '~/components/icons/github.vue'
 import linkedin from '~/components/icons/linkedin.vue'

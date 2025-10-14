@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import MazAnimatedElement from 'maz-ui/components/MazAnimatedElement'
 import contentPanels from '~/components/layoutSections/contentPanels.vue';
 import type { InputMenuItem, TabsItem } from '@nuxt/ui'
 import { ref } from 'vue';

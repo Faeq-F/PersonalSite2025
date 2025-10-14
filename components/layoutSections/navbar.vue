@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import MazAnimatedElement from 'maz-ui/components/MazAnimatedElement'
 import type { NavigationMenuItem } from '@nuxt/ui'
 import { onMounted, ref, watch } from 'vue';
 import { useMiddleNavbarItems } from '~/stores/navbar'

@@ -90,35 +90,35 @@ export const useMiddleNavbarItems = defineStore("middleNavbarItems", {
                 label: 'Jobs',
                 icon: 'i-lucide-briefcase-business',
                 description: 'A paid position of regular employment',
-                to: '/experience?filter=Jobs',
+                to: '/experience?filter=jobs',
                 active: false
               },
               {
                 label: 'Education',
                 icon: 'i-lucide-backpack',
                 description: 'Formal learning experiences, degrees, and certifications',
-                to: '/experience?filter=Education',
+                to: '/experience?filter=education',
                 active: false
               },
               {
                 label: 'Volunteering',
                 icon: 'i-lucide-handbag',
                 description: 'Unpaid work for the community or charitable organizations',
-                to: '/experience?filter=Volunteering',
+                to: '/experience?filter=volunteering',
                 active: false
               },
               {
                 label: 'Long-term projects',
                 icon: 'i-lucide-chart-gantt',
                 description: 'Significant undertakings with defined goals and timelines',
-                to: '/experience?filter=LongTermProjects',
+                to: '/experience?filter=projects',
                 active: false
               },
               {
                 label: 'Events',
                 icon: 'i-lucide-ticket-check',
                 description: 'Various affairs taken part in',
-                to: '/experience?filter=Events',
+                to: '/experience?filter=events',
                 active: false
               },
             ]
