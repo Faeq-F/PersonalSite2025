@@ -135,10 +135,10 @@ const queryChange = (to: any) =>
   activeRole.value = to?.replace('/experience?filter=', '').split(',')
 
 onMounted(() => {
+  watch(() => route.query.filter, queryChange, { immediate: true });
   queryChange(route.query.filter ? route.query.filter :
     'jobs,education,projects,volunteering,events'
   );
-  watch(() => route.query.filter, queryChange, { immediate: true });
 })
 
 </script>
