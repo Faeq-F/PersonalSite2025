@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { type Project } from "~/assets/scripts/db";
+import { inject } from 'vue'
 
 const props = defineProps<{
   project: Project,
   images: string[],
-  CarouselBG: boolean,
-  CarouselScroll: boolean,
   widthClass: string,
   horizontal?: boolean
 }>();
+
+const CarouselBG = inject('CarouselBG')
+const CarouselScroll = inject('CarouselScroll')
 
 import { useSettingsStore } from '~/stores/settings'
 const settings = useSettingsStore()
@@ -27,11 +29,7 @@ const projectEnd = computed(() => {
 });
 
 const imagesCarousel = useTemplateRef('imagesCarousel');
-let bgImages = ['axiom-pattern', 'cartographer', 'graphy-dark', 'inspiration-geometry', 'old-mathematics'];
-var item = bgImages[Math.floor(Math.random() * bgImages.length)];
-const carouselContainerBG = computed(() => {
-  return props.CarouselBG ? `carouselContainerBG-${item}` : `noCarouselContainerBG-${item}`;
-});
+var bg = Math.floor(Math.random() * 60);
 </script>
 <template>
   <nuxt-link :to="'/project/' + project?.name.replaceAll(' ', '~')">
@@ -55,7 +53,8 @@ const carouselContainerBG = computed(() => {
         <div
           class=" w-full dark:border-gray-600 !border-default border rounded-2xl "
           :class="horizontal ? 'h-full' : 'h-[70%]'">
-          <div class="relative h-full rounded-2xl" :class="carouselContainerBG">
+          <div class="relative h-full rounded-2xl"
+            :class="CarouselBG ? `carouselContainerBG-${bg}` : `noCarouselContainerBG-${bg}`">
           </div>
           <UCarousel v-slot="{ item }" loop :auto-scroll="{ playOnInit: false }"
             :items="images"
@@ -107,9 +106,6 @@ const carouselContainerBG = computed(() => {
 </template>
 
 <style lang="scss">
-$images: 'axiom-pattern', 'cartographer', 'graphy-dark', 'inspiration-geometry', 'old-mathematics';
-$colors: #fff, #eee, #000, #bbb, #555, #888;
-
 @keyframes fadeInBG {
   0% {
     opacity: 0
@@ -120,22 +116,25 @@ $colors: #fff, #eee, #000, #bbb, #555, #888;
   }
 }
 
-@each $image in $images {
-  .carouselContainerBG-#{$image} {
-    background-color: nth($colors, random(length($colors)));
-    background-image: url("/media/portfolioBackgrounds/" + #{$image} + ".png");
+@for $num from 0 through 60 {
+  $color1: rgba(random(100)+155, random(100)+155, random(100)+155, random(3)+2);
+  $color2: rgba(random(100)+155, random(100)+155, random(100)+155, random(3)+2);
+  $rotation: random(360);
+
+  .carouselContainerBG-#{$num} {
+    background-image: linear-gradient(#{$rotation}deg, $color1, $color2);
     animation: fadeInBG 0.7s;
   }
 
-  .noCarouselContainerBG-#{$image} {
+  .noCarouselContainerBG-#{$num} {
     background-color: #00000000;
-    animation: fadeOutBG-#{$image} 0.7s;
+    animation: fadeOutBG-#{$num} 0.7s;
   }
 
-  @keyframes fadeOutBG-#{$image} {
+  @keyframes fadeOutBG-#{$num} {
     0% {
       opacity: 1;
-      background-image: url("/media/portfolioBackgrounds/" + #{$image} + ".png");
+      background-image: linear-gradient(#{$rotation}deg, $color1, $color2);
     }
 
     100% {

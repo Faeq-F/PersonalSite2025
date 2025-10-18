@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import PortfolioCard from '~/components/layoutSections/portfolioCard.vue'
-const props = defineProps<{
-  CarouselBG: boolean,
-  CarouselScroll: boolean
-}>();
 
 import { db, type Project } from "~/assets/scripts/db";
 import { liveQuery } from 'dexie';
@@ -21,7 +17,6 @@ const images = [
 </script>
 
 <template>
-  <PortfolioCard :project="project!" :images="images" :CarouselBG="CarouselBG"
-    :CarouselScroll="CarouselScroll" widthClass="min-w-230 max-w-230"
-    horizontal />
+  <PortfolioCard :project="project!" :images="images"
+    widthClass="min-w-230 max-w-230" horizontal />
 </template>

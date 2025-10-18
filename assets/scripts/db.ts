@@ -114,10 +114,15 @@ db.version(1).stores({
 
 db.on('populate', () => {
 
-
   db.skillCategories.bulkPut([
-    { name: 'Spoken Languages', subCategories: ['Romance languages (Latin Languages)'] },
-    { name: 'Romance languages (Latin Languages)', subCategories: [] },
+    {
+      name: 'Hard Skills', subCategories: ['Languages', 'IDEs & Code Editors',
+        'Version Control', 'Office Suites', 'Graphics', 'Operating Systems',
+        'Data Science Tools', 'Communication Tools', 'Libraries & Frameworks',
+        'Automation', 'Testing', 'Simulators', 'Runtime Environments',
+        'Machine Learning', 'CLI', 'GUI',
+      ]
+    },
     {
       name: "Languages", subCategories: ['Programming Languages',
         'Scripting Languages', 'Style Sheet Languages', 'Markup Languages',
@@ -146,14 +151,7 @@ db.on('populate', () => {
     { name: 'Procedural Programming Languages', subCategories: [] },
     { name: 'Logic Programming Languages', subCategories: [] },
     { name: 'Assembly Languages', subCategories: [] },
-    {
-      name: 'Hard Skills', subCategories: ['Languages', 'IDEs & Code Editors',
-        'Version Control', 'Office Suites', 'Graphics', 'Operating Systems',
-        'Data Science Tools', 'Communication Tools', 'Libraries & Frameworks',
-        'Automation', 'Testing', 'Simulators', 'Runtime Environments',
-        'Machine Learning', 'CLI', 'GUI',
-      ]
-    },
+    //
     { name: 'IDEs & Code Editors', subCategories: [] },
     { name: 'Libraries & Frameworks', subCategories: [] },
     { name: 'Machine Learning', subCategories: [] },
@@ -175,6 +173,8 @@ db.on('populate', () => {
         'Communication Skills', 'Teamwork Skills', 'Problem-Solving Skills',
         'Leadership Skills', 'Work Ethic Skills', 'Creative Skills']
     },
+    { name: 'Spoken Languages', subCategories: ['Romance languages (Latin Languages)'] },
+    { name: 'Romance languages (Latin Languages)', subCategories: [] },
     { name: 'Communication Skills', subCategories: [] },
     { name: 'Teamwork Skills', subCategories: [] },
     { name: 'Problem-Solving Skills', subCategories: [] },

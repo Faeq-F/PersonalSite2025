@@ -2,7 +2,7 @@
 import MazAnimatedElement from 'maz-ui/components/MazAnimatedElement'
 import contentPanels from '~/components/layoutSections/contentPanels.vue';
 import type { InputMenuItem, TabsItem } from '@nuxt/ui'
-import { ref } from 'vue';
+import { ref, provide } from 'vue';
 
 import Card1 from '~/components/portfolioCards/1Card.vue';
 import Card2 from '~/components/portfolioCards/2Card.vue';
@@ -77,64 +77,65 @@ const certsOptions = ref<TabsItem[]>([
 ])
 const certsActive = ref((route.query.certs as string) || 'all')
 
-const TagCatItems = ref([
-  {
-    type: 'label',
-    label: 'Fruits',
-  },
-  {
-    type: 'item',
-    label: 'Apple',
-    icon: 'i-lucide-circle-help'
-  },
-  {
-    type: 'item',
-    label: 'Banana',
-    icon: 'i-lucide-circle-help'
-  },
-  {
-    type: 'item',
-    label: 'Blueberry',
-    icon: 'i-lucide-circle-help'
-  },
-  {
-    type: 'item',
-    label: 'Grapes',
-    icon: 'i-lucide-circle-help'
-  },
-  {
-    type: 'item',
-    label: 'Pineapple',
-    icon: 'i-lucide-circle-help'
-  },
-  {
-    type: 'separator'
-  },
-  {
-    type: 'label',
-    label: 'Vegetables',
-  },
-  {
-    type: 'item',
-    label: 'Broccoli',
-    icon: 'i-lucide-circle-help'
-  },
-  {
-    type: 'item',
-    label: 'Carrot',
-    icon: 'i-lucide-circle-help'
-  },
-  {
-    type: 'item',
-    label: 'Courgette',
-    icon: 'i-lucide-circle-help'
-  },
-  {
-    type: 'item',
-    label: 'Leek',
-    icon: 'i-lucide-circle-help'
-  }
-] satisfies InputMenuItem[])
+//const TagCatItems =
+//   ref([
+//   {
+//     type: 'label',
+//     label: 'Fruits',
+//   },
+//   {
+//     type: 'item',
+//     label: 'Apple',
+//     icon: 'i-lucide-circle-help'
+//   },
+//   {
+//     type: 'item',
+//     label: 'Banana',
+//     icon: 'i-lucide-circle-help'
+//   },
+//   {
+//     type: 'item',
+//     label: 'Blueberry',
+//     icon: 'i-lucide-circle-help'
+//   },
+//   {
+//     type: 'item',
+//     label: 'Grapes',
+//     icon: 'i-lucide-circle-help'
+//   },
+//   {
+//     type: 'item',
+//     label: 'Pineapple',
+//     icon: 'i-lucide-circle-help'
+//   },
+//   {
+//     type: 'separator'
+//   },
+//   {
+//     type: 'label',
+//     label: 'Vegetables',
+//   },
+//   {
+//     type: 'item',
+//     label: 'Broccoli',
+//     icon: 'i-lucide-circle-help'
+//   },
+//   {
+//     type: 'item',
+//     label: 'Carrot',
+//     icon: 'i-lucide-circle-help'
+//   },
+//   {
+//     type: 'item',
+//     label: 'Courgette',
+//     icon: 'i-lucide-circle-help'
+//   },
+//   {
+//     type: 'item',
+//     label: 'Leek',
+//     icon: 'i-lucide-circle-help'
+//   }
+// ] satisfies InputMenuItem[])
 const TagCatValue = ref()
 
 function onInputOpen(open: boolean) {
@@ -149,14 +150,29 @@ function onInputOpen(open: boolean) {
 import { liveQuery } from "dexie";
 import { useObservable } from "@vueuse/rxjs";
 import { from } from "rxjs";
-import { db, type Certificate, type Project } from "~/assets/scripts/db";
+import { db, type Certificate, type Project, type SkillCategory, type Skill } from "~/assets/scripts/db";
 import { carousel } from '#build/ui';
 
 let myCertificates = useObservable<Certificate[]>(from(liveQuery<Certificate[]>(() => db.certificates.toArray())))
 let myProjects = useObservable<Project[]>(from(liveQuery<Project[]>(() => db.projects.toArray())))
+let tags = useObservable<InputMenuItem[]>(from(liveQuery<InputMenuItem[]>(() => {
+  let skills: InputMenuItem[] = []
+  db.skillCategories.each((category) => {
+    skills.push({
+      type: 'label',
+      label: category.name
+    })
+    let items = useObservable<Skill[]>(from(liveQuery<Skill[]>(() => db.skills.filter((skill) => new Set(skill.category).intersection(new Set(category.subCategories)).size > 0 || skill.category.includes(category.name)).toArray())));
+    return skills.concat(items.value?.map((item) => ({ type: 'item', label: item.name })) || [])
+  })
+  return skills;
+})))
+const TagCatItems = ref(tags)
 
 const CarouselBG = ref(true)
 const CarouselScroll = ref(true)
+provide('CarouselBG', CarouselBG)
+provide('CarouselScroll', CarouselScroll)
 
 </script>
 
@@ -207,10 +223,10 @@ const CarouselScroll = ref(true)
 
     <template #content>
       <MazAnimatedElement direction="right" :duration="1000">
-        <Card1 :CarouselBG="CarouselBG" :CarouselScroll="CarouselScroll" />
+        <Card1 />
       </MazAnimatedElement>
       <MazAnimatedElement direction="left" :duration="1000">
-        <Card2 :CarouselBG="CarouselBG" :CarouselScroll="CarouselScroll" />
+        <Card2 />
       </MazAnimatedElement>
       <MazAnimatedElement direction="right" :duration="1000">
         <Card3 />
