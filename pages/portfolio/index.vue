@@ -77,67 +77,6 @@ const certsOptions = ref<TabsItem[]>([
 ])
 const certsActive = ref((route.query.certs as string) || 'all')
 
-//const TagCatItems =
-//   ref([
-//   {
-//     type: 'label',
-//     label: 'Fruits',
-//   },
-//   {
-//     type: 'item',
-//     label: 'Apple',
-//     icon: 'i-lucide-circle-help'
-//   },
-//   {
-//     type: 'item',
-//     label: 'Banana',
-//     icon: 'i-lucide-circle-help'
-//   },
-//   {
-//     type: 'item',
-//     label: 'Blueberry',
-//     icon: 'i-lucide-circle-help'
-//   },
-//   {
-//     type: 'item',
-//     label: 'Grapes',
-//     icon: 'i-lucide-circle-help'
-//   },
-//   {
-//     type: 'item',
-//     label: 'Pineapple',
-//     icon: 'i-lucide-circle-help'
-//   },
-//   {
-//     type: 'separator'
-//   },
-//   {
-//     type: 'label',
-//     label: 'Vegetables',
-//   },
-//   {
-//     type: 'item',
-//     label: 'Broccoli',
-//     icon: 'i-lucide-circle-help'
-//   },
-//   {
-//     type: 'item',
-//     label: 'Carrot',
-//     icon: 'i-lucide-circle-help'
-//   },
-//   {
-//     type: 'item',
-//     label: 'Courgette',
-//     icon: 'i-lucide-circle-help'
-//   },
-//   {
-//     type: 'item',
-//     label: 'Leek',
-//     icon: 'i-lucide-circle-help'
-//   }
-// ] satisfies InputMenuItem[])
-const TagCatValue = ref()
-
 function onInputOpen(open: boolean) {
   if (open) {
     // make popup scrollable
@@ -150,24 +89,27 @@ function onInputOpen(open: boolean) {
 import { liveQuery } from "dexie";
 import { useObservable } from "@vueuse/rxjs";
 import { from } from "rxjs";
-import { db, type Certificate, type Project, type SkillCategory, type Skill } from "~/assets/scripts/db";
-import { carousel } from '#build/ui';
+import { db, type SkillCategory, type Skill } from "~/assets/scripts/db";
 
-let myCertificates = useObservable<Certificate[]>(from(liveQuery<Certificate[]>(() => db.certificates.toArray())))
-let myProjects = useObservable<Project[]>(from(liveQuery<Project[]>(() => db.projects.toArray())))
-let tags = useObservable<InputMenuItem[]>(from(liveQuery<InputMenuItem[]>(() => {
+let items = useObservable<Skill[]>(from(liveQuery<Skill[]>(() => db.skills.toArray())))
+let categories = useObservable<SkillCategory[]>(from(liveQuery<SkillCategory[]>(() => db.skillCategories.toArray())))
+let tags = computed(() => {
   let skills: InputMenuItem[] = []
-  db.skillCategories.each((category) => {
+  categories.value?.forEach((category) => {
     skills.push({
       type: 'label',
       label: category.name
     })
-    let items = useObservable<Skill[]>(from(liveQuery<Skill[]>(() => db.skills.filter((skill) => new Set(skill.category).intersection(new Set(category.subCategories)).size > 0 || skill.category.includes(category.name)).toArray())));
-    return skills.concat(items.value?.map((item) => ({ type: 'item', label: item.name })) || [])
+    let catItems = items.value?.filter((skill) => new Set(skill.category).intersection(new Set(category.subCategories)).size > 0 || skill.category.includes(category.name)) || [];
+    skills = skills.concat(catItems.map((item) => ({ type: 'item', label: item.name })) || [])
+    skills.push({
+      type: 'separator'
+    })
   })
-  return skills;
-})))
+  return new Set(skills).values().toArray();
+})
 const TagCatItems = ref(tags)
+const TagCatValue = ref()
 
 const CarouselBG = ref(true)
 const CarouselScroll = ref(true)
@@ -197,12 +139,7 @@ provide('CarouselScroll', CarouselScroll)
           style="--ui-primary: #4a5565" :icon="TagCatValue?.icon" :ui="{
             trailingIcon: 'group-data-[state=open]:rotate-180 transition-transform duration-200'
           }" data-lenis-prevent class="mx-auto my-4 w-fit block"
-          @update:open="onInputOpen">
-          <template #tags-item-text="item">
-            <UIcon :name="item.item.icon as string" />
-            {{ item.item.label }}
-          </template>
-        </UInputMenu>
+          @update:open="onInputOpen" open-on-focus />
       </MazAnimatedElement>
       <MazAnimatedElement direction="up" :duration="700" :delay="800">
         <UTabs :content="false" :items="certsOptions" class="mx-auto w-fit"
