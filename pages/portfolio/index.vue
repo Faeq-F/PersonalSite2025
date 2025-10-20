@@ -116,6 +116,10 @@ const CarouselScroll = ref(true)
 provide('CarouselBG', CarouselBG)
 provide('CarouselScroll', CarouselScroll)
 
+onMounted(() => {
+  CarouselBG.value = !document.getElementsByTagName('html')[0].classList.contains("zTheme")
+})
+
 </script>
 
 <template>

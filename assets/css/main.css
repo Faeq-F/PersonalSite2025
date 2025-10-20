@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica:ital@0;1&display=swap');
 @import "tailwindcss";
 @import "@nuxt/ui";
 @import "./layout.css";
@@ -47,16 +48,33 @@ body{
 
 /* Font classes */
 
+@font-face {
+  font-family: 'requiemregular';
+  src: url(\PersonalSite2025\fonts\requiem\Requiem.ttf);
+}
+
 .varela {
   font-family: "Varela Round", sans-serif;
+}
+
+.zTheme .varela{
+  font-family: Requiem, serif !important;
 }
 
 .outfit {
   font-family: "Outfit", sans-serif;
 }
 
+.zTheme .outfit{
+  font-family: "IM Fell DW Pica", serif !important;
+}
+
 *{
   font-family: "Outfit", sans-serif;
+}
+
+.zTheme *{
+  font-family: "IM Fell DW Pica", serif !important;
 }
 
 /* Dark-mode specific styles */

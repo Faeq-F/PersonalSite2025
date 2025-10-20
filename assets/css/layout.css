@@ -53,6 +53,7 @@ body{
   height: 100vh;
   width: 100vw;
   z-index: 200;
+  transition: all 0.2s ease-in-out;
 }
 
 #navbar .navbar{
@@ -78,4 +79,15 @@ html.zTheme #vidBG {
 html.zTheme.dark #vidBG {
   filter: invert(1);
   border-color: #cebea7; /* Inverted border color */
+}
+
+html.zTheme #pageContent:has(#HomeSocialButtonGroup){
+  background-image: url('/media/bgZthemeHome.png');
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:right;
+}
+
+html.zTheme.dark #pageContent:has(#HomeSocialButtonGroup){
+  background-image: url('/media/bgZthemeHomeDark.png');
 }

@@ -201,9 +201,9 @@ watch(searchVal, (newSearch, _oldSearch) => {
         class="w-full justify-center flex">
         <UNavigationMenu highlight highlight-color="neutral" color="neutral"
           orientation="horizontal" :items="middleItems.items" variant="link"
-          :ui="{
+          class="middleItems" :ui="{
+            childItem: 'zNav',
             viewport: '!px-70 mt-[1px] -translate-y-15/12 min-h-65 max-h-65',
-            content: '',
             childLink: 'bg-white hover:bg-gray-100 dark:bg-[var(--ui-bg)] dark:hover:bg-gray-800 rounded-lg',
             childLinkDescription: 'text-balance line-clamp-2',
             linkTrailingIcon: 'rotate-180 group-data-[state=open]:rotate-0'
@@ -224,7 +224,7 @@ watch(searchVal, (newSearch, _oldSearch) => {
           }"
           class="relative flex w-auto justify-end bg-[#f6f7fa] dark:bg-[#0e0d0d] rounded-full px-3 mr-1.5 h-8 transition-all ease-in-out duration-200">
           <template #item="{ item }">
-            <UIcon :name="item.icon!" class="!size-4.5" />
+            <UIcon :name="item.icon!" class="!size-4.5 " />
           </template>
           <template #settings="{ item }: { item: NavigationMenuItem }">
             <USeparator orientation="vertical"
@@ -245,3 +245,50 @@ watch(searchVal, (newSearch, _oldSearch) => {
     </div>
   </MazAnimatedElement>
 </template>
+
+<style>
+.zTheme #navbar {
+  backdrop-filter: blur(6px) !important;
+}
+
+
+.zTheme .zNav,
+.zTheme #navbar .navbar {
+  border: 1px solid color-mix(in oklab, #000 15%, transparent);
+  background-color: color-mix(in oklab, #000 10%, transparent);
+  box-shadow: 0px 10px 10px -8px rgba(237, 237, 232, 0.02),
+    0px 2px 2px -1.5px rgba(237, 237, 232, 0.02),
+    0px 1px 1px -0.5px rgba(237, 237, 232, 0.02) !important;
+}
+
+.dark.zTheme .zNav,
+.dark.zTheme #navbar .navbar {
+  box-shadow: 0px 10px 10px -8px rgba(18, 18, 23, 0.02),
+    0px 2px 2px -1.5px rgba(18, 18, 23, 0.02),
+    0px 1px 1px -0.5px rgba(18, 18, 23, 0.02) !important;
+  border: 1px solid color-mix(in oklab, #fff 15%, transparent) !important;
+  background-color: color-mix(in oklab, #fff 15%, transparent) !important;
+}
+
+.zTheme .zNav {
+  border-radius: calc(var(--ui-radius) * 2);
+}
+
+.zTheme #navbar .navbar .middleItems ul li a {
+  background-color: #f6f7fa;
+}
+
+.dark.zTheme #navbar .navbar .middleItems ul li a {
+  background-color: #0e0d0d;
+}
+
+.zTheme #navbar .navbar .middleItems ul li a[href="/PersonalSite2025/about"] {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.zTheme #navbar .navbar .middleItems ul li a[href="/PersonalSite2025/cv"] {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+</style>

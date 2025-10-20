@@ -265,7 +265,7 @@ db.on('populate', () => {
     { name: "Android", category: ['Operating Systems'], experienceLevel: [] },
     { name: "Dart", category: ['Procedural Programming Languages', 'Object-Oriented Programming Languages', 'Hard Skills', 'Languages', 'Programming Languages', 'Back-End Languages', 'High-Level Languages',], experienceLevel: [] },
     { name: "Flutter", category: [], experienceLevel: [] },
-    // { name: "", category: [], experienceLevel: [] },
+    //
     { name: "Active Listening", category: ['Communication Skills'], experienceLevel: [] },
     { name: "Public Speaking", category: ['Communication Skills'], experienceLevel: [] },
     { name: "Written Communication", category: ['Communication Skills'], experienceLevel: [] },
