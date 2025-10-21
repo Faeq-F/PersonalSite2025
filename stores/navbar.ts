@@ -17,42 +17,48 @@ export const useMiddleNavbarItems = defineStore("middleNavbarItems", {
                 icon: 'i-lucide-house',
                 description: 'A little on me',
                 to: '/about?section=Introduction',
-                active: false
+                active: false,
+                class: 'zLink'
               },
               {
                 label: '2010',
                 icon: 'i-lucide-wrench',
                 description: '6 years old | Modding',
                 to: '/about?section=2010',
-                active: false
+                active: false,
+                class: 'zLink'
               },
               {
                 label: '2016',
                 icon: 'i-lucide-square-function',
                 description: '12 years old | Programming',
                 to: '/about?section=2016',
-                active: false
+                active: false,
+                class: 'zLink'
               },
               {
                 label: '2018',
                 icon: 'i-lucide-link',
                 description: '14 years old | The Web',
                 to: '/about?section=2018',
-                active: false
+                active: false,
+                class: 'zLink'
               },
               {
                 label: '2020',
                 icon: 'i-lucide-school',
                 description: '16 years old | GCSEs',
                 to: '/about?section=2020',
-                active: false
+                active: false,
+                class: 'zLink'
               },
               {
                 label: '2022',
                 icon: 'i-lucide-book-text',
                 description: '18 years old | A-levels',
                 to: '/about?section=2022',
-                active: false
+                active: false,
+                class: 'zLink'
               },
               {
                 label: '2025',
@@ -60,7 +66,7 @@ export const useMiddleNavbarItems = defineStore("middleNavbarItems", {
                 description: '21 years old | My Degree',
                 to: '/about?section=2025',
                 active: false,
-                class: '-mt-0.5'
+                class: '-mt-0.5 zLink'
               },
               {
                 label: 'Next Steps',
@@ -68,7 +74,7 @@ export const useMiddleNavbarItems = defineStore("middleNavbarItems", {
                 description: 'What does my future hold?',
                 active: false,
                 disabled: true,
-                class: '!cursor-not-allowed opacity-50 -mt-0.5'
+                class: '!cursor-not-allowed opacity-50 -mt-0.5 zLink'
               },
             ]
           },
@@ -84,42 +90,48 @@ export const useMiddleNavbarItems = defineStore("middleNavbarItems", {
                 icon: 'i-lucide-briefcase',
                 description: 'A summary of all my roles',
                 to: '/experience',
-                active: false
+                active: false,
+                class: 'zLink'
               },
               {
                 label: 'Jobs',
                 icon: 'i-lucide-briefcase-business',
                 description: 'A paid position of regular employment',
                 to: '/experience?filter=jobs',
-                active: false
+                active: false,
+                class: 'zLink'
               },
               {
                 label: 'Education',
                 icon: 'i-lucide-backpack',
                 description: 'Formal learning experiences, degrees, and certifications',
                 to: '/experience?filter=education',
-                active: false
+                active: false,
+                class: 'zLink'
               },
               {
                 label: 'Volunteering',
                 icon: 'i-lucide-handbag',
                 description: 'Unpaid work for the community or charitable organizations',
                 to: '/experience?filter=volunteering',
-                active: false
+                active: false,
+                class: 'zLink'
               },
               {
                 label: 'Long-term projects',
                 icon: 'i-lucide-chart-gantt',
                 description: 'Significant undertakings with defined goals and timelines',
                 to: '/experience?filter=projects',
-                active: false
+                active: false,
+                class: 'zLink'
               },
               {
                 label: 'Events',
                 icon: 'i-lucide-ticket-check',
                 description: 'Various affairs taken part in',
                 to: '/experience?filter=events',
-                active: false
+                active: false,
+                class: 'zLink'
               },
             ]
           },
@@ -134,24 +146,28 @@ export const useMiddleNavbarItems = defineStore("middleNavbarItems", {
                 description: 'An extremely customizable keystroke launcher with plugins',
                 icon: 'i-lucide-paw-print',
                 to: '/about',
+                class: 'zLink'
               },
               {
                 label: 'Zarlasht',
                 icon: 'i-lucide-bow-arrow',
                 description: 'My dissertation; a concurrency-based game environment',
                 to: '/about',
+                class: 'zLink'
               },
               {
                 label: 'Muslim Guide',
                 description: 'Duas and Umrah, Hajj & Madinah Guides',
                 icon: 'i-lucide-moon-star',
                 to: '/about',
+                class: 'zLink'
               },
               {
                 label: 'WhatsApp Portable',
                 icon: 'i-lucide-messages-square',
                 description: 'A portable application to use WhatsApp',
                 to: '/about',
+                class: 'zLink'
               },
               {
                 label: 'IT Assets Metadata Repository',
@@ -159,6 +175,7 @@ export const useMiddleNavbarItems = defineStore("middleNavbarItems", {
                 description:
                   'A system for metadata-based organization of different assets',
                 to: '/about',
+                class: 'zLink'
               },
               {
                 label: 'ALSET',
@@ -166,6 +183,7 @@ export const useMiddleNavbarItems = defineStore("middleNavbarItems", {
                 description:
                   'Track following robot using the EV3 kit, LeJOS and an Android phone',
                 to: '/about',
+                class: 'zLink'
               },
             ]
           },

@@ -27,7 +27,26 @@ function toggleTheme(theme: number) {
 }
 
 const zarlashtTheme = ref(false);
+const aeonTheme = ref(false);
 const bgAnimation = ref(true);
+
+watch(zarlashtTheme, (newVal) => {
+  if (newVal) {
+    aeonTheme.value = false
+    document.getElementsByTagName('html')[0].classList.add('zTheme')
+  } else {
+    document.getElementsByTagName('html')[0].classList.remove('zTheme')
+  }
+})
+
+watch(aeonTheme, (newVal) => {
+  if (newVal) {
+    zarlashtTheme.value = false
+    document.getElementsByTagName('html')[0].classList.add('aTheme')
+  } else {
+    document.getElementsByTagName('html')[0].classList.remove('aTheme')
+  }
+})
 
 const themeItems = ref<NavigationMenuItem[][]>([
   [
@@ -59,11 +78,6 @@ const themeItems = ref<NavigationMenuItem[][]>([
     }
   ]
 ])
-
-watch(zarlashtTheme, () => {
-  document.getElementsByTagName('html')[0].classList.toggle('zTheme')
-})
-
 
 watch(bgAnimation, () => {
   document.getElementById('fogWrap')!.classList.toggle('hidden')
@@ -145,7 +159,7 @@ watch(searchVal, (newSearch, _oldSearch) => {
       <MazAnimatedElement direction="right" :delay='300' :duration="700"
         class="flex items-center">
         <div
-          class="flex items-center bg-[#f6f7fa] dark:bg-[#0e0d0d] rounded-full px-3 ml-1.5 h-8 transition-all ease-in-out duration-200">
+          class="flex items-center bg-[#f6f7fa] dark:bg-[#0e0d0d] rounded-full px-3 ml-1.5 h-8 transition-all ease-in-out duration-200 homeNavSection">
           <nuxt-link to="/" class="contents">
             <UIcon name="i-lucide-home"
               class="!size-4.5 hover:text-black dark:hover:text-white text-muted mx-2 my-1.5" />
@@ -168,7 +182,7 @@ watch(searchVal, (newSearch, _oldSearch) => {
                       class="w-full p-2 pt-0 pr-1">
                       <nuxt-link :to="page.url">
                         <UButton :icon="page.icon" size="md" color="neutral"
-                          variant="soft" class="w-full">
+                          variant="soft" class="w-full zLink">
                           <USeparator orientation="vertical"
                             class="h-6 invert opacity-20 ml-1" />
                           <div class="w-full">
@@ -202,8 +216,7 @@ watch(searchVal, (newSearch, _oldSearch) => {
         <UNavigationMenu highlight highlight-color="neutral" color="neutral"
           orientation="horizontal" :items="middleItems.items" variant="link"
           class="middleItems" :ui="{
-            childItem: 'zNav',
-            viewport: '!px-70 mt-[1px] -translate-y-15/12 min-h-65 max-h-65',
+            viewport: '!px-70 mt-[1px] -translate-y-15/12 min-h-68 max-h-68',
             childLink: 'bg-white hover:bg-gray-100 dark:bg-[var(--ui-bg)] dark:hover:bg-gray-800 rounded-lg',
             childLinkDescription: 'text-balance line-clamp-2',
             linkTrailingIcon: 'rotate-180 group-data-[state=open]:rotate-0'
@@ -214,7 +227,7 @@ watch(searchVal, (newSearch, _oldSearch) => {
         <!-- Theme Switch -->
         <UNavigationMenu content-orientation="vertical" color="neutral"
           :items="themeItems" variant="link" trailing-icon=" " :ui="{
-            viewport: '-translate-y-46 -translate-x-4 min-h-32 max-h-32 pr-28 ',
+            viewport: '-translate-y-46 -translate-x-4 min-h-32 max-h-32 pr-28 navView',
             content: 'w-auto  ml-0.5',
             childList: 'w-auto flex flex-col',
             childLabel: 'w-full',
@@ -222,7 +235,7 @@ watch(searchVal, (newSearch, _oldSearch) => {
             childLinkDescription: 'line-clamp-1',
             childLink: '-mt-0.25 bg-white hover:bg-gray-100 dark:bg-[var(--ui-bg)] dark:hover:bg-gray-800 rounded-lg',
           }"
-          class="relative flex w-auto justify-end bg-[#f6f7fa] dark:bg-[#0e0d0d] rounded-full px-3 mr-1.5 h-8 transition-all ease-in-out duration-200">
+          class="relative flex w-auto justify-end bg-[#f6f7fa] dark:bg-[#0e0d0d] rounded-full px-3 mr-1.5 h-8 transition-all ease-in-out duration-200 themeNavSection">
           <template #item="{ item }">
             <UIcon :name="item.icon!" class="!size-4.5 " />
           </template>
@@ -236,6 +249,8 @@ watch(searchVal, (newSearch, _oldSearch) => {
             <div class="px-0.5 flex flex-col items-start justify-around !h-32">
               <USwitch v-model="bgAnimation" color="neutral" size="xs"
                 description="Background" label="Animating" />
+              <USwitch v-model="aeonTheme" color="neutral" size="xs"
+                description="theme" label="Aeon" />
               <USwitch v-model="zarlashtTheme" color="neutral" size="xs"
                 description="theme" label="Zarlasht" />
             </div>
@@ -251,8 +266,7 @@ watch(searchVal, (newSearch, _oldSearch) => {
   backdrop-filter: blur(6px) !important;
 }
 
-
-.zTheme .zNav,
+.zTheme .zLink,
 .zTheme #navbar .navbar {
   border: 1px solid color-mix(in oklab, #000 15%, transparent);
   background-color: color-mix(in oklab, #000 10%, transparent);
@@ -261,7 +275,7 @@ watch(searchVal, (newSearch, _oldSearch) => {
     0px 1px 1px -0.5px rgba(237, 237, 232, 0.02) !important;
 }
 
-.dark.zTheme .zNav,
+.dark.zTheme .zLink,
 .dark.zTheme #navbar .navbar {
   box-shadow: 0px 10px 10px -8px rgba(18, 18, 23, 0.02),
     0px 2px 2px -1.5px rgba(18, 18, 23, 0.02),
@@ -270,8 +284,10 @@ watch(searchVal, (newSearch, _oldSearch) => {
   background-color: color-mix(in oklab, #fff 15%, transparent) !important;
 }
 
-.zTheme .zNav {
-  border-radius: calc(var(--ui-radius) * 2);
+.zTheme .zLink {
+  margin-top: 0;
+  border-radius: calc(var(--ui-radius) * 2) !important;
+
 }
 
 .zTheme #navbar .navbar .middleItems ul li a {
@@ -290,5 +306,29 @@ watch(searchVal, (newSearch, _oldSearch) => {
 .zTheme #navbar .navbar .middleItems ul li a[href="/PersonalSite2025/cv"] {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+}
+
+html:not(.aTheme, .zTheme) #navbar .navbar {
+  border: none;
+  background-color: #00000000;
+  box-shadow: none;
+
+  &:hover {
+    background-color: rgba(88, 101, 242, 0.16) !important;
+  }
+}
+
+html:not(.aTheme, .zTheme) #navbar .navbar .themeNavSection,
+html:not(.aTheme, .zTheme) #navbar .navbar .homeNavSection {
+  background-color: unset !important;
+}
+
+html.dark:not(.aTheme, .zTheme) #navbar .navbar .themeNavSection,
+html.dark:not(.aTheme, .zTheme) #navbar .navbar .homeNavSection {
+  background-color: unset !important;
+}
+
+html:not(.aTheme, .zTheme) #navbar .navbar .navView {
+  background-image: linear-gradient(90deg, #e6e6fa, #e4e6ff) !important;
 }
 </style>

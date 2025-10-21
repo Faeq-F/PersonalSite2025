@@ -77,7 +77,7 @@ const LenisContent = ref();
               <MazAnimatedElement direction="up" :duration="700">
                 <nuxt-link to="/">
                   <UCard
-                    class="h-full w-full opacity-80 cardShadow border border-[var(--ui-border)]">
+                    class="h-full w-full opacity-80 zLink border border-[var(--ui-border)]">
                     content
                   </UCard>
                 </nuxt-link>
@@ -85,7 +85,7 @@ const LenisContent = ref();
               <MazAnimatedElement direction="down" :duration="700">
                 <nuxt-link to="/">
                   <UCard
-                    class="h-full w-full opacity-80 cardShadow border border-[var(--ui-border)]">
+                    class="h-full w-full opacity-80 zLink border border-[var(--ui-border)]">
                     content
                   </UCard>
                 </nuxt-link>
@@ -97,7 +97,7 @@ const LenisContent = ref();
                 class="flex-1/2">
                 <nuxt-link to="/">
                   <UCard
-                    class="h-full w-full opacity-80 cardShadow border border-[var(--ui-border)]">
+                    class="h-full w-full opacity-80 zLink border border-[var(--ui-border)]">
                     content
                   </UCard>
                 </nuxt-link>
@@ -106,7 +106,7 @@ const LenisContent = ref();
                 class="flex-1/2">
                 <nuxt-link to="/">
                   <UCard
-                    class="h-full w-full opacity-80 cardShadow border border-[var(--ui-border)]">
+                    class="h-full w-full opacity-80 zLink border border-[var(--ui-border)]">
                     content
                   </UCard>
                 </nuxt-link>
@@ -116,7 +116,7 @@ const LenisContent = ref();
               <MazAnimatedElement direction="up" :duration="700">
                 <nuxt-link to="/">
                   <UCard
-                    class="h-full w-full opacity-80 cardShadow border border-[var(--ui-border)]">
+                    class="h-full w-full opacity-80 zLink border border-[var(--ui-border)]">
                     content
                   </UCard>
                 </nuxt-link>
@@ -127,7 +127,7 @@ const LenisContent = ref();
               <MazAnimatedElement direction="down" :duration="700">
                 <nuxt-link to="/">
                   <UCard
-                    class="h-full w-full opacity-80 cardShadow border border-[var(--ui-border)]">
+                    class="h-full w-full opacity-80 zLink border border-[var(--ui-border)]">
                     content
                   </UCard>
                 </nuxt-link>
@@ -138,7 +138,7 @@ const LenisContent = ref();
                 class="flex-1/2">
                 <nuxt-link to="/">
                   <UCard
-                    class="h-full w-full opacity-80 cardShadow border border-[var(--ui-border)]">
+                    class="h-full w-full opacity-80 zLink border border-[var(--ui-border)]">
                     content
                   </UCard>
                 </nuxt-link>
@@ -147,7 +147,7 @@ const LenisContent = ref();
                 class="flex-1/2">
                 <nuxt-link to="/">
                   <UCard
-                    class="h-full w-full opacity-80 cardShadow border border-[var(--ui-border)]">
+                    class="h-full w-full opacity-80 zLink border border-[var(--ui-border)]">
                     content
                   </UCard>
                 </nuxt-link>

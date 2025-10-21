@@ -17,22 +17,31 @@ body{
   width: calc(100vw - 1.9rem);
   height: calc(100vh - 1.9rem);
   border-radius: 1.5rem;
-  box-shadow: #00000003 0 5px 15px, #191c2113 0 15px 35px -5px, #00000003 0 0 0 1px;
   overflow: hidden;
 }
 
-.dark #vidBG{
+.aTheme #vidBG {
+  box-shadow: #00000003 0 5px 15px, #191c2113 0 15px 35px -5px, #00000003 0 0 0 1px;
+}
+
+.aTheme.dark #vidBG{
   box-shadow: #00000014 0 5px 15px, #191c2133 0 15px 35px -5px, #ffffff12 0 0 0 1px;
 }
 
-.dark #vidBG video{
+.aTheme.dark #vidBG video{
   filter: grayscale(1) ;
 }
 
-#vidBG video {
+#vidBG video,
+.zTheme #vidBG video{
+  display: none;
+}
+
+.aTheme #vidBG video {
   object-fit: cover;
   filter: sepia(1) brightness(0.7) invert(1) ;
   transition: all 0.2s ease-in-out;
+  display: block;
 }
 
 #credits {
@@ -72,10 +81,6 @@ html.zTheme #vidBG {
   background-repeat: no-repeat;
 }
 
-.zTheme #vidBG video{
-  display: none;
-}
-
 html.zTheme.dark #vidBG {
   filter: invert(1);
   border-color: #cebea7; /* Inverted border color */
@@ -90,4 +95,23 @@ html.zTheme #pageContent:has(#HomeSocialButtonGroup){
 
 html.zTheme.dark #pageContent:has(#HomeSocialButtonGroup){
   background-image: url('/media/bgZthemeHomeDark.png');
+}
+/*
+html:not(.aTheme, .zTheme) #vidBG{
+  border: none;
+	background-color: #fff;
+  box-shadow:
+  inset 0px 0px 0px 0px #e4e6ff,
+  inset 0px 0px 0px 5px #fff,
+  inset 0px 0px 0px 10px #e4e6ff;
+} */
+
+html:not(.aTheme, .zTheme) #vidBG{
+  border: none;
+	background-color: #e4e6ff;
+}
+
+
+html:not(.aTheme, .zTheme) body{
+  background-color: #e4e6ff;
 }

@@ -18,7 +18,7 @@ import linkedin from '~/components/icons/linkedin.vue'
         <MazAnimatedElement direction="right" :duration="700" :delay="600"
           class="inline">
           <a href="mailto:faeqfaisal@hotmail.co.uk" target="_blank">
-            <UPopover mode="hover">
+            <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
               <button
                 class="lg:inline-flex hidden items-center gap-2 pr-4 py-2 rounded-full  text-current justify-center mr-3 pl-4 w-16 ml-1">
                 <UIcon name="i-lucide-mail"
@@ -33,7 +33,7 @@ import linkedin from '~/components/icons/linkedin.vue'
         <MazAnimatedElement direction="right" :duration="700" :delay="700"
           class="inline">
           <a href="https://linkedin.com/in/faeq" target="_blank">
-            <UPopover mode="hover">
+            <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
               <button
                 class="lg:inline-flex hidden items-center gap-2 pr-4 py-2 rounded-full  text-current justify-center mr-3 pl-4 w-16">
                 <linkedin
@@ -48,7 +48,7 @@ import linkedin from '~/components/icons/linkedin.vue'
         <MazAnimatedElement direction="right" :duration="700" :delay="800"
           class="inline">
           <a href="https://github.com/Faeq-F" target="_blank">
-            <UPopover mode="hover">
+            <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
               <button
                 class="lg:inline-flex hidden items-center gap-2 pr-4 py-2 rounded-full  text-current justify-center mr-3 w-16 pl-4">
                 <github
@@ -64,7 +64,7 @@ import linkedin from '~/components/icons/linkedin.vue'
           class="inline">
           <a href="http://stackoverflow.com/users/13165763/faeq"
             target="_blank">
-            <UPopover mode="hover">
+            <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
               <button
                 class="lg:inline-flex hidden items-center gap-2 pr-4 py-2 rounded-full  text-current justify-center mr-3 w-16 pl-4">
                 <stackoverflow
@@ -79,7 +79,7 @@ import linkedin from '~/components/icons/linkedin.vue'
         <MazAnimatedElement direction="right" :duration="700" :delay="1000"
           class="inline">
           <a href="sms:+447775901092?&amp;body=Hello%Faeq," target="_blank">
-            <UPopover mode="hover">
+            <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
               <button
                 class="lg:inline-flex hidden items-center gap-2 pr-4 py-2 rounded-full  text-current justify-center mr-3 w-16 pl-4">
                 <UIcon name="i-lucide-message-square-text"
@@ -94,7 +94,7 @@ import linkedin from '~/components/icons/linkedin.vue'
         <MazAnimatedElement direction="right" :duration="700" :delay="1100"
           class="inline">
           <a href="https://cal.com/Faeq-F" target="_blank">
-            <UPopover mode="hover">
+            <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
               <button
                 class="lg:inline-flex hidden items-center gap-2 py-2 rounded-full  text-current justify-center mr-3 w-9 ">
                 <UIcon name="i-lucide-calendar-plus-2"
@@ -116,15 +116,33 @@ import linkedin from '~/components/icons/linkedin.vue'
   transition: all;
   transition-duration: .2s;
   border-style: solid;
-  background: #fff;
   color: #212126;
+}
+
+.zTheme #HomeSocialButtonGroup button {
+  background: #fff;
+}
+
+.aTheme #HomeSocialButtonGroup button {
   box-shadow: #00000014 0 5px 15px, #191c2133 0 15px 35px -5px, #00000012 0 0 0 1px;
+  background: #fff;
 }
 
 .dark #HomeSocialButtonGroup button {
-  background: #000;
   color: #deded9;
+}
+
+.dark.zTheme #HomeSocialButtonGroup button {
+  background: #000;
+}
+
+.dark.aTheme #HomeSocialButtonGroup button {
+  background: #000;
   box-shadow: #ffffff14 0 5px 15px, #e6e3de33 0 15px 35px -5px, #ffffff12 0 0 0 1px;
+}
+
+html:not(.aTheme, .zTheme) #HomeSocialButtonGroup button:hover {
+  background-color: rgba(88, 101, 242, 0.16) !important;
 }
 
 .zTheme .homeTitle {
@@ -134,5 +152,11 @@ import linkedin from '~/components/icons/linkedin.vue'
 
 .dark.zTheme .homeTitle {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+html:not(.aTheme, .zTheme) .popoverContent {
+  box-shadow: none;
+  border: none;
+  background-color: unset !important;
 }
 </style>
