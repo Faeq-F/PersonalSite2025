@@ -141,7 +141,8 @@ onMounted(() => {
         <UInputMenu v-model="TagCatValue" :items="TagCatItems" multiple
           placeholder="Select for tag cat" variant="soft"
           style="--ui-primary: #4a5565" :icon="TagCatValue?.icon" :ui="{
-            trailingIcon: 'group-data-[state=open]:rotate-180 transition-transform duration-200'
+            trailingIcon: 'group-data-[state=open]:rotate-180 transition-transform duration-200',
+            content: 'popoverContent'
           }" data-lenis-prevent class="mx-auto my-4 w-fit block"
           @update:open="onInputOpen" open-on-focus />
       </MazAnimatedElement>

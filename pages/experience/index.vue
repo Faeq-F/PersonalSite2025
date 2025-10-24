@@ -164,7 +164,7 @@ onMounted(() => {
           <template #legend>
             <UButton
               :icon="activeRole?.length! < 3 ? 'i-lucide-check-check' : 'i-lucide-squares-subtract'"
-              color="neutral" variant="outline" size="sm"
+              color="neutral" variant="outline" size="sm" class="rolesGrid"
               @click="activeRole?.length! < 3 ? activeRole = ['jobs', 'education', 'projects', 'volunteering', 'events'] : activeRole = []" />
             <div class="font-bold ml-1 align-text-bottom inline">Filter by role
             </div>
@@ -193,10 +193,10 @@ onMounted(() => {
           :items="i == items.length - 1 ? [role] : [role,
             { date: '', title: '', to: '', description: 'empty' }
           ]" class="w-full mt-1 timeline" size="lg" :ui="{
-            date: 'float-end ms-1 pr-4',
+            date: 'float-end ms-1 pr-4 timeLineDetail',
             description: 'px-3 mr-4 py-2 mt-2 rounded-md text-default cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
             separator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black brightness-200',
-            indicator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80',
+            indicator: 'cardShadow border border-[var(--ui-border)] bg-white dark:bg-black opacity-80 timeLineDetail timeLineIcon',
           }">
           <template #date="{ item }">
             <div v-if="item.description == 'empty'" class="hidden"></div>
@@ -207,7 +207,7 @@ onMounted(() => {
           <template #title="{ item }">
             <div v-if="item.description == 'empty'" class="hidden">
             </div>
-            <nuxt-link :to="item.to" v-else>
+            <nuxt-link :to="item.to" v-else class="timeLineDetail">
               {{ item.title }}
             </nuxt-link>
           </template>
@@ -239,5 +239,18 @@ onMounted(() => {
 .list-leave-to {
   opacity: 0;
   transform: translateY(70px);
+}
+
+html:not(.aTheme, .zTheme) .timeline .timeLineDetail {
+  color: #fff;
+}
+
+html:not(.aTheme, .zTheme, .dark) .timeline .timeLineDetail.timeLineIcon {
+  color: inherit;
+}
+
+html:not(.aTheme, .zTheme) fieldset label {
+  margin-bottom: 0.25rem;
+  border-radius: 0.5rem;
 }
 </style>

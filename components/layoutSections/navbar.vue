@@ -7,6 +7,8 @@ const middleItems = useMiddleNavbarItems()
 
 import { useThemeHandler } from 'maz-ui'
 
+const emit = defineEmits(['aeon'])
+
 const {
   setDarkTheme,
   setLightTheme,
@@ -43,7 +45,9 @@ watch(aeonTheme, (newVal) => {
   if (newVal) {
     zarlashtTheme.value = false
     document.getElementsByTagName('html')[0].classList.add('aTheme')
+    emit('aeon')
   } else {
+    emit('aeon')
     document.getElementsByTagName('html')[0].classList.remove('aTheme')
   }
 })
@@ -58,16 +62,19 @@ const themeItems = ref<NavigationMenuItem[][]>([
           label: 'Light',
           icon: 'i-lucide-sun',
           onSelect: () => toggleTheme(1),
+          class: 'zLink zLinkTheme'
         },
         {
           label: 'Dark',
           icon: 'i-lucide-moon',
           onSelect: () => toggleTheme(0),
+          class: 'zLink zLinkTheme'
         },
         {
           label: 'System',
           icon: 'i-lucide-laptop-minimal',
           onSelect: () => toggleTheme(-1),
+          class: 'zLink zLinkTheme'
         },
       ]
     },
@@ -170,7 +177,7 @@ watch(searchVal, (newSearch, _oldSearch) => {
             <UIcon name="i-lucide-search"
               class="!size-4.5 h-full clickable hover:text-black dark:hover:text-white text-muted mx-2.5 my-1.5" />
             <template #content>
-              <div class="min-h-96 max-h-96 w-96">
+              <div class="min-h-96 max-h-96 w-96" id="searchPanel">
                 <UInput icon="i-lucide-search" size="md" variant="none"
                   placeholder="Search Pages..." class="w-full p-1"
                   v-model="searchVal" />
@@ -227,7 +234,7 @@ watch(searchVal, (newSearch, _oldSearch) => {
         <!-- Theme Switch -->
         <UNavigationMenu content-orientation="vertical" color="neutral"
           :items="themeItems" variant="link" trailing-icon=" " :ui="{
-            viewport: '-translate-y-46 -translate-x-4 min-h-32 max-h-32 pr-28 navView',
+            viewport: '-translate-y-46 -translate-x-4 min-h-34 max-h-34 pr-28 navView',
             content: 'w-auto  ml-0.5',
             childList: 'w-auto flex flex-col',
             childLabel: 'w-full',
@@ -246,7 +253,9 @@ watch(searchVal, (newSearch, _oldSearch) => {
               :class="bgAnimation ? 'animate-[spin_3s_linear_infinite]' : ''" />
           </template>
           <template #settings-content>
-            <div class="px-0.5 flex flex-col items-start justify-around !h-32">
+            <div
+              class="px-0.5 flex flex-col items-start justify-around !h-32 mt-0.5"
+              id="themeControls">
               <USwitch v-model="bgAnimation" color="neutral" size="xs"
                 description="Background" label="Animating" />
               <USwitch v-model="aeonTheme" color="neutral" size="xs"
@@ -284,10 +293,9 @@ watch(searchVal, (newSearch, _oldSearch) => {
   background-color: color-mix(in oklab, #fff 15%, transparent) !important;
 }
 
-.zTheme .zLink {
+html.zTheme .zLink {
   margin-top: 0;
   border-radius: calc(var(--ui-radius) * 2) !important;
-
 }
 
 .zTheme #navbar .navbar .middleItems ul li a {
@@ -298,37 +306,31 @@ watch(searchVal, (newSearch, _oldSearch) => {
   background-color: #0e0d0d;
 }
 
-.zTheme #navbar .navbar .middleItems ul li a[href="/PersonalSite2025/about"] {
+html.zTheme #navbar .navbar .middleItems ul li a[href="/PersonalSite2025/about"] {
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
 }
 
-.zTheme #navbar .navbar .middleItems ul li a[href="/PersonalSite2025/cv"] {
+html.zTheme #navbar .navbar .middleItems ul li a[href="/PersonalSite2025/cv"] {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
 
-html:not(.aTheme, .zTheme) #navbar .navbar {
-  border: none;
-  background-color: #00000000;
-  box-shadow: none;
-
-  &:hover {
-    background-color: rgba(88, 101, 242, 0.16) !important;
-  }
+html:not(.aTheme, .zTheme) #navbar .navbar .middleItems ul li a:not(.zLink) span {
+  font-style: italic;
 }
 
-html:not(.aTheme, .zTheme) #navbar .navbar .themeNavSection,
-html:not(.aTheme, .zTheme) #navbar .navbar .homeNavSection {
-  background-color: unset !important;
+/* html:not(.aTheme, .zTheme) #navbar .navbar .middleItems ul li a:not(.zLink, :hover) span {
+  color: #fff !important;
+} */
+
+html:not(.aTheme, .zTheme) #themeControls label,
+html:not(.aTheme, .zTheme) #themeControls p {
+  font-size: 0.7rem !important;
 }
 
-html.dark:not(.aTheme, .zTheme) #navbar .navbar .themeNavSection,
-html.dark:not(.aTheme, .zTheme) #navbar .navbar .homeNavSection {
-  background-color: unset !important;
-}
-
-html:not(.aTheme, .zTheme) #navbar .navbar .navView {
-  background-image: linear-gradient(90deg, #e6e6fa, #e4e6ff) !important;
+html:not(.aTheme, .zTheme) button.zLink.zLinkTheme {
+  margin-left: -0.25rem !important;
+  width: 6.25rem;
 }
 </style>

@@ -45,7 +45,7 @@
             class="p-2.5 rounded-none hover:bg-[var(--ui-bg-elevated)] w-full h-full"
             icon="i-lucide-image-play" size="md" color="neutral"
             variant="ghost">
-            Background video
+            Aeon theme background video
           </UButton>
         </nuxt-link>
         <nuxt-link target="_blank" to="https://maz-ui.com/"
@@ -109,7 +109,8 @@
         </nuxt-link>
       </div>
       <div class="flex h-1/5">
-        <nuxt-link target="_blank" to=""
+        <nuxt-link target="_blank"
+          to="https://www.rw-designer.com/cursor-set/windows-11-light-theme"
           class="w-1/4 rounded-none border-t border-r border-accented border-l">
           <UButton icon="i-lucide-mouse-pointer-2" size="md" color="neutral"
             variant="ghost"
@@ -199,6 +200,25 @@
             IM Fell DW Pica Font
           </UButton>
         </nuxt-link>
+        <nuxt-link target="_blank"
+          to="https://fonts.google.com/specimen/Mona+Sans"
+          class="w-1/4 rounded-none  border-t border-r border-b border-accented ">
+          <UButton icon="i-lucide-spell-check-2" size="md" color="neutral"
+            variant="ghost"
+            class="p-2.5 rounded-none  hover:bg-[var(--ui-bg-elevated)] w-full h-full">
+            Mona Sans Font
+          </UButton>
+        </nuxt-link>
+        <nuxt-link target="_blank"
+          to="https://www.youtube.com/watch?v=XzTCntGgNJU"
+          class="w-1/4 rounded-none rounded-br-2xl border-t border-r border-b border-accented ">
+          <UButton icon="i-lucide-projector" size="md" color="neutral"
+            variant="ghost"
+            class="p-2.5 rounded-none rounded-br-2xl hover:bg-[var(--ui-bg-elevated)] w-full h-full">
+            Background video
+          </UButton>
+        </nuxt-link>
+        <!--
         <nuxt-link target="_blank" to=""
           class="w-1/4 rounded-none border-t border-r border-b border-accented ">
           <UButton
@@ -206,13 +226,7 @@
             disabled size="md" color="neutral" variant="ghost">
           </UButton>
         </nuxt-link>
-        <nuxt-link target="_blank" to=""
-          class="w-1/4 rounded-none border-t rounded-br-2xl border-r border-b border-accented ">
-          <UButton
-            class="p-2.5 rounded-none rounded-br-2xl hover:bg-[var(--ui-bg-elevated)] w-full h-full"
-            disabled size="md" color="neutral" variant="ghost">
-          </UButton>
-        </nuxt-link>
+        -->
       </div>
     </div>
   </div>

@@ -189,3 +189,9 @@ onMounted(() => { Scroller.init(); })
   </contentPanels>
 
 </template>
+
+<style>
+html:not(.aTheme, .zTheme) .aboutContent {
+  font-size: 0.9rem;
+}
+</style>

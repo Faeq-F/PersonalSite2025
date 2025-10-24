@@ -3,6 +3,8 @@ import navbar from '~/components/layoutSections/navbar.vue'
 import Credits from '~/components/layoutSections/credits.vue'
 const route = useRoute()
 
+const aeon = ref(false);
+
 onMounted(async () => {
   document.getElementById("video-bg-elem").play();
 })
@@ -14,14 +16,19 @@ onMounted(async () => {
 
     <div id="vidBG" class="border-default rounded-none border border-accent">
       <video autoplay loop disablePictureInPicture muted id="video-bg-elem"
-        class="h-full w-full">
+        class="h-full w-full" v-if="aeon">
         <source src="/media/bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <video autoplay loop disablePictureInPicture muted id="video-bg-elem"
+        class="h-full w-full" v-else>
+        <source src="/media/bgTheme.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
 
     <div class="fogWrap" id="fogWrap">
-      <img src="/media/cloud.png" v-for="i in Array.from(Array(100).keys())" />
+      <img src="/media/cloud.png" v-for="_i in Array.from(Array(100).keys())" />
     </div>
 
     <div id="pageContent" class="overflow-hidden">
@@ -32,7 +39,7 @@ onMounted(async () => {
           </div>
         </transition>
       </div>
-      <navbar />
+      <navbar @aeon="aeon = !aeon" />
     </div>
 
   </div>
@@ -68,11 +75,11 @@ onMounted(async () => {
 //=-------------------------------------------------------------------
 //== Fog for the Zarlasht theme ==//
 
-.fogWrap {
+html.zTheme .fogWrap {
   perspective-origin: 50% 50%;
 }
 
-.fogWrap img {
+html.zTheme .fogWrap img {
   position: absolute;
   bottom: -100vh;
   transform-style: preserve-3d;
@@ -80,7 +87,7 @@ onMounted(async () => {
   max-width: 20px;
 }
 
-html.dark {
+html.zTheme html.dark {
   .fogWrap img {
     filter: invert(1);
   }
@@ -95,7 +102,7 @@ $bgAnimation: 100;
 @for $i from 1 through $bgAnimation {
   $scale: math.random(2) - 0.4;
 
-  .fogWrap img:nth-child(#{$i}) {
+  html.zTheme .fogWrap img:nth-child(#{$i}) {
     left: math.random(120) * 1% - 20;
     animation: raise#{$i} 7+math.random(15)+s linear infinite;
     animation-delay: math.random(5) - 5 + s;

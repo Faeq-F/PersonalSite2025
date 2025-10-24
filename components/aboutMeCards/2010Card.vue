@@ -14,18 +14,18 @@
       </div>
     </template>
 
-    <div class="flex justify-between">
+    <div class="flex justify-between aboutContent">
       <div class="leading-[1.9] -mt-2">
         My journey began with digital games. I was completely immersed,
         from the puzzle
-        <UPopover mode="hover">
+        <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
           <nuxt-link to="https://en.wikipedia.org/wiki/Windows_Desktop_Gadgets"
             target="_blank" class="boxLink">widget</nuxt-link>
           <template #content>
             <p class="p-1 text-sm">See Windows Desktop Gadgets</p>
           </template>
         </UPopover> on
-        <UPopover mode="hover">
+        <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
           <nuxt-link to="https://en.wikipedia.org/wiki/Windows_XP"
             target="_blank" class="boxLink">Windows XP</nuxt-link>
           <template #content>
@@ -33,7 +33,7 @@
           </template>
         </UPopover>, to the exhilarating 3D
         Brawlers on the
-        <UPopover mode="hover">
+        <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
           <nuxt-link to="https://en.wikipedia.org/wiki/Wii" target="_blank"
             class="boxLink">Nintendo Wii</nuxt-link>
           <template #content>
@@ -43,7 +43,7 @@
         <div class="h-4"></div>
         This soon led me to successfully
         modifying my Wii console to accommodate SD-cards formatted with the
-        <UPopover mode="hover">
+        <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
           <nuxt-link
             to="https://web.archive.org/web/20230303133311/https://wbfsmanager.com/"
             target="_blank" class="boxLink">WBFS manager</nuxt-link>

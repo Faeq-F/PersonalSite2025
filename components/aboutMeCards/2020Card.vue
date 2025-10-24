@@ -14,11 +14,11 @@
       </div>
     </template>
 
-    <div class="flex justify-between">
+    <div class="flex justify-between aboutContent">
       <div class="leading-[1.9] -mt-2">
         With a clear career path in mind, prior to my first national exams,
         I built a relevant foundation by studying
-        <UPopover mode="hover">
+        <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
           <nuxt-link target="_blank"
             to="https://web.archive.org/web/20200920060658/https://www.aqa.org.uk/subjects/computer-science-and-it/gcse/computer-science-8525"
             class="boxLink">Computer Science</nuxt-link>
@@ -26,7 +26,7 @@
             <p class="p-1 text-sm">See specification</p>
           </template>
         </UPopover> and
-        <UPopover mode="hover">
+        <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
           <nuxt-link target="_blank"
             to="https://web.archive.org/web/20180315022607/https://www.ocr.org.uk/qualifications/by-type/gcse-related/science/"
             class="boxLink">Triple Science</nuxt-link>

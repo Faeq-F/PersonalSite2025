@@ -14,10 +14,10 @@
       </div>
     </template>
 
-    <div class="flex justify-between">
+    <div class="flex justify-between aboutContent">
       <div class="leading-[1.9] -mt-2">
         Continuing with obtaining
-        <UPopover mode="hover">
+        <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
           <nuxt-link target="_blank"
             to="https://www.gov.uk/what-different-qualification-levels-mean/list-of-qualification-levels#level-3"
             class="boxLink">national
@@ -26,7 +26,7 @@
             <p class="p-1 text-sm">See qualification level</p>
           </template>
         </UPopover>, I took three
-        <UPopover mode="hover">
+        <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
           <nuxt-link target="_blank" to="https://en.wikipedia.org/wiki/A-level"
             class="boxLink">A-level</nuxt-link>
           <template #content>
@@ -34,7 +34,7 @@
           </template>
         </UPopover>
         subjects;
-        <UPopover mode="hover">
+        <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
           <nuxt-link target="_blank"
             to="https://web.archive.org/web/20190329023323/https://www.ocr.org.uk/qualifications/as-and-a-level/computer-science-h046-h446-from-2015/"
             class="boxLink">Computer Science</nuxt-link>
@@ -42,7 +42,7 @@
             <p class="p-1 text-sm">See specification</p>
           </template>
         </UPopover>,
-        <UPopover mode="hover">
+        <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
           <nuxt-link target="_blank"
             to="https://web.archive.org/web/20190116222943/https://qualifications.pearson.com/en/qualifications/edexcel-a-levels/mathematics-2017.html"
             class="boxLink">Mathematics</nuxt-link>
@@ -50,7 +50,7 @@
             <p class="p-1 text-sm">See specification</p>
           </template>
         </UPopover> and
-        <UPopover mode="hover">
+        <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
           <nuxt-link target="_blank"
             to="https://web.archive.org/web/20190329023643/https://www.ocr.org.uk/qualifications/as-and-a-level/physics-a-h156-h556-from-2015/"
             class="boxLink">Physics</nuxt-link>

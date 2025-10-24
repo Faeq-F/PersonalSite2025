@@ -14,10 +14,10 @@
       </div>
     </template>
 
-    <div class="flex justify-between">
+    <div class="flex justify-between aboutContent">
       <div class="leading-[1.9] -mt-2">
         As the culminating step, I earned a
-        <UPopover mode="hover">
+        <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
           <nuxt-link target="_blank"
             to="https://en.wikipedia.org/wiki/Bachelor_of_Science#United_Kingdom"
             class="boxLink">Bachelor of Science (Hons)</nuxt-link>
@@ -26,7 +26,7 @@
           </template>
         </UPopover>
         in
-        <UPopover mode="hover">
+        <UPopover mode="hover" :ui="{ content: 'popoverContent' }">
           <nuxt-link target="_blank"
             to="https://web.archive.org/web/20221127112742/https://www.royalholloway.ac.uk/studying-here/undergraduate/computer-science/computer-science-software-engineering/"
             class="boxLink">Software

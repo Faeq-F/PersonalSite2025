@@ -20,24 +20,23 @@ body{
   overflow: hidden;
 }
 
-.aTheme #vidBG {
+html:not(.zTheme) #vidBG {
   box-shadow: #00000003 0 5px 15px, #191c2113 0 15px 35px -5px, #00000003 0 0 0 1px;
 }
 
-.aTheme.dark #vidBG{
+html.dark:not(.zTheme) #vidBG{
   box-shadow: #00000014 0 5px 15px, #191c2133 0 15px 35px -5px, #ffffff12 0 0 0 1px;
 }
 
-.aTheme.dark #vidBG video{
+html.dark:not(.zTheme) #vidBG video{
   filter: grayscale(1) ;
 }
 
-#vidBG video,
 .zTheme #vidBG video{
   display: none;
 }
 
-.aTheme #vidBG video {
+html:not(.zTheme) #vidBG video {
   object-fit: cover;
   filter: sepia(1) brightness(0.7) invert(1) ;
   transition: all 0.2s ease-in-out;
@@ -96,22 +95,162 @@ html.zTheme #pageContent:has(#HomeSocialButtonGroup){
 html.zTheme.dark #pageContent:has(#HomeSocialButtonGroup){
   background-image: url('/media/bgZthemeHomeDark.png');
 }
-/*
-html:not(.aTheme, .zTheme) #vidBG{
-  border: none;
-	background-color: #fff;
-  box-shadow:
-  inset 0px 0px 0px 0px #e4e6ff,
-  inset 0px 0px 0px 5px #fff,
-  inset 0px 0px 0px 10px #e4e6ff;
-} */
 
 html:not(.aTheme, .zTheme) #vidBG{
   border: none;
-	background-color: #e4e6ff;
+	background-color: transparent !important;
 }
 
+/* html:not(.aTheme, .zTheme) body{
+  /* background-color: #ffffff65;
+  background-blend-mode:lighten;
+  background-image: url('/PersonalSite2025/media/theme1.webp');
+  width: 100vw;
+} */
 
-html:not(.aTheme, .zTheme) body{
-  background-color: #e4e6ff;
+html.dark:not(.aTheme, .zTheme) body{
+  background-color: #000;
+}
+
+html:not(.aTheme, .zTheme) #navbar .navbar {
+  border: none;
+  background-color: #00000000;
+  box-shadow: none;
+}
+/*
+html:not(.aTheme, .zTheme) #credits{
+  color: #fff;
+  text-shadow: 1px 0px #000;
+} */
+
+html:not(.aTheme, .zTheme) .boxLink:hover,
+html:not(.aTheme, .zTheme) fieldset label,
+html:not(.aTheme, .zTheme) .navbar div[data-state="open"]:has(div[data-state="open"]),
+html:not(.aTheme, .zTheme) div[role="dialog"]:has(#searchPanel),
+html:not(.aTheme, .zTheme) .zLink,
+html:not(.aTheme, .zTheme) #navbar .navbar .middleItems ul li a:hover,
+html:not(.aTheme, .zTheme) .popoverContent,
+html:not(.aTheme, .zTheme) #navbar .navbar .homeNavSection,
+html:not(.aTheme, .zTheme) #navbar .navbar .themeNavSection,
+html:not(.aTheme, .zTheme) #navbar .navbar,
+html:not(.aTheme, .zTheme) .cardShadow,
+html:not(.aTheme, .zTheme) .glass-card,
+html:not(.aTheme, .zTheme) #HomeSocialButtonGroup {
+
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 2px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.8),
+        transparent);
+  }
+
+  &:hover {
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 0 8px 4px rgba(255, 255, 255, 0.4);
+  }
+}
+
+html.dark:not(.aTheme, .zTheme) .boxLink:hover,
+html.dark:not(.aTheme, .zTheme) fieldset label,
+html.dark:not(.aTheme, .zTheme) .navbar div[data-state="open"]:has(div[data-state="open"]),
+html.dark:not(.aTheme, .zTheme) div[role="dialog"]:has(#searchPanel),
+html.dark:not(.aTheme, .zTheme) .zLink,
+html.dark:not(.aTheme, .zTheme) #navbar .navbar .middleItems ul li a:hover,
+html.dark:not(.aTheme, .zTheme) .popoverContent,
+html.dark:not(.aTheme, .zTheme) #navbar .navbar .homeNavSection,
+html.dark:not(.aTheme, .zTheme) #navbar .navbar .themeNavSection,
+html.dark:not(.aTheme, .zTheme) #navbar .navbar,
+html.dark:not(.aTheme, .zTheme) .cardShadow,
+html.dark:not(.aTheme, .zTheme) .glass-card,
+html.dark:not(.aTheme, .zTheme) #HomeSocialButtonGroup {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 2px 1px rgba(255, 255, 255, 0.1);
+
+  &::before {
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.8), transparent);
+  }
+
+  &:hover {
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 0 8px 4px rgba(0, 0, 0, 0.4);
+  }
+}
+
+html:not(.aTheme, .zTheme) div[role="dialog"]:has(#searchPanel),
+html:not(.aTheme, .zTheme) .navbar div[data-state="open"]:has(div[data-state="open"]) {
+  background-color: #ffffffce;
+}
+
+html.dark:not(.aTheme, .zTheme) div[role="dialog"]:has(#searchPanel),
+html.dark:not(.aTheme, .zTheme) .navbar div[data-state="open"]:has(div[data-state="open"]) {
+  background-color: #000000ce;
+}
+
+html:not(.aTheme, .zTheme) #HomeSocialButtonGroup {
+  padding-right: 0.5rem;
+}
+
+html:not(.aTheme, .zTheme) #HomeSocialButtonGroup button svg {
+  filter: brightness(1) contrast(0) grayscale(1) saturate(1);
+  color: #000;
+
+  &:hover {
+    filter: brightness(0) contrast(1) grayscale(1) saturate(1);
+  }
+}
+
+html.dark:not(.aTheme, .zTheme) #HomeSocialButtonGroup button svg {
+  filter: brightness(1) contrast(0) grayscale(1) saturate(1);
+  color: #fff;
+  &:hover {
+    filter: brightness(9) contrast(1) grayscale(1) saturate(1);
+  }
+}
+
+html:not(.aTheme, .zTheme) #navbar .navbar {
+  border-radius: calc(var(--ui-radius) * 6);
+}
+
+html:not(.aTheme, .zTheme) #navbar .navbar .homeNavSection:hover {
+  scale: 1.04;
+  transform: translateX(0.25rem);
+}
+
+html:not(.aTheme, .zTheme) #navbar .navbar .themeNavSection:hover {
+  scale: 1.04;
+  transform: translateX(-0.25rem);
+}
+
+html:not(.aTheme, .zTheme) .varela{
+  font-style: italic;
 }
